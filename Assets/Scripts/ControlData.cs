@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine.UI;
 
-public class ControlData : MonoBehaviourPun
+public class ControlData : MonoBehaviourPunCallbacks
 {
 
     public float BaseSpeed ;
@@ -47,7 +48,9 @@ public class ControlData : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
-      //  PlayerPrefs.DeleteAll();
+        //  PlayerPrefs.DeleteAll();
+        PhotonNetwork.ConnectUsingSettings();
+
         DontDestroyOnLoad(this.gameObject);
         if (PlayerPrefs.GetFloat("BaseSpeed") == 0.0f)
         {
