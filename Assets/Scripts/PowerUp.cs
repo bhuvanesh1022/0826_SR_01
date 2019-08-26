@@ -6,6 +6,8 @@ using Photon.Pun;
 
 public class PowerUp : MonoBehaviour
 {
+
+//powerup
     public bool canAttack = false;
     public Animator animator;
     public Button attackButton;
