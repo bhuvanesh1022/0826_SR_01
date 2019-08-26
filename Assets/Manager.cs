@@ -80,6 +80,8 @@ public class Manager : MonoBehaviourPun
     public GameObject ScoreCardMenu;
     public List<GameObject> ScoreCard = new List<GameObject>();
 
+    public int TotalRace=0;
+
     IEnumerator StartSecRoutine()
     {
 
@@ -102,6 +104,17 @@ public class Manager : MonoBehaviourPun
     IEnumerator Start()
     {
         manage = this;
+        if (PlayerPrefs.GetInt("TotalRace") == 0.0f)
+        {
+            PlayerPrefs.SetInt("TotalRace", 1);
+            TotalRace = 1;
+        }
+        else
+        {
+            TotalRace = PlayerPrefs.GetInt("TotalRace");
+            TotalRace += 1;
+            PlayerPrefs.SetInt("TotalRace", TotalRace);
+        }
         controlData = GameObject.Find("ControlData").GetComponent<ControlData>();
 
         UI = GameObject.Find("Launcher").GetComponent<UIHandler>();
