@@ -115,19 +115,23 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     {
         if (pv.IsMine)
         {
+            Manager.manage.attackBtn.interactable = false;
+
             float temp1 = runSpeed;
             controlData.TargetSpeed += 50;
             controlData.MaxRunForce += 2000;
             MinRunForce += 2000;
             //  runSpeed += Time.deltaTime * controlData.MaxRunForce * 100;
             //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed*1.5f;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed/1.5f ;
             //   runSpeed += Time.deltaTime * controlData.MaxRunForce / 100;
             controlData.TargetSpeed -= 50;
             controlData.MaxRunForce -= 2000;
             MinRunForce -= 2000;
             runSpeed = temp1;
+            Manager.manage.attackBtn.interactable = true;
+
 
         }
 
