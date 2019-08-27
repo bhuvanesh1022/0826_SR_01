@@ -94,8 +94,12 @@ public class PowerUp : MonoBehaviour
                 {
                     if (collision.gameObject.GetComponent<PlayerMovement>().pv.IsMine)
                     {
+                        if (Manager.manage.attackBtn.gameObject.activeInHierarchy || Manager.manage.ShurikenBtn.gameObject.activeInHierarchy)
+                        {
+                            
+                            Manager.manage.PowerUpReplacedSave();
+                        }
                         Manager.manage.attackBtn.gameObject.SetActive(true);
-                        Debug.LogError("powerp");
                        pv.RPC("PowerUpDisableFunc", RpcTarget.AllBuffered, null);
                         Manager.manage.PowerUpCollectedSave();
                         
@@ -108,7 +112,13 @@ public class PowerUp : MonoBehaviour
                 {
                     if(collision.gameObject.GetComponent<PlayerMovement>().pv.IsMine)
                     {
-                        Debug.LogError("powerp");
+                        if (Manager.manage.attackBtn.gameObject.activeInHierarchy || Manager.manage.ShurikenBtn.gameObject.activeInHierarchy)
+                        {
+                            Manager.manage.PowerUpReplacedSave();
+
+                          
+
+                        }
 
                         Manager.manage.ShurikenBtn.gameObject.SetActive(true);
                         pv.RPC("PowerUpDisableFunc", RpcTarget.AllBuffered, null);

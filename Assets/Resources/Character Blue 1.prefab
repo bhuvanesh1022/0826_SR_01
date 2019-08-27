@@ -2203,6 +2203,7 @@ MonoBehaviour:
   WallJumpActiveBool: 0
   WallJumpActive: 0
   NoRun: 0
+  PrevXPos: 0
   rb2d: {fileID: 5086263084882101510}
   info: 
   winpos: {x: 0, y: -2, z: 0}

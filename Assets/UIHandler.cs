@@ -162,6 +162,8 @@ public class UIHandler : MonoBehaviourPunCallbacks
     {
         //  LevelSelectedCount[temp] += 1;
         selectedLevel = temp;
+
+        Statistics.stats.Pref("StartTrack" + selectedLevel);
         //for (int i = 0; i < LevelSelectedCount.Count; i++)
         //{
         //    if (selectedLevel < LevelSelectedCount[i])

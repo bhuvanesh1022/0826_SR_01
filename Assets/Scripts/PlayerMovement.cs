@@ -488,10 +488,35 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         }
     }
 
-  
+    public float PrevXPos;
     private void FixedUpdate()
     {
-        if(pv.IsMine)
+        if(PrevXPos+0.1 >= transform.position.x)
+        {
+            PrevXPos = transform.position.x;
+        }else
+        {
+            if(run==false)
+            {
+                if(res.Length!=0)
+                {
+                    manage.SpendOnWall += Time.deltaTime;
+                 //   Debug.LogError("wallStay");
+
+                }
+                if(GetComponent<CharacterController2D>().m_Velocity.x > 130f)
+                {
+                    manage.SpendOnWall += Time.deltaTime;
+                    Debug.LogError("wallStay");
+                }
+
+
+            }
+           
+
+
+        }
+        if (pv.IsMine)
         {
             res = Physics2D.OverlapBoxAll(wallCheckPoint.position, new Vector2(wallCheckWi, wallCheckHi), 0.15f, WallLayer);
             if (GetComponent<CharacterController2D>().m_Grounded == false && res.Length == 0)
@@ -810,10 +835,15 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
            
             if (collision.tag == "Finish")
             {
+                Debug.LogError("finish");
+                Statistics.stats.Pref("FinishTrack" + manage.UI.selectedLevel);
                 SecStart = false;
                 Finished = true;
                 if (manage.reach < 10)
                 {
+                    Statistics.stats.Pref("TotalWin");
+
+
                     won.gameObject.SetActive(true);
                     Camera.main.GetComponent<CameraFollow>().offset = new Vector3(0, 1.2f, -10f);
                     GetComponent<Animator>().SetBool("Idle",true);
@@ -829,6 +859,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 {
                     if(failed!=null)
                     {
+                        Statistics.stats.Pref("TotalLose");
                         failed.gameObject.SetActive(true);
                         Camera.main.GetComponent<CameraFollow>().offset = new Vector3(0, 1.2f, -10f);
                         GetComponent<Animator>().SetBool("Idle", true);

@@ -89,8 +89,23 @@ public class Manager : MonoBehaviourPun
     public int PowerUpUsed = 0;
     public int JumpUsed = 0;
     public int boosterTime = 0;
-    public int a = 0;
+    public float SpendOnWall = 0;
+    public int PowerUpReplaced = 0;
 
+    public void PowerUpReplacedSave()
+    {
+        if (PlayerPrefs.GetInt("PowerUpReplaced") == 0.0f)
+        {
+            PlayerPrefs.SetInt("PowerUpReplaced", 1);
+
+        }
+        else
+        {
+            PowerUpReplaced = PlayerPrefs.GetInt("PowerUpReplaced");
+            PowerUpReplaced = PowerUpReplaced + 1;
+            PlayerPrefs.SetInt("PowerUpReplaced", PowerUpReplaced);
+        }
+    }
     public void BooseTimeSave()
     {
         if (PlayerPrefs.GetInt("boosterTime") == 0.0f)
@@ -187,6 +202,18 @@ public class Manager : MonoBehaviourPun
             temp = temp + AirTime;
             PlayerPrefs.SetFloat("AirTime", temp);
             AirTime = PlayerPrefs.GetFloat("AirTime");
+        }
+        if (PlayerPrefs.GetFloat("SpendOnWall") == 0.0f)
+        {
+            PlayerPrefs.SetFloat("SpendOnWall", SpendOnWall);
+
+        }
+        else
+        {
+            float temp = PlayerPrefs.GetFloat("SpendOnWall");
+            temp = temp + SpendOnWall;
+            PlayerPrefs.SetFloat("SpendOnWall", temp);
+            SpendOnWall = PlayerPrefs.GetFloat("SpendOnWall");
         }
     }
 
