@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     public bool run;
     public Sprite PlayerSPrite;
     public string username;
+    
  
 
 
@@ -102,11 +103,13 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
       PowerUp temp = PhotonNetwork.Instantiate(Manager.manage.ShurikenPrefab.name, ShurikenObj.transform.position, Quaternion.identity).GetComponent<PowerUp>();
         temp.SentBy = this.gameObject;
         manage.ShurikenBtn.gameObject.SetActive(false);
+        manage.PowerUpUsedSave();
 
 
     }
     public void speedUpFunc()
     {
+        manage.PowerUpUsedSave();
         StartCoroutine(SpeedUp(this.gameObject));
         Manager.manage.attackBtn.gameObject.SetActive(false);
 
@@ -124,6 +127,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             //  runSpeed += Time.deltaTime * controlData.MaxRunForce * 100;
             //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed*1.5f;
             yield return new WaitForSeconds(1f);
+            manage.BooseTimeSave();
+            Debug.Log("BoosterUSed");
             //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed/1.5f ;
             //   runSpeed += Time.deltaTime * controlData.MaxRunForce / 100;
             controlData.TargetSpeed -= 50;
@@ -516,7 +521,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 if (straigtJump)
                 {
                     StartCoroutine(WallJumpRoutine());
-
+                   // Debug.LogError("Jump");
+                    manage.JumpUsedSave();
                     straigtJump = false;
                 }
             }
@@ -540,6 +546,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                         {
                             if (DOTouchCount)
                             {
+
+                                //     Debug.LogError("Jump");
+                              //  if(run==failed)
+                                     manage.JumpUsedSave();
                                 controller.Move(0 * Time.deltaTime, crouch, true);
                                 DOTouchCount = false;
                             }
@@ -575,7 +585,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                                     NormalMove = true;
 
                                 }
-                                        controller.Move(0 * Time.deltaTime, crouch, true);
+                                
+                                controller.Move(0 * Time.deltaTime, crouch, true);
                                 DOTouchCount = false;
                             }
                         }
@@ -606,7 +617,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                                 if (WallJumpActiveBool == false)
                                 {
-                                    BoxCollider2D temp = res[0].GetComponent<BoxCollider2D>();
+                                    Collider2D temp = res[0].GetComponent<Collider2D>();
                                     StartCoroutine(WallJumpRoutine());
                                     StartCoroutine(Walljumpactivate(true, temp));
                                     WallJumpActiveBool = true;
@@ -618,7 +629,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                             {
                                 if (WallJumpActiveBool == false)
                                 {
-                                    BoxCollider2D temp = res[0].GetComponent<BoxCollider2D>();
+                                    Collider2D temp = res[0].GetComponent<Collider2D>();
                                     StartCoroutine(Walljumpactivate(false, temp));
                                     StartCoroutine(WallJumpRoutine());
                                     WallJumpActiveBool = true;
@@ -719,9 +730,9 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         manage.reach = 10;
     }
     public Rigidbody2D rb2d;
-    IEnumerator Walljumpactivate(bool front, BoxCollider2D temp)
+    IEnumerator Walljumpactivate(bool front, Collider2D temp)
     {
-        if (temp.GetComponent<BoxCollider2D>())
+        if (temp.GetComponent<Collider2D>())
         {
             temp.enabled = false;
 
@@ -757,12 +768,12 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         StartCoroutine(coliderOff(temp));
 
     }
-    IEnumerator coliderOff(BoxCollider2D temp)
+    IEnumerator coliderOff(Collider2D temp)
     {
 
         //  Debug.LogError(temp.enabled);
         yield return new WaitForSeconds(0.2f);  //0.2f
-        if (temp.GetComponent<BoxCollider2D>())
+        if (temp.GetComponent<Collider2D>())
         {
             temp.enabled = true;
         }
