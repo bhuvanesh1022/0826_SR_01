@@ -523,6 +523,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
             if (GetComponent<CharacterController2D>().m_Grounded)
             {
+                if(run==false)
+                    manage.GroundTime += Time.deltaTime;
                 if (straigtJump == false)
                 {
                     straigtJump = true;
@@ -629,6 +631,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 }
                 }
 
+            }else if(GetComponent<CharacterController2D>().m_Grounded == false)
+            {
+                manage.AirTime += Time.deltaTime;
+
             }
             if (GetComponent<CharacterController2D>().m_Grounded == false && res.Length != 0)
             {
@@ -729,7 +735,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             rb2d.angularVelocity = 0f;
             rb2d.AddForce(new Vector2((controlData.walljumpForceLeft * 2.5f * 1000f * Time.deltaTime), (controlData.m_JumpForce * controlData.walljumpAmplitudeLeft * 1000f * Time.deltaTime)));
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-
+          //  Debug.LogError("jump");
+            manage.wallJumpSave();
             wallCheckPoint = frontCheck.transform;
 
         }
@@ -739,6 +746,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             rb2d.velocity = new Vector2(0, 0);
             rb2d.angularVelocity = 0f;
             rb2d.AddForce(new Vector2((-controlData.walljumpForceLeft * 1000f * 2.5f * Time.deltaTime), (controlData.m_JumpForce * controlData.walljumpAmplitudeLeft * 1000f * Time.deltaTime)));
+          //  Debug.LogError("jump");
+            manage.wallJumpSave();
 
             transform.localScale = new Vector3(transform.localScale.x*-1, transform.localScale.y, transform.localScale.z);
             wallCheckPoint = BackCheck.transform;
@@ -835,7 +844,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                 }
 
-
+                manage.GroundTimeSave();
             }
         }else
         {

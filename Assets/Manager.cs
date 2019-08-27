@@ -81,7 +81,55 @@ public class Manager : MonoBehaviourPun
     public List<GameObject> ScoreCard = new List<GameObject>();
 
     public int TotalRace=0;
+    public int WallJump=0;
 
+    public float GroundTime=0;
+    public float AirTime = 0;
+    public int PowerUpCollcted = 0;
+
+    public void PowerUpCollectedSave()
+    {
+        if (PlayerPrefs.GetInt("PowerUpCollcted") == 0.0f)
+        {
+            PlayerPrefs.SetInt("PowerUpCollcted", 1);
+
+        }
+        else
+        {
+             PowerUpCollcted = PlayerPrefs.GetInt("PowerUpCollcted");
+            PowerUpCollcted = PowerUpCollcted + 1;
+            PlayerPrefs.SetInt("PowerUpCollcted", PowerUpCollcted);
+        }
+    }
+    public void wallJumpSave()
+    {
+        if (PlayerPrefs.GetInt("WallJump") == 0.0f)
+        {
+            PlayerPrefs.SetInt("WallJump", 1);
+
+        }
+        else
+        {
+             WallJump = PlayerPrefs.GetInt("WallJump");
+            WallJump = WallJump + 1;
+            PlayerPrefs.SetInt("WallJump", WallJump);
+        }
+    }
+    public void GroundTimeSave()
+    {
+        if (PlayerPrefs.GetFloat("GroundTime") == 0.0f)
+        {
+            PlayerPrefs.SetFloat("GroundTime", GroundTime);
+
+        }
+        else
+        {
+            float temp = PlayerPrefs.GetFloat("GroundTime");
+            temp = temp + GroundTime;
+            PlayerPrefs.SetFloat("GroundTime", temp);
+          GroundTime = PlayerPrefs.GetFloat("GroundTime");
+        }
+    }
     IEnumerator StartSecRoutine()
     {
 
