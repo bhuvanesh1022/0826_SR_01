@@ -81,7 +81,119 @@ public class Manager : MonoBehaviourPun
     public List<GameObject> ScoreCard = new List<GameObject>();
 
     public int TotalRace=0;
+    public int WallJump=0;
 
+    public float GroundTime=0;
+    public float AirTime = 0;
+    public int PowerUpCollcted = 0;
+    public int PowerUpUsed = 0;
+    public int JumpUsed = 0;
+    public int boosterTime = 0;
+    public int a = 0;
+
+    public void BooseTimeSave()
+    {
+        if (PlayerPrefs.GetInt("boosterTime") == 0.0f)
+        {
+            PlayerPrefs.SetInt("boosterTime", 1);
+
+        }
+        else
+        {
+            boosterTime = PlayerPrefs.GetInt("boosterTime");
+            boosterTime = boosterTime + 1;
+            PlayerPrefs.SetInt("boosterTime", boosterTime);
+        }
+    }
+    public void JumpUsedSave()
+    {
+        if (PlayerPrefs.GetInt("JumpUsed") == 0.0f)
+        {
+            PlayerPrefs.SetInt("JumpUsed", 1);
+
+        }
+        else
+        {
+            JumpUsed = PlayerPrefs.GetInt("JumpUsed");
+            JumpUsed = JumpUsed + 1;
+            PlayerPrefs.SetInt("JumpUsed", JumpUsed);
+        }
+    }
+
+    public void PowerUpUsedSave()
+    {
+        if (PlayerPrefs.GetInt("PowerUpUsed") == 0.0f)
+        {
+            PlayerPrefs.SetInt("PowerUpUsed", 1);
+
+        }
+        else
+        {
+            PowerUpUsed = PlayerPrefs.GetInt("PowerUpUsed");
+            PowerUpUsed = PowerUpUsed + 1;
+            PlayerPrefs.SetInt("PowerUpUsed", PowerUpUsed);
+        }
+    }
+    public void PowerUpCollectedSave()
+    {
+        if (PlayerPrefs.GetInt("PowerUpCollcted") == 0.0f)
+        {
+            PlayerPrefs.SetInt("PowerUpCollcted", 1);
+
+        }
+        else
+        {
+             PowerUpCollcted = PlayerPrefs.GetInt("PowerUpCollcted");
+            PowerUpCollcted = PowerUpCollcted + 1;
+            PlayerPrefs.SetInt("PowerUpCollcted", PowerUpCollcted);
+        }
+    }
+    public void wallJumpSave()
+    {
+        if (PlayerPrefs.GetInt("WallJump") == 0.0f)
+        {
+            PlayerPrefs.SetInt("WallJump", 1);
+
+        }
+        else
+        {
+             WallJump = PlayerPrefs.GetInt("WallJump");
+            WallJump = WallJump + 1;
+            PlayerPrefs.SetInt("WallJump", WallJump);
+        }
+    }
+    public void GroundTimeSave()
+    {
+        if (PlayerPrefs.GetFloat("GroundTime") == 0.0f)
+        {
+            PlayerPrefs.SetFloat("GroundTime", GroundTime);
+
+        }
+        else
+        {
+            float temp = PlayerPrefs.GetFloat("GroundTime");
+            temp = temp + GroundTime;
+            PlayerPrefs.SetFloat("GroundTime", temp);
+          GroundTime = PlayerPrefs.GetFloat("GroundTime");
+        }
+        if (PlayerPrefs.GetFloat("AirTime") == 0.0f)
+        {
+            PlayerPrefs.SetFloat("AirTime", AirTime);
+
+        }
+        else
+        {
+            float temp = PlayerPrefs.GetFloat("AirTime");
+            temp = temp + AirTime;
+            PlayerPrefs.SetFloat("AirTime", temp);
+            AirTime = PlayerPrefs.GetFloat("AirTime");
+        }
+    }
+
+    public void AirTimeSave()
+    {
+       
+    }
     IEnumerator StartSecRoutine()
     {
 

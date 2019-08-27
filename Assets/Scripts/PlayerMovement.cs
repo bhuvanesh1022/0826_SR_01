@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     public bool run;
     public Sprite PlayerSPrite;
     public string username;
+    
  
 
 
@@ -102,11 +103,13 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
       PowerUp temp = PhotonNetwork.Instantiate(Manager.manage.ShurikenPrefab.name, ShurikenObj.transform.position, Quaternion.identity).GetComponent<PowerUp>();
         temp.SentBy = this.gameObject;
         manage.ShurikenBtn.gameObject.SetActive(false);
+        manage.PowerUpUsedSave();
 
 
     }
     public void speedUpFunc()
     {
+        manage.PowerUpUsedSave();
         StartCoroutine(SpeedUp(this.gameObject));
         Manager.manage.attackBtn.gameObject.SetActive(false);
 
@@ -124,6 +127,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             //  runSpeed += Time.deltaTime * controlData.MaxRunForce * 100;
             //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed*1.5f;
             yield return new WaitForSeconds(1f);
+            manage.BooseTimeSave();
+            Debug.Log("BoosterUSed");
             //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed/1.5f ;
             //   runSpeed += Time.deltaTime * controlData.MaxRunForce / 100;
             controlData.TargetSpeed -= 50;
@@ -516,13 +521,16 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 if (straigtJump)
                 {
                     StartCoroutine(WallJumpRoutine());
-
+                   // Debug.LogError("Jump");
+                    manage.JumpUsedSave();
                     straigtJump = false;
                 }
             }
 
             if (GetComponent<CharacterController2D>().m_Grounded)
             {
+                if(run==false)
+                    manage.GroundTime += Time.deltaTime;
                 if (straigtJump == false)
                 {
                     straigtJump = true;
@@ -538,6 +546,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                         {
                             if (DOTouchCount)
                             {
+
+                                //     Debug.LogError("Jump");
+                              //  if(run==failed)
+                                     manage.JumpUsedSave();
                                 controller.Move(0 * Time.deltaTime, crouch, true);
                                 DOTouchCount = false;
                             }
@@ -573,7 +585,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                                     NormalMove = true;
 
                                 }
-                                        controller.Move(0 * Time.deltaTime, crouch, true);
+                                
+                                controller.Move(0 * Time.deltaTime, crouch, true);
                                 DOTouchCount = false;
                             }
                         }
@@ -628,6 +641,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                     }
                 }
                 }
+
+            }else if(GetComponent<CharacterController2D>().m_Grounded == false)
+            {
+                manage.AirTime += Time.deltaTime;
 
             }
             if (GetComponent<CharacterController2D>().m_Grounded == false && res.Length != 0)
@@ -729,7 +746,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             rb2d.angularVelocity = 0f;
             rb2d.AddForce(new Vector2((controlData.walljumpForceLeft * 2.5f * 1000f * Time.deltaTime), (controlData.m_JumpForce * controlData.walljumpAmplitudeLeft * 1000f * Time.deltaTime)));
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-
+          //  Debug.LogError("jump");
+            manage.wallJumpSave();
             wallCheckPoint = frontCheck.transform;
 
         }
@@ -739,6 +757,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             rb2d.velocity = new Vector2(0, 0);
             rb2d.angularVelocity = 0f;
             rb2d.AddForce(new Vector2((-controlData.walljumpForceLeft * 1000f * 2.5f * Time.deltaTime), (controlData.m_JumpForce * controlData.walljumpAmplitudeLeft * 1000f * Time.deltaTime)));
+          //  Debug.LogError("jump");
+            manage.wallJumpSave();
 
             transform.localScale = new Vector3(transform.localScale.x*-1, transform.localScale.y, transform.localScale.z);
             wallCheckPoint = BackCheck.transform;
@@ -835,7 +855,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                 }
 
-
+                manage.GroundTimeSave();
             }
         }else
         {

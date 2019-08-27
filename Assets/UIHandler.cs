@@ -243,7 +243,7 @@ public class UIHandler : MonoBehaviourPunCallbacks
         character4.gameObject.SetActive(false);
 
         chosenCharacter = 2;
-        Debug.LogError(chosenCharacter);
+
         //  instruction.text = chosenCharacter.ToString() ;
         pv.RPC("Incr", RpcTarget.AllBuffered, null);
         wait_player.gameObject.SetActive(true);
@@ -257,7 +257,6 @@ public class UIHandler : MonoBehaviourPunCallbacks
         character4.gameObject.SetActive(false);
 
         chosenCharacter = 3;
-        Debug.LogError(chosenCharacter);
         //  instruction.text = chosenCharacter.ToString() ;
         pv.RPC("Incr", RpcTarget.AllBuffered, null);
         wait_player.gameObject.SetActive(true);
