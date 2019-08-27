@@ -14457,10 +14457,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab:
-  - {fileID: 1106435403584450, guid: c4fc8182614ce8f4c961030f29e54f9b, type: 3}
-  - {fileID: 7943261639308948840, guid: a5c674978bc2cbe41a7299a9b0d8b516, type: 3}
-  - {fileID: 1764862123985470, guid: 281e2d00487cf5146a375ef3c1101958, type: 3}
-  - {fileID: 1974325174946312, guid: 45325b0b4e964c54498e45bb2aaec2a0, type: 3}
+  - {fileID: 1106435403584450, guid: 156c36350d2a4f145bb27db7c79da9af, type: 3}
+  - {fileID: 1106435403584450, guid: 1daf3b603238329419ee7aaa18b77b3f, type: 3}
+  - {fileID: 1106435403584450, guid: c9674646b6eb05644827e7b8a5ce03ab, type: 3}
+  - {fileID: 1106435403584450, guid: 624baff5c316f25419f26412f1fea42c, type: 3}
   reach: 0
   ReloadBtn: {fileID: 1233881348}
   attackBtn: {fileID: 1805198303}
@@ -14533,8 +14533,10 @@ MonoBehaviour:
   - {fileID: 1438194342}
   - {fileID: 2040713980}
   TotalRace: 0
-  WallJumpCount: 0
-  PowerUpCollected: 0
+  WallJump: 0
+  GroundTime: 0
+  AirTime: 0
+  PowerUpCollcted: 0
   UI: {fileID: 0}
   controlData: {fileID: 0}
   Ac: {fileID: 0}
