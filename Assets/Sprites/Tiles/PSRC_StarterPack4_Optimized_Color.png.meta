@@ -184,7 +184,7 @@ TextureImporter:
     second: PSRC_StarterPack4_Optimized_Color_59
   - first:
       213: -5574673600739543609
-    second: PSRC_StarterPack4_Optimized_Color_60
+    second: PSRC_Wooden_strip
   - first:
       213: -8502005416289888388
     second: PSRC_StarterPack4_Optimized_Color_61
@@ -1581,16 +1581,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PSRC_StarterPack4_Optimized_Color_60
+      name: PSRC_Wooden_strip
       rect:
         serializedVersion: 2
         x: 184
         y: 58
-        width: 67
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+        width: 20
+        height: 2
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 2, y: 0, z: 2, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0

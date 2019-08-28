@@ -738,10 +738,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 33bc0484-b010-46d8-b3b9-1cf178a32bd2
+  cloudProjectId: 
   framebufferDepthMemorylessMode: 0
-  projectName: Wolf Photon
-  organizationId: bhuvanesh22
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
