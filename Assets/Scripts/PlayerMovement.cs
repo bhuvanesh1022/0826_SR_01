@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         temp.SentBy = this.gameObject;
         manage.ShurikenBtn.gameObject.SetActive(false);
         manage.PowerUpUsedSave();
-
+        Statistics.stats.Pref("StunHit");
 
     }
     public void speedUpFunc()
@@ -460,6 +460,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
   //  [PunRPC]
     public void PlayerPunished()
     {
+        Statistics.stats.Pref("Stunned");
         if(pv.IsMine)
         {
             StartCoroutine(PlayerPunishedRoutine());

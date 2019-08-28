@@ -12,6 +12,9 @@ public class Statistics : MonoBehaviour
 
     public int TotalWin;
     public int TotalLose;
+    public int Stunned = 0;
+    public int StunHit = 0;
+    public int StunMissed = 0;
 
     void Start()
     {
@@ -48,6 +51,10 @@ public class Statistics : MonoBehaviour
             FinishTrackSelect[i]= PlayerPrefs.GetInt("FinishTrack" + i);
             FinishTrackSelect[i] = FinishTrackSelect[i] / 2;
         }
+        Stunned = PlayerPrefs.GetInt("Stunned");
+        StunHit = PlayerPrefs.GetInt("StunHit");
+
+
 
     }
 

@@ -30,6 +30,11 @@ public class PowerUp : MonoBehaviour
             sprit = transform.GetChild(0).GetComponent<SpriteRenderer>();
 
         }
+        if(power == Power.ShurikenAttack)
+        {
+            Destroy(this.gameObject, 6f);
+
+        }
     }
 
     private void Update()
@@ -80,7 +85,13 @@ public class PowerUp : MonoBehaviour
                 {
                     Debug.LogError(collision.name);
                     //   collision.gameObject.GetComponent<PlayerMovement>().pv.RPC("PlayerPunished", RpcTarget.AllBuffered, null);
-                    collision.gameObject.GetComponent<PlayerMovement>().PlayerPunished();
+                    if(!collectedCharacter.Contains(collision.gameObject))
+                    {
+                        collision.gameObject.GetComponent<PlayerMovement>().PlayerPunished();
+                        collectedCharacter.Add(collision.gameObject);
+                    }
+                    //   this.gameObject.GetComponent<Collider2D>().enabled = false;
+                    //  Destroy(this.gameObject);
                     //   StartCoroutine(PlayerPunished(collision.gameObject.GetComponent<PlayerMovement>()));
                 }
             }
