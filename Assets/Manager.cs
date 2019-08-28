@@ -69,7 +69,7 @@ public class Manager : MonoBehaviourPun
     public Button startBtn;
     public GameObject PlayerReady;
 
-    public int StartSec = 30;
+   // public int StartSec = 30;
     // public float secondTaken = 0f;
 
     //public void IncreaseRatefunc(int val)
@@ -224,18 +224,18 @@ public class Manager : MonoBehaviourPun
     IEnumerator StartSecRoutine()
     {
 
-        while (StartSec > 0)
+     //   while (StartSec > 0)
         {
             yield return new WaitForSeconds(1f);
-            pv.RPC("StartSecfunc", RpcTarget.AllBuffered, null);
+          //  pv.RPC("StartSecfunc", RpcTarget.AllBuffered, null);
 
         }
     }
     [PunRPC]
     public void StartSecfunc()
     {
-        StartSec -= 1;
-        t1.text = StartSec.ToString();
+     //   StartSec -= 1;
+      //  t1.text = StartSec.ToString();
     }
     public UIHandler UI;
     public ControlData controlData;
@@ -267,7 +267,7 @@ public class Manager : MonoBehaviourPun
 
         if (pv.IsMine)
         {
-            StartCoroutine(StartSecRoutine());
+          //  StartCoroutine(StartSecRoutine());
 
         }
         //  Distances = new List<float>(2);

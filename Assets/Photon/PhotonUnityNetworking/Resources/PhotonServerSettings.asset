@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 
+    AppIdRealtime: 2cf23428-807f-4372-a395-50a19473b8ae
     AppIdChat: 
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
-    FixedRegion: 
+    FixedRegion: in
     Server: 
     Port: 0
     Protocol: 0
@@ -28,6 +28,32 @@ MonoBehaviour:
   PunLogging: 0
   EnableSupportLogger: 0
   RunInBackground: 1
-  RpcList: []
+  RpcList:
+  - BaseSpeedFunc
+  - char1
+  - char2
+  - char3
+  - char4
+  - characterStart
+  - characterStop
+  - Controller
+  - DestroySpaceship
+  - DistanceSync
+  - distFunc
+  - Fire
+  - FirstTouchSync
+  - Incr
+  - levelSelectSync
+  - NameSetRPC
+  - offlight
+  - PlayerAdd
+  - PowerUpDisableFunc
+  - Reach
+  - RespawnSpaceship
+  - ScoreShow
+  - startCount
+  - StartSecfunc
+  - WaitForPlayerFunc
+  - Waitfunc
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
+  ShowSettings: 1
