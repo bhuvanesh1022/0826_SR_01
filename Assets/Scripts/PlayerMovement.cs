@@ -643,7 +643,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                                 if (WallJumpActiveBool == false)
                                 {
-                                    BoxCollider2D temp = res[0].GetComponent<BoxCollider2D>();
+                                    Collider2D temp = res[0].GetComponent<Collider2D>();
                                     StartCoroutine(WallJumpRoutine());
                                     StartCoroutine(Walljumpactivate(true, temp));
                                     WallJumpActiveBool = true;
@@ -655,7 +655,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                             {
                                 if (WallJumpActiveBool == false)
                                 {
-                                    BoxCollider2D temp = res[0].GetComponent<BoxCollider2D>();
+                                    Collider2D temp = res[0].GetComponent<Collider2D>();
                                     StartCoroutine(Walljumpactivate(false, temp));
                                     StartCoroutine(WallJumpRoutine());
                                     WallJumpActiveBool = true;
@@ -756,9 +756,9 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         manage.reach = 10;
     }
     public Rigidbody2D rb2d;
-    IEnumerator Walljumpactivate(bool front, BoxCollider2D temp)
+    IEnumerator Walljumpactivate(bool front, Collider2D temp)
     {
-        if (temp.GetComponent<BoxCollider2D>())
+        if (temp.GetComponent<Collider2D>())
         {
             temp.enabled = false;
 
@@ -794,12 +794,12 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         StartCoroutine(coliderOff(temp));
 
     }
-    IEnumerator coliderOff(BoxCollider2D temp)
+    IEnumerator coliderOff(Collider2D temp)
     {
 
         //  Debug.LogError(temp.enabled);
         yield return new WaitForSeconds(0.2f);  //0.2f
-        if (temp.GetComponent<BoxCollider2D>())
+        if (temp.GetComponent<Collider2D>())
         {
             temp.enabled = true;
         }
