@@ -24,8 +24,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     public bool run;
     public Sprite PlayerSPrite;
     public string username;
-    
- 
+
+    [SerializeField] ParticleSystem pfxBoost, pfxWallBoost;
 
 
     public List<Anima2D.SpriteMeshInstance> Order = new List<Anima2D.SpriteMeshInstance>();
@@ -102,8 +102,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     const int MIN_WALL_BOOST = 2, MAX_WALL_BOOST = 5;
     const float BOOST_TIME_PER_WALL_BOOST = 0.2f;
 
-    void OnCharacterLanded()
-    {
+    void OnCharacterLanded() {
         if (wallBoostBuildup > MIN_WALL_BOOST) StartCoroutine(SpeedUp(gameObject, Mathf.Min(wallBoostBuildup - MIN_WALL_BOOST, MAX_WALL_BOOST) * BOOST_TIME_PER_WALL_BOOST));
         wallBoostBuildup = 0;
     }
@@ -132,14 +131,14 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         if (pv.IsMine)
         {
             Manager.manage.attackBtn.interactable = false;
-
+            if (pfxBoost) pfxBoost.Play();
             float temp1 = runSpeed;
             controlData.TargetSpeed += 50;
             controlData.MaxRunForce += 2000;
             MinRunForce += 2000;
             //  runSpeed += Time.deltaTime * controlData.MaxRunForce * 100;
             //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed*1.5f;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(speedUpTime);
             manage.BooseTimeSave();
             Debug.Log("BoosterUSed");
             //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed/1.5f ;
@@ -148,9 +147,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             controlData.MaxRunForce -= 2000;
             MinRunForce -= 2000;
             runSpeed = temp1;
+            if (pfxBoost) pfxBoost.Stop();
             Manager.manage.attackBtn.interactable = true;
-
-
         }
 
 
@@ -806,6 +804,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         }
 
         wallBoostBuildup++;
+        if (pfxWallBoost && wallBoostBuildup > MIN_WALL_BOOST) pfxWallBoost.Play();
 
         yield return null;
         StartCoroutine(coliderOff(temp));
