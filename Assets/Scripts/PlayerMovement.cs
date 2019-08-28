@@ -155,7 +155,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     }
     public void startcountFunc()
     {
-        pv.RPC("startCount", RpcTarget.AllBuffered, null);
+       pv.RPC("startCount", RpcTarget.AllBuffered, null);
         manage.startBtn.gameObject.SetActive(false);
 
     }
@@ -215,13 +215,12 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         //Debug.LogError(manage.startCount+"startcount");
 
         yield return new WaitForSeconds(0.5f);
-        while (manage.startCount !=1 && manage.StartSec != 0) 
-        {
+        while (manage.startCount != 1 ) {
             yield return null;
         }
 
-      
-     
+
+
 
         Ac.GetComponent<AudioSource>().clip = Ac.BG_Game;
         Ac.GetComponent<AudioSource>().Play();
