@@ -53,6 +53,7 @@ public class Statistics : MonoBehaviour
         }
         Stunned = PlayerPrefs.GetInt("Stunned");
         StunHit = PlayerPrefs.GetInt("StunHit");
+        StunMissed = PlayerPrefs.GetInt("StunMissed");
 
 
 

@@ -32,9 +32,27 @@ public class PowerUp : MonoBehaviour
         }
         if(power == Power.ShurikenAttack)
         {
-            Destroy(this.gameObject, 6f);
+            StartCoroutine(destro());
+         //   Destroy(this.gameObject, 6f);
 
         }
+    }
+    IEnumerator destro()
+    {
+        yield return new WaitForSeconds(5f);
+        for (int i = 0; i < collectedCharacter.Count; i++)
+        {
+            if (SentBy == Manager.manage.LocalPlayer)
+            {
+                collectedCharacter.RemoveAt(i);
+                break;
+            }
+        }
+           if(collectedCharacter.Count==0)
+        {
+            Statistics.stats.Pref("StunMissed");
+        }
+        Destroy(this.gameObject);
     }
 
     private void Update()
