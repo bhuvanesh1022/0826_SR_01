@@ -95,7 +95,19 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         {
             manage.PlayerDistBG[i].sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSPrite;
         }
+
+        GetComponent<CharacterController2D>().OnLandEvent.AddListener(OnCharacterLanded);
     }
+
+    const int MIN_WALL_BOOST = 2, MAX_WALL_BOOST = 5;
+    const float BOOST_TIME_PER_WALL_BOOST = 0.2f;
+
+    void OnCharacterLanded()
+    {
+        if (wallBoostBuildup > MIN_WALL_BOOST) StartCoroutine(SpeedUp(gameObject, Mathf.Min(wallBoostBuildup - MIN_WALL_BOOST, MAX_WALL_BOOST) * BOOST_TIME_PER_WALL_BOOST));
+        wallBoostBuildup = 0;
+    }
+
     public GameObject ShurikenObj;
 
     public void ShurikenaAttackFunc()
@@ -114,7 +126,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         Manager.manage.attackBtn.gameObject.SetActive(false);
 
     }
-    public IEnumerator SpeedUp(GameObject temp)
+
+    public IEnumerator SpeedUp(GameObject temp, float speedUpTime = 1f)
     {
         if (pv.IsMine)
         {
@@ -455,6 +468,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     public ControlData controlData;
     public bool WallJumpActiveBool;
     public bool WallJumpActive;
+    
+    int wallBoostBuildup = 0;
 
     public bool NoRun;
   //  [PunRPC]
@@ -598,7 +613,6 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 }
                 else
                 {
-
                     if (Input.touchCount == 1  || Input.GetKeyDown(KeyCode.UpArrow))
                     {
                         if (Input.mousePosition.x > Screen.width * .25f || Input.mousePosition.y > Screen.width * .25f)
@@ -790,6 +804,9 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             wallCheckPoint = BackCheck.transform;
 
         }
+
+        wallBoostBuildup++;
+
         yield return null;
         StartCoroutine(coliderOff(temp));
 
