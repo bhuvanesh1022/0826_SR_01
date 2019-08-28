@@ -88,20 +88,26 @@ public class CharacterController2D : MonoBehaviour
     private void FixedUpdate()
     {
         bool wasGrounded = m_Grounded;
-        m_Grounded = false;
+        //m_Grounded = false;
 
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(m_GroundCheck.position, new Vector2(GroundCheckWi, GroundCheckHi), k_GroundedRadius, m_WhatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
+        m_Grounded = Physics2D.OverlapBox(m_GroundCheck.position, new Vector2(GroundCheckWi, GroundCheckHi), 0, m_WhatIsGround);
+        if (m_Grounded != wasGrounded)
         {
-            if (colliders[i].gameObject != gameObject)
-            {
-                m_Grounded = true;
-                if (!wasGrounded)
-                    OnLandEvent.Invoke();
-            }
+            if (m_Grounded) OnLandEvent.Invoke();
         }
+
+        //Collider2D[] colliders = Physics2D.OverlapBoxAll(m_GroundCheck.position, new Vector2(GroundCheckWi, GroundCheckHi), k_GroundedRadius, m_WhatIsGround);
+        //for (int i = 0; i < colliders.Length; i++)
+        //{
+        //    if (colliders[i].gameObject != gameObject)
+        //    {
+        //        m_Grounded = true;
+        //        if (!wasGrounded)
+        //            OnLandEvent.Invoke();
+        //    }
+        //}
 
         //if (m_Rigidbody2D.velocity.y < Manager.manage.controlData.terminalVelocity)
         //{
@@ -218,7 +224,7 @@ public class CharacterController2D : MonoBehaviour
                 animator.SetBool("Jump",true);
                 move *= 0.8f;
 
-                m_Grounded = false;
+                //m_Grounded = false;
             }
         }
         else
