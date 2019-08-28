@@ -15,15 +15,42 @@ public class Statistics : MonoBehaviour
     public int Stunned = 0;
     public int StunHit = 0;
     public int StunMissed = 0;
+    public float TimeSpentInMenu = 0;
+    public float TimeSpentInMenusave = 0;
+
 
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-      //  PlayerPrefs.DeleteAll();
-
+       //   PlayerPrefs.DeleteAll();
+      
+        StartCoroutine(SaveValueUpdate());
         stats = this;
     }
 
+    IEnumerator SaveValueUpdate()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(5f);
+
+        }
+    }
+    public void PrefFloat(string name)
+    {
+        if (PlayerPrefs.GetFloat(name) == 0.0f)
+        {
+            PlayerPrefs.SetFloat(name, 1);
+
+        }
+        else
+        {
+            float num1 = PlayerPrefs.GetFloat(name);
+            num1 = num1 + 1;
+            PlayerPrefs.SetFloat(name, num1);
+        }
+        Refresh();
+    }
     public void Pref(string name)
     {
         if (PlayerPrefs.GetInt(name) == 0.0f)
@@ -54,7 +81,7 @@ public class Statistics : MonoBehaviour
         Stunned = PlayerPrefs.GetInt("Stunned");
         StunHit = PlayerPrefs.GetInt("StunHit");
         StunMissed = PlayerPrefs.GetInt("StunMissed");
-
+        TimeSpentInMenusave = PlayerPrefs.GetFloat("TimeSpentInMenu");
 
 
     }
@@ -77,6 +104,16 @@ public class Statistics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "0716Level01")
+        {
+            if(TimeSpentInMenu>60f)
+            {
+
+                PrefFloat("TimeSpentInMenu");
+                TimeSpentInMenu = 0;
+            }
+            TimeSpentInMenu += Time.deltaTime;
+        }
     }
 }
