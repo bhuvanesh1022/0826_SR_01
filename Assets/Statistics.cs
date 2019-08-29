@@ -29,7 +29,7 @@ public class Statistics : MonoBehaviour
         if (PlayerPrefs.GetInt(name) == 0.0f)
         {
             PlayerPrefs.SetInt(name, 1);
-
+             
         }
         else
         {
