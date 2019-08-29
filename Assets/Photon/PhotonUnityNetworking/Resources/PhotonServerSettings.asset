@@ -13,14 +13,12 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-
     AppIdRealtime: 85e1bfcc-b126-4dfa-abac-09a3a25fce3b
-
     AppIdChat: 
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
-    FixedRegion: in
+    FixedRegion: 
     Server: 
     Port: 0
     Protocol: 0
@@ -58,4 +56,4 @@ MonoBehaviour:
   - WaitForPlayerFunc
   - Waitfunc
   DisableAutoOpenWizard: 1
-  ShowSettings: 1
+  ShowSettings: 0

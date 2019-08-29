@@ -12039,7 +12039,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: CountDown
 --- !u!222 &1395394325
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15137,6 +15137,7 @@ MonoBehaviour:
   terminalVelocityTxt: {fileID: 1062743130}
   startBtn: {fileID: 2063659568}
   PlayerReady: {fileID: 1657556297}
+  StartSec: 30
   ScoreCardMenu: {fileID: 1830219367}
   ScoreCard:
   - {fileID: 1640333403}

@@ -4,20 +4,20 @@ using Photon.Pun;
 public class CharacterController2D : MonoBehaviour
 {
     [SerializeField] public Animator animator;
-   // [SerializeField] public float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
-    //[Range(0, 1)] [SerializeField] public float m_CrouchSpeed = .36f;
-  //  [Range(0, 1)] [SerializeField] public float m_JumpSpeed = .36f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
+    [SerializeField] public float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
+    [Range(0, 1)] [SerializeField] public float m_CrouchSpeed = .36f;
+    [Range(0, 1)] [SerializeField] public float m_JumpSpeed = .36f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
     [Range(0, .3f)] [SerializeField] public float m_MovementSmoothing = .05f;  // How much to smooth out the movement
     [SerializeField] public bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
     [SerializeField] public LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] public Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
-    //[SerializeField] public Transform m_CeilingCheck;                          // A position marking where to check for ceilings
-    //[SerializeField] public Collider2D m_CrouchDisableCollider;                // A collider that will be disabled when crouching
-    //[SerializeField] public Collider2D m_CrouchDisableCollider2;                // A collider that will be disabled when crouching
+    [SerializeField] public Transform m_CeilingCheck;                          // A position marking where to check for ceilings
+    [SerializeField] public Collider2D m_CrouchDisableCollider;                // A collider that will be disabled when crouching
+    [SerializeField] public Collider2D m_CrouchDisableCollider2;                // A collider that will be disabled when crouching
 
     const float k_GroundedRadius = .3f; // Radius of the overlap circle to determine if grounded
     public bool m_Grounded;            // Whether or not the player is grounded.
-    //const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
+    const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
     public Rigidbody2D m_Rigidbody2D;
     public bool m_FacingRight = true;  // For determining which way the player is currently facing.
     public Vector3 m_Velocity = Vector3.zero;
@@ -30,8 +30,10 @@ public class CharacterController2D : MonoBehaviour
     [System.Serializable]
     public class BoolEvent : UnityEvent<bool> { }
 
+    public BoolEvent OnCrouchEvent;
     public BoolEvent OnAttackEvent;
- 
+    public bool m_wasCrouching = false;
+    private bool m_wasAttacking = false;
     public PhotonView pv;
     public Vector3 scale;
 
@@ -52,14 +54,12 @@ public class CharacterController2D : MonoBehaviour
         if (OnLandEvent == null)
             OnLandEvent = new UnityEvent();
 
-       // if (OnCrouchEvent == null)
-           // OnCrouchEvent = new BoolEvent();
+        if (OnCrouchEvent == null)
+            OnCrouchEvent = new BoolEvent();
 
         if (OnAttackEvent == null)
             OnAttackEvent = new BoolEvent();
     }
-    
-    /*
     private void OnTriggerStay2D(Collider2D collision)
     {
 
@@ -75,7 +75,6 @@ public class CharacterController2D : MonoBehaviour
         {
             m_CrouchDisableCollider.isTrigger = false;
         }
-        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -84,8 +83,7 @@ public class CharacterController2D : MonoBehaviour
         {
          //   m_CrouchDisableCollider.isTrigger = false;
         }
-    }
-    */
+        }
 
     private void FixedUpdate()
     {
@@ -126,10 +124,9 @@ public class CharacterController2D : MonoBehaviour
 
     public void Move(float move, bool crouch, bool jump)
     {
-
+        
 
         // If crouching, check to see if the character can stand up
-        /*
         if (!crouch)
         {
             // If the character has a ceiling preventing them from standing up, keep them crouching
@@ -138,33 +135,23 @@ public class CharacterController2D : MonoBehaviour
                 crouch = true;
             }
         }
-        */
         if(m_Grounded)
         {
             animator.SetBool("Jump", false);
             transform.localScale = scale;
+
+
         }
         else
         {
             animator.SetBool("Jump", true);
+
         }
 
         //only control the player if grounded or airControl is turned on
         if (m_Grounded || m_AirControl)
         {
-            if (GetComponent<PlayerMovement>().res.Length == 0) {
-                // Move the character by finding the target velocity
-                Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
-                // And then smoothing it out and applying it to the character
-                m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
-                //   print(Time.deltaTime);
-            }
-            else 
-            {
-                // m_Rigidbody2D.AddForce(new Vector2(move * 10f, m_WallJumpForce) * Time.deltaTime, ForceMode2D.Impulse);
-            }
 
-            /*
             if (crouch)
             {
                 if (!m_wasCrouching)
@@ -205,8 +192,22 @@ public class CharacterController2D : MonoBehaviour
                     OnCrouchEvent.Invoke(false);
                 }
             }
+            if (GetComponent<PlayerMovement>().res.Length == 0)
+            {
+                // Move the character by finding the target velocity
+                Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+                // And then smoothing it out and applying it to the character
+                m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+                //   print(Time.deltaTime);
 
-            */
+            }
+            else
+            {
+
+                // m_Rigidbody2D.AddForce(new Vector2(move * 10f, m_WallJumpForce) * Time.deltaTime, ForceMode2D.Impulse);
+            }
+
+
         }
         // If the player should jump...
 
@@ -228,7 +229,9 @@ public class CharacterController2D : MonoBehaviour
         }
         else
         {
+
             //  animator.ResetTrigger("Jump");
+
         }
     }
     private void Update()

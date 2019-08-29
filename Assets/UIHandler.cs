@@ -31,15 +31,10 @@ public class UIHandler : MonoBehaviourPunCallbacks
     public GameObject ControllerMenu;
     public bool EnteredFirst;
 
-   
-
     public void Onclick_CreateRoom()
         {
-     //   PhotonNetwork.CreateRoom(createRoom.text,new RoomOptions { MaxPlayers = 4 },null);
+        PhotonNetwork.CreateRoom(createRoom.text,new RoomOptions { MaxPlayers = 4 },null);
         EnteredFirst = true;
-        
-
-           PhotonNetwork.JoinOrCreateRoom(createRoom.text, new RoomOptions { MaxPlayers = 4 }, TypedLobby.Default);
         //    pv.RPC("Incr", RpcTarget.AllBufferedViaServer, null);
 
     }
@@ -80,48 +75,14 @@ public class UIHandler : MonoBehaviourPunCallbacks
         //}
     }
 
-    public void ShowRoomBack() {
-        GetComponent<launch>().RoomParent.gameObject.SetActive(false);
-        JoinRoom.gameObject.SetActive(true);
-
-        createRoom.gameObject.SetActive(true);
-
-    }
-
-    public void ShowRoom() {
-
-
-        PhotonNetwork.JoinLobby();
-        GetComponent<launch>().RoomParent.gameObject.SetActive(true);
-        JoinRoom.gameObject.SetActive(false);
-
-        createRoom.gameObject.SetActive(false);
-
-    }
-
-    public void onclick_JoinRoom(string temp)
+        public void onclick_JoinRoom()
     {
-          PhotonNetwork.JoinRoom(temp,null);
+        PhotonNetwork.JoinRoom(JoinRoom.text,null);
 
-        GetComponent<launch>().RoomParent.gameObject.SetActive(false);
-
-    }
-    public override void OnRoomListUpdate(List<RoomInfo> roominfo) {
-       
-        Debug.LogError(roominfo.Count);
-        if (roominfo.Count!=0) {
-
-          //  createRoom.gameObject.SetActive(false);
-          //  JoinRoom.gameObject.SetActive(false);
-        }
-
-        foreach (RoomInfo list in roominfo) {
-
-        }
     }
     public override void OnConnectedToMaster()
     {
-          
+
     }
     public override void OnJoinedRoom()
     {
@@ -343,7 +304,6 @@ public class UIHandler : MonoBehaviourPunCallbacks
     public Vector3 inputPos;
     private void Update()
     {
-        
         inputPos = Input.mousePosition;
     }
 
@@ -353,6 +313,8 @@ public class UIHandler : MonoBehaviourPunCallbacks
     }
     void Start()
     {
+        
+
         DontDestroyOnLoad(this.gameObject);
     }
 
