@@ -1393,6 +1393,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (7)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1462,16 +1472,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: viewIdField
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: InstantiationId
-      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 176449103, guid: 140494d1f92034af99eb42f4b75b5a20, type: 3}
       propertyPath: power
@@ -1630,6 +1630,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1699,16 +1709,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5555556
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: viewIdField
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: InstantiationId
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 176449103, guid: 140494d1f92034af99eb42f4b75b5a20, type: 3}
       propertyPath: power
@@ -3614,6 +3614,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (8)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3683,16 +3693,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: viewIdField
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: InstantiationId
-      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 176449103, guid: 140494d1f92034af99eb42f4b75b5a20, type: 3}
       propertyPath: power
@@ -3977,6 +3977,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4031,16 +4041,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: viewIdField
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: InstantiationId
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3849849456079917248, guid: 140494d1f92034af99eb42f4b75b5a20, type: 3}
@@ -8738,6 +8738,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (9)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8807,16 +8817,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: viewIdField
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: InstantiationId
-      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 176449103, guid: 140494d1f92034af99eb42f4b75b5a20, type: 3}
       propertyPath: power
@@ -9040,6 +9040,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (6)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9109,16 +9119,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: viewIdField
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: InstantiationId
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 176449103, guid: 140494d1f92034af99eb42f4b75b5a20, type: 3}
       propertyPath: power
@@ -11385,6 +11385,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11454,16 +11464,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5555556
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: viewIdField
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: InstantiationId
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 176449103, guid: 140494d1f92034af99eb42f4b75b5a20, type: 3}
       propertyPath: power
@@ -11879,6 +11879,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11948,16 +11958,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5555556
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: viewIdField
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: InstantiationId
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 176449103, guid: 140494d1f92034af99eb42f4b75b5a20, type: 3}
       propertyPath: power
@@ -12578,6 +12578,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (5)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12647,11 +12652,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5555556
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: viewIdField
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 176449103, guid: 140494d1f92034af99eb42f4b75b5a20, type: 3}
       propertyPath: power
@@ -14146,6 +14146,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14215,16 +14225,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5555556
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: viewIdField
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: InstantiationId
-      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 176449103, guid: 140494d1f92034af99eb42f4b75b5a20, type: 3}
       propertyPath: power
@@ -15420,6 +15420,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15489,16 +15499,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5555556
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: viewIdField
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: InstantiationId
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 176449103, guid: 140494d1f92034af99eb42f4b75b5a20, type: 3}
       propertyPath: power
@@ -17826,6 +17826,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (10)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17895,16 +17905,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: viewIdField
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: InstantiationId
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 176449103, guid: 140494d1f92034af99eb42f4b75b5a20, type: 3}
       propertyPath: power
@@ -21505,6 +21505,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21559,16 +21569,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: viewIdField
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: InstantiationId
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3849849456079917248, guid: 140494d1f92034af99eb42f4b75b5a20, type: 3}

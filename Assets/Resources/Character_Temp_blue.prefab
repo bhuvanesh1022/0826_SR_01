@@ -11,6 +11,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character_Temp_blue
       objectReference: {fileID: 0}
+    - target: {fileID: 2688428234942579789, guid: 54bf21f9a7f065a478323c18aa773774,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2688428234942579789, guid: 54bf21f9a7f065a478323c18aa773774,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621259558625849182, guid: 54bf21f9a7f065a478323c18aa773774,
+        type: 3}
+      propertyPath: m_JumpForce
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 4454644751945036, guid: 54bf21f9a7f065a478323c18aa773774, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -54,16 +69,6 @@ PrefabInstance:
     - target: {fileID: 4454644751945036, guid: 54bf21f9a7f065a478323c18aa773774, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2688428234942579789, guid: 54bf21f9a7f065a478323c18aa773774,
-        type: 3}
-      propertyPath: viewIdField
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2688428234942579789, guid: 54bf21f9a7f065a478323c18aa773774,
-        type: 3}
-      propertyPath: InstantiationId
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114497786701089082, guid: 54bf21f9a7f065a478323c18aa773774,
         type: 3}

@@ -242,6 +242,10 @@ public class Manager : MonoBehaviourPun
 
     IEnumerator Start()
     {
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+        PhotonNetwork.CurrentRoom.IsVisible = false;
+        
+
         manage = this;
         if (PlayerPrefs.GetInt("TotalRace") == 0.0f)
         {
