@@ -593,7 +593,7 @@ MonoBehaviour:
   fallmult: 200.5
   lowMult: 2
   GroundCheckWi: 1
-  GroundCheckHi: 0.25
+  GroundCheckHi: 0.5
 --- !u!114 &2688428234942579789
 MonoBehaviour:
   m_ObjectHideFlags: 0
