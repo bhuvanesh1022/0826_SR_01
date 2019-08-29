@@ -4,9 +4,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviourPun,IPunObservable
 {
+
+    [Range(0, .3f)] [SerializeField] public float m_MovementSmoothing = .05f;  // How much to smooth out the movement
+    [SerializeField] public bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
+    [SerializeField] public LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
+    [SerializeField] public Transform m_GroundCheck;
+
+    const float k_GroundedRadius = .3f; // Radius of the overlap circle to determine if grounded
+    public bool m_Grounded;            // Whether or not the player is grounded.
+    //const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
+   // public Rigidbody2D m_Rigidbody2D;
+    public bool m_FacingRight = true;  // For determining which way the player is currently facing.
+    public Vector3 m_Velocity = Vector3.zero;
+
+
     public CharacterController2D controller;
     public  Animator animator;
     public float runSpeed = 40f;
@@ -27,6 +42,18 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     [SerializeField] ParticleSystem pfxBoost, pfxWallBoost;
 
+    [Header("Events")]
+    [Space]
+
+    public UnityEvent OnLandEvent;
+
+    [System.Serializable]
+    public class BoolEvent : UnityEvent<bool> { }
+
+    public BoolEvent OnAttackEvent;
+
+
+    public Vector3 scale;
 
     public List<Anima2D.SpriteMeshInstance> Order = new List<Anima2D.SpriteMeshInstance>();
   
@@ -39,7 +66,20 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         controlData = GameObject.Find("ControlData").GetComponent<ControlData>();
         Debug.LogError(GetComponent<Rigidbody2D>().gravityScale);
        rb2d.gravityScale = controlData.playerGravityScale;
+        scale = this.gameObject.transform.localScale;
+        if (!pv.IsMine) {
+            //   m_CrouchDisableCollider.enabled = false;
+            //    m_CrouchDisableCollider2.enabled = false;
+            this.gameObject.layer = 9;
 
+        }
+
+        if (OnLandEvent == null)
+            OnLandEvent = new UnityEvent();
+        
+
+        if (OnAttackEvent == null)
+            OnAttackEvent = new BoolEvent();
         //  username = controlData.userName;
 
         //  manage.totalPlayerCharacterNo.Add(manage.UI.chosenCharacter);

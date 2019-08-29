@@ -75148,6 +75148,13 @@ MonoBehaviour:
   FinishTrackSelect:
   - 0
   - 0
+  TotalWin: 0
+  TotalLose: 0
+  Stunned: 0
+  StunHit: 0
+  StunMissed: 0
+  TimeSpentInMenu: 0
+  TimeSpentInMenusave: 0
 --- !u!1 &1863248258
 GameObject:
   m_ObjectHideFlags: 0

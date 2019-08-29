@@ -4,9 +4,9 @@ using Photon.Pun;
 public class CharacterController2D : MonoBehaviour
 {
     [SerializeField] public Animator animator;
-    [SerializeField] public float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
+   // [SerializeField] public float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
     //[Range(0, 1)] [SerializeField] public float m_CrouchSpeed = .36f;
-    [Range(0, 1)] [SerializeField] public float m_JumpSpeed = .36f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
+  //  [Range(0, 1)] [SerializeField] public float m_JumpSpeed = .36f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
     [Range(0, .3f)] [SerializeField] public float m_MovementSmoothing = .05f;  // How much to smooth out the movement
     [SerializeField] public bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
     [SerializeField] public LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
@@ -30,10 +30,8 @@ public class CharacterController2D : MonoBehaviour
     [System.Serializable]
     public class BoolEvent : UnityEvent<bool> { }
 
-    //public BoolEvent OnCrouchEvent;
     public BoolEvent OnAttackEvent;
-    //public bool m_wasCrouching = false;
-    private bool m_wasAttacking = false;
+ 
     public PhotonView pv;
     public Vector3 scale;
 
