@@ -131,11 +131,11 @@ public class PowerUp : MonoBehaviour
                         Manager.manage.attackBtn.gameObject.SetActive(true);
                        pv.RPC("PowerUpDisableFunc", RpcTarget.AllBuffered, null);
                         Manager.manage.PowerUpCollectedSave();
-                        
-                    }
                     Manager.manage.ShurikenBtn.gameObject.SetActive(false);
 
+                    }
 
+                    Debug.LogError("speedRun");
                 }
                 else if (power == Power.Shuriken)
                 {
@@ -152,14 +152,16 @@ public class PowerUp : MonoBehaviour
                         Manager.manage.ShurikenBtn.gameObject.SetActive(true);
                         pv.RPC("PowerUpDisableFunc", RpcTarget.AllBuffered, null);
                         Manager.manage.PowerUpCollectedSave();
+                             Manager.manage.attackBtn.gameObject.SetActive(false);
 
                     }
-                    Manager.manage.attackBtn.gameObject.SetActive(false);
+                    Debug.LogError("shuriken");
+
 
                 }
 
                 //  StartCoroutine(collision.GetComponent<PlayerMovement>().SpeedUp(collision.gameObject));
-                  collectedCharacter.Add(collision.gameObject);
+              //    collectedCharacter.Add(collision.gameObject);
             }
 
         }
