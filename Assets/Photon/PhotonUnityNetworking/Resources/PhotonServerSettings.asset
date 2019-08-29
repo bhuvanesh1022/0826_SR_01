@@ -55,5 +55,6 @@ MonoBehaviour:
   - StartSecfunc
   - WaitForPlayerFunc
   - Waitfunc
+  - SelectCharacter
   DisableAutoOpenWizard: 1
   ShowSettings: 0
