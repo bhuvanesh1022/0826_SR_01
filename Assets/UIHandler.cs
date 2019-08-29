@@ -167,6 +167,7 @@ public class UIHandler : MonoBehaviourPunCallbacks
         //        selectedLevel = i;
         //    }
         //}
+
         LevelSelectUI.gameObject.SetActive(false);
         if (EnteredFirst) ActivateCharacterSelectUI(true);
 
@@ -180,7 +181,7 @@ public class UIHandler : MonoBehaviourPunCallbacks
         pv.RPC("Incr", RpcTarget.AllBuffered, null);
 
         wait_player.SetActive(true);
-        gameStartButton.SetActive(EnteredFirst);
+      //  gameStartButton.SetActive(EnteredFirst);
     }
 
     public void TowardsLobby()
@@ -201,18 +202,7 @@ public class UIHandler : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel("0716Level01");
 
     }
-
-    public void EnterTrackLevel() {
-
-        if (PlayerCount != i) {
-
-
-        }
-        else {
-            pv.RPC("LoadLevelToLevel", RpcTarget.AllBuffered, null);
-
-        }
-    }
+  
 
     [PunRPC]
     public void Incr()
@@ -220,7 +210,7 @@ public class UIHandler : MonoBehaviourPunCallbacks
         i++;
         if(i==PlayerCount)
         {
-            //PhotonNetwork.LoadLevel("0716Level01");
+            PhotonNetwork.LoadLevel("0716Level01");
         }
         else
         {
