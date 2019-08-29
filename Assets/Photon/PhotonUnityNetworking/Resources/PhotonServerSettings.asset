@@ -56,5 +56,6 @@ MonoBehaviour:
   - WaitForPlayerFunc
   - Waitfunc
   - SelectCharacter
+  - LoadLevelToLevel
   DisableAutoOpenWizard: 1
   ShowSettings: 0

@@ -195,9 +195,23 @@ public class UIHandler : MonoBehaviourPunCallbacks
     {
         Application.Quit();
     }
+    [PunRPC]
+    public void LoadLevelToLevel() {
+
+        PhotonNetwork.LoadLevel("0716Level01");
+
+    }
 
     public void EnterTrackLevel() {
-        PhotonNetwork.LoadLevel("0716Level01");
+
+        if (PlayerCount != i) {
+
+
+        }
+        else {
+            pv.RPC("LoadLevelToLevel", RpcTarget.AllBuffered, null);
+
+        }
     }
 
     [PunRPC]
