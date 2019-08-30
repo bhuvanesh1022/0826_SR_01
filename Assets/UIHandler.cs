@@ -27,6 +27,8 @@ public class UIHandler : MonoBehaviourPunCallbacks
     public float TerminalSpeed;
     public GameObject ControllerMenu;
     public bool EnteredFirst;
+    public Text NoOfPlayer;
+    public GameObject NoOfPlayerParent;
 
     public void Onclick_CreateRoom()
         {
@@ -57,8 +59,10 @@ public class UIHandler : MonoBehaviourPunCallbacks
 
        
         PlayerCount += 1;
-     //   StartCoroutine(ControllerRoutine());
        
+
+        //   StartCoroutine(ControllerRoutine());
+
     }
     IEnumerator ControllerRoutine()
     {
@@ -121,6 +125,7 @@ public class UIHandler : MonoBehaviourPunCallbacks
 
         if (pv.IsMine)
         {
+            
             //  selectedLevel = temp;
 
 
@@ -169,9 +174,14 @@ public class UIHandler : MonoBehaviourPunCallbacks
         //}
 
         LevelSelectUI.gameObject.SetActive(false);
-        if (EnteredFirst) ActivateCharacterSelectUI(true);
+        if (EnteredFirst) {
+            ActivateCharacterSelectUI(true);
+            NoOfPlayerParent.gameObject.SetActive(true);
 
-    }
+           
+        }
+
+        }
 
     [PunRPC]
     public void SelectCharacter(int charIndex) {
@@ -243,6 +253,7 @@ public class UIHandler : MonoBehaviourPunCallbacks
     public Vector3 inputPos;
     private void Update()
     {
+        NoOfPlayer.text = PlayerCount.ToString() + " / 4";
         inputPos = Input.mousePosition;
     }
 

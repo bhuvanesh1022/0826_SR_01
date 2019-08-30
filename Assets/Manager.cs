@@ -244,7 +244,7 @@ public class Manager : MonoBehaviourPun
     {
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
-        
+
 
         manage = this;
         if (PlayerPrefs.GetInt("TotalRace") == 0.0f)
@@ -498,7 +498,7 @@ public class Manager : MonoBehaviourPun
     {
          if(pv.IsMine)
         {
-            pv.RPC("distFunc", RpcTarget.AllBuffered, null);
+         //   pv.RPC("distFunc", RpcTarget.AllBuffered, null);
 
         }
         // distFunc();

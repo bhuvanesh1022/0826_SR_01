@@ -46,80 +46,70 @@ public class ControlData : MonoBehaviourPunCallbacks
 
 
     // Start is called before the first frame update
-    void Start()
-    {
-       //PlayerPrefs.DeleteAll();
-        PhotonNetwork.ConnectUsingSettings();
+    public void deleteall() {
+        PlayerPrefs.DeleteAll();
+        ValueReset();
+    }
 
-        DontDestroyOnLoad(this.gameObject);
-        if (PlayerPrefs.GetFloat("BaseSpeed") == 0.0f)
-        {
+    public void ValueReset() {
+        if (PlayerPrefs.GetFloat("BaseSpeed") == 0.0f) {
             PlayerPrefs.SetFloat("BaseSpeed", 30f);
             BaseSpeedtxt.text = "30";
             BaseSpeed = 30;
         }
-        else
-        {
+        else {
             BaseSpeed = PlayerPrefs.GetFloat("BaseSpeed");
             BaseSpeedtxt.text = BaseSpeed.ToString();
 
         }
 
 
-        if (PlayerPrefs.GetFloat("TargetSpeed") == 0.0f)
-        {
+        if (PlayerPrefs.GetFloat("TargetSpeed") == 0.0f) {
             PlayerPrefs.SetFloat("TargetSpeed", 60f);
             TargetSpeedTxt.text = "60";
             TargetSpeed = 60;
 
         }
-        else
-        {
+        else {
             TargetSpeed = PlayerPrefs.GetFloat("TargetSpeed");
             TargetSpeedTxt.text = TargetSpeed.ToString();
 
         }
 
-        if (PlayerPrefs.GetFloat("MaxRunForce") == 0.0f)
-        {
+        if (PlayerPrefs.GetFloat("MaxRunForce") == 0.0f) {
             PlayerPrefs.SetFloat("MaxRunForce", 100f);
             MaxRunForceTxt.text = "100";
             MaxRunForce = 100;
         }
-        else
-        {
+        else {
             MaxRunForce = PlayerPrefs.GetFloat("MaxRunForce");
             MaxRunForceTxt.text = MaxRunForce.ToString();
         }
 
 
-        if (PlayerPrefs.GetFloat("m_JumpForce") == 0.0f)
-        {
-            PlayerPrefs.SetFloat("m_JumpForce", 25F);
-            m_JumpForce = 25;
+        if (PlayerPrefs.GetFloat("m_JumpForce") == 0.0f) {
+            PlayerPrefs.SetFloat("m_JumpForce", 30f);
+            m_JumpForce = 30;
             m_JumpForceTxt.text = m_JumpForce.ToString();
 
         }
-        else
-        {
+        else {
             m_JumpForce = PlayerPrefs.GetFloat("m_JumpForce");
             m_JumpForceTxt.text = m_JumpForce.ToString();
 
         }
 
 
-        if (PlayerPrefs.GetFloat("playerGravityScale") == 0.0f)
-        {
-            PlayerPrefs.SetFloat("playerGravityScale", 5f);
-       
+        if (PlayerPrefs.GetFloat("playerGravityScale") == 0.0f) {
+            PlayerPrefs.SetFloat("playerGravityScale", 7.5f);
+
             //  GetComponent<Rigidbody2D>().gravityScale = 20f;
-            playerGravityScale = 5f;
-            playerGravityScaleTxt.text = "5";
+            playerGravityScale = 7.5f;
+            playerGravityScaleTxt.text = "7.5";
 
 
         }
-        else
-        {
+        else {
             playerGravityScale = PlayerPrefs.GetFloat("playerGravityScale");
             playerGravityScaleTxt.text = playerGravityScale.ToString();
             //  GetComponent<Rigidbody2D>().gravityScale = GetComponent<cc>().playerGravityScale;
@@ -128,58 +118,58 @@ public class ControlData : MonoBehaviourPunCallbacks
         }
 
 
-        if (PlayerPrefs.GetFloat("terminalVelocity") == 0.0f)
-        {
+        if (PlayerPrefs.GetFloat("terminalVelocity") == 0.0f) {
             PlayerPrefs.SetFloat("terminalVelocity", -100f);
             //  GetComponent<cc>().terminalVelocityTxt.text = "-100";
             terminalVelocity = -100;
 
         }
-        else
-        {
+        else {
             terminalVelocity = PlayerPrefs.GetFloat("terminalVelocity");
             terminalVelocityTxt.text = terminalVelocity.ToString();
             //    terminalVelocity = GetComponent<cc>().terminalVelocity;
 
         }
 
-        if (PlayerPrefs.GetFloat("walljumpAmplitudeLeft") == 0.0f)
-        {
+        if (PlayerPrefs.GetFloat("walljumpAmplitudeLeft") == 0.0f) {
             PlayerPrefs.SetFloat("walljumpAmplitudeLeft", 3);
             walljumpAmplitudeLeftTxt.text = "3";
             walljumpAmplitudeLeft = 3;
 
         }
-        else
-        {
+        else {
             walljumpAmplitudeLeft = PlayerPrefs.GetFloat("walljumpAmplitudeLeft");
             walljumpAmplitudeLeftTxt.text = walljumpAmplitudeLeft.ToString();
         }
 
-        if (PlayerPrefs.GetFloat("walljumpForceLeft") == 0.0f)
-        {
+        if (PlayerPrefs.GetFloat("walljumpForceLeft") == 0.0f) {
             PlayerPrefs.SetFloat("walljumpForceLeft", 12.5f);
             walljumpForceLeftTxt.text = "12.5";
             walljumpForceLeft = 12.5f;
 
 
         }
-        else
-        {
+        else {
             walljumpForceLeft = PlayerPrefs.GetFloat("walljumpForceLeft");
             walljumpForceLeftTxt.text = walljumpForceLeft.ToString();
         }
-        if (PlayerPrefs.GetFloat("WallSlideGravity") == 0.0f)
-        {
+        if (PlayerPrefs.GetFloat("WallSlideGravity") == 0.0f) {
             PlayerPrefs.SetFloat("WallSlideGravity", 12f);
             WallSlideGravityTxt.text = "12";
             WallSlideGravity = 12f;
         }
-        else
-        {
+        else {
             WallSlideGravity = PlayerPrefs.GetFloat("WallSlideGravity");
             WallSlideGravityTxt.text = WallSlideGravity.ToString();
         }
+    }
+    void Start()
+    {
+     //  PlayerPrefs.DeleteAll();
+        PhotonNetwork.ConnectUsingSettings();
+
+        DontDestroyOnLoad(this.gameObject);
+        ValueReset();
     }
 
     // Update is called once per frame

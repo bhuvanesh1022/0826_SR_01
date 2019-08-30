@@ -157,7 +157,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     {
         pv.RPC("startCount", RpcTarget.AllBuffered, null);
         manage.startBtn.gameObject.SetActive(false);
-
+       
     }
     [PunRPC]
     public void startCount()
