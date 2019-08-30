@@ -7549,7 +7549,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -75148,6 +75148,11 @@ MonoBehaviour:
   FinishTrackSelect:
   - 0
   - 0
+  TotalWin: 0
+  TotalLose: 0
+  Stunned: 0
+  StunHit: 0
+  StunMissed: 0
 --- !u!1 &1863248258
 GameObject:
   m_ObjectHideFlags: 0
