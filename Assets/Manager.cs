@@ -92,6 +92,10 @@ public class Manager : MonoBehaviourPun
     public float SpendOnWall = 0;
     public int PowerUpReplaced = 0;
 
+    public int scoreShow = 0;
+    public List<PlayerMovement> playerReached = new List<PlayerMovement>();
+    public List<float> playerReachedSec = new List<float>();
+
     public void PowerUpReplacedSave()
     {
         if (PlayerPrefs.GetInt("PowerUpReplaced") == 0.0f)
