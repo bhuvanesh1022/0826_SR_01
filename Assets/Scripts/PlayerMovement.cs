@@ -843,10 +843,32 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     [SerializeField] private float wallCheckWi, wallCheckHi;
     public bool Finished;
 
+
+    [PunRPC]
+    public void NewScoreCard() {
+
+        if (manage.LocalPlayer.GetComponent<PlayerMovement>().Finished) {
+
+            manage.ScoreCardMenu.gameObject.SetActive(true);
+
+            for (int i = 0; i < manage.scoreShow; i++) {
+                manage.ScoreCard[i].transform.GetChild(0).GetComponent<Text>().text = manage.playerReached[i].username.ToString();
+                float score = manage.playerReached[i].secondTaken;
+                manage.ScoreCard[i].transform.GetChild(1).GetComponent<Text>().text = score.ToString("#.00");
+            }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-       
+        if (collision.tag == "Finish") {
+            if (!manage.playerReached.Contains(this)) {
+                manage.scoreShow += 1;
+                manage.playerReached.Add(this);
+                manage.playerReachedSec.Add(this.secondTaken);
+            }
+          //  pv.RPC("Reach", RpcTarget.AllBuffered, null);
+
+        }
         if (pv.IsMine)
         {
            
@@ -856,6 +878,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 Statistics.stats.Pref("FinishTrack" + manage.UI.selectedLevel);
                 SecStart = false;
                 Finished = true;
+             
                 if (manage.reach < 10)
                 {
                     Statistics.stats.Pref("TotalWin");
@@ -870,6 +893,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                     pv.RPC("Reach", RpcTarget.AllBuffered, null);
                     Destroy(failed);
+                 //   pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
+
+                    //  ScoreShow();
+
                     return;
                 }
                 else
@@ -883,8 +910,13 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                         run = true;
                         winpos = transform.position;
+                      //  pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
+
+                        //  ScoreShow();
+
                     }
-                   
+                  //  pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
+
 
                 }
                 int count = 0;
@@ -897,15 +929,19 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                     }
 
                 }
-                if(manage.UI.PlayerCount==count)
+                // pv.RPC("ScoreShow", RpcTarget.AllBuffered, null);
+                if (manage.UI.PlayerCount==count)
                 {
-                    pv.RPC("ScoreShow", RpcTarget.AllBuffered, null);
+                 //   pv.RPC("ScoreShow", RpcTarget.AllBuffered, null);
 
                 }
 
                 manage.GroundTimeSave();
+              //  pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
+
             }
-        }else
+        }
+        else
         {
             if (collision.tag == "Obstacle1")
             {
@@ -913,9 +949,14 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
             }
         }
+        
+
+        pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
+
     }
 
-    [PunRPC]
+
+    //  [PunRPC]
     public void ScoreShow()
     {
         manage.ScoreCardMenu.gameObject.SetActive(true);
