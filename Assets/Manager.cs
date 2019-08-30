@@ -227,7 +227,7 @@ public class Manager : MonoBehaviourPun
         while (StartSec > 0)
         {
             yield return new WaitForSeconds(1f);
-            pv.RPC("StartSecfunc", RpcTarget.AllBuffered, null);
+          //  pv.RPC("StartSecfunc", RpcTarget.AllBuffered, null);
 
         }
     }

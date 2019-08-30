@@ -205,7 +205,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         {
             manage.startBtn.gameObject.SetActive(true);
         }
-
+         
         if (!Manager.manage.UI.EnteredFirst)
         {
             manage.PlayerReady.gameObject.SetActive(true);
@@ -215,7 +215,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         //Debug.LogError(manage.startCount+"startcount");
 
         yield return new WaitForSeconds(0.5f);
-        while (manage.startCount !=1 && manage.StartSec != 0) 
+        while (manage.startCount !=1 ) 
         {
             yield return null;
         }
