@@ -95,7 +95,12 @@ public class Manager : MonoBehaviourPun
     public int scoreShow = 0;
     public List<PlayerMovement> playerReached = new List<PlayerMovement>();
     public List<float> playerReachedSec = new List<float>();
-
+    public AudioClip ShurikenHitSound;
+    public AudioClip ShurikenStunSound;
+    public AudioClip RunBoostSound;
+    public AudioSource BoostAudioSource;
+    public AudioClip JumpClip;
+    public AudioClip WallJumpClip;
     public void PowerUpReplacedSave()
     {
         if (PlayerPrefs.GetInt("PowerUpReplaced") == 0.0f)

@@ -58,5 +58,6 @@ MonoBehaviour:
   - SelectCharacter
   - LoadLevelToLevel
   - NewScoreCard
+  - RunSync
   DisableAutoOpenWizard: 1
   ShowSettings: 1

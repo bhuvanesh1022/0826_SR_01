@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         PhotonNetwork.SerializationRate = 15;
         manage = GameObject.Find("Manager").GetComponent<Manager>();
         controlData = GameObject.Find("ControlData").GetComponent<ControlData>();
-        Debug.LogError(GetComponent<Rigidbody2D>().gravityScale);
+
        rb2d.gravityScale = controlData.playerGravityScale;
 
         //  username = controlData.userName;
@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             manage.PlayerDistBG[i].sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSPrite;
         }
 
-        GetComponent<CharacterController2D>().OnLandEvent.AddListener(OnCharacterLanded);
+    //    GetComponent<CharacterController2D>().OnLandEvent.AddListener(OnCharacterLanded);
     }
 
     const int MIN_WALL_BOOST = 2, MAX_WALL_BOOST = 5;
@@ -111,7 +111,11 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     public void ShurikenaAttackFunc()
     {
-      PowerUp temp = PhotonNetwork.Instantiate(Manager.manage.ShurikenPrefab.name, ShurikenObj.transform.position, Quaternion.identity).GetComponent<PowerUp>();
+        if (pv.IsMine) {
+            manage.BoostAudioSource.clip = manage.ShurikenHitSound;
+            manage.BoostAudioSource.Play();
+        }
+     PowerUp temp = PhotonNetwork.Instantiate(Manager.manage.ShurikenPrefab.name, ShurikenObj.transform.position, Quaternion.identity).GetComponent<PowerUp>();
         temp.SentBy = this.gameObject;
         manage.ShurikenBtn.gameObject.SetActive(false);
         manage.PowerUpUsedSave();
@@ -120,6 +124,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     }
     public void speedUpFunc()
     {
+        manage.BoostAudioSource.clip = manage.RunBoostSound;
+        manage.BoostAudioSource.Play();
         manage.PowerUpUsedSave();
         StartCoroutine(SpeedUp(this.gameObject));
         Manager.manage.attackBtn.gameObject.SetActive(false);
@@ -244,7 +250,9 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         //{
         //    yield return null;
         //}
-        run = false;
+        pv.RPC("RunSync", RpcTarget.AllBuffered, null);
+
+        
           runSpeed = 10;
         GetComponent<Animator>().SetBool("Idle", false);
 
@@ -254,6 +262,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         }
         secondTaken = 0;
         SecStart = true;
+    }
+    [PunRPC]
+    public void RunSync() {
+        run = false;
     }
     public float secondTaken;
     public bool SecStart;
@@ -473,6 +485,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
   //  [PunRPC]
     public void PlayerPunished()
     {
+        if (pv.IsMine) {
+            manage.BoostAudioSource.clip = manage.ShurikenStunSound;
+            manage.BoostAudioSource.Play();
+        }
         Statistics.stats.Pref("Stunned");
         if(pv.IsMine)
         {
@@ -521,7 +537,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 if(GetComponent<CharacterController2D>().m_Velocity.x > 130f)
                 {
                     manage.SpendOnWall += Time.deltaTime;
-                    Debug.LogError("wallStay");
+
                 }
 
 
@@ -589,6 +605,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                                 //     Debug.LogError("Jump");
                               //  if(run==failed)
                                      manage.JumpUsedSave();
+                                manage.BoostAudioSource.clip = manage.JumpClip;
+                                manage.BoostAudioSource.Play();
                                 controller.Move(0 * Time.deltaTime, crouch, true);
                                 DOTouchCount = false;
                             }
@@ -623,7 +641,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                                     NormalMove = true;
 
                                 }
-                                
+                                manage.BoostAudioSource.clip = manage.JumpClip;
+                                manage.BoostAudioSource.Play();
                                 controller.Move(0 * Time.deltaTime, crouch, true);
                                 DOTouchCount = false;
                             }
@@ -770,6 +789,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     public Rigidbody2D rb2d;
     IEnumerator Walljumpactivate(bool front, Collider2D temp)
     {
+        manage.BoostAudioSource.clip = manage.WallJumpClip;
+        manage.BoostAudioSource.Play();
         if (temp.GetComponent<Collider2D>())
         {
             temp.enabled = false;
@@ -893,9 +914,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                     pv.RPC("Reach", RpcTarget.AllBuffered, null);
                     Destroy(failed);
-                 //   pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
+                    //   pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
 
                     //  ScoreShow();
+                    pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
 
                     return;
                 }
@@ -949,8 +971,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
             }
         }
-        
 
+        Debug.LogError("s");
         pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
 
     }
