@@ -155,7 +155,7 @@ public class PowerUp : MonoBehaviour
                              Manager.manage.attackBtn.gameObject.SetActive(false);
 
                     }
-                    Debug.LogError("shuriken");
+
 
 
                 }
