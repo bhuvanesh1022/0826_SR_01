@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
   
         private void Start()
     {
-        
+
         PhotonNetwork.SendRate = 20;
         PhotonNetwork.SerializationRate = 15;
         manage = GameObject.Find("Manager").GetComponent<Manager>();
@@ -95,8 +95,9 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         {
             manage.PlayerDistBG[i].sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSPrite;
         }
+        GetComponent<Rigidbody2D>().isKinematic = true;
 
-    //    GetComponent<CharacterController2D>().OnLandEvent.AddListener(OnCharacterLanded);
+        //    GetComponent<CharacterController2D>().OnLandEvent.AddListener(OnCharacterLanded);
     }
 
     const int MIN_WALL_BOOST = 2, MAX_WALL_BOOST = 5;
@@ -122,17 +123,58 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         Statistics.stats.Pref("StunHit");
 
     }
-    public void speedUpFunc()
-    {
+    [PunRPC]
+    public void RunGlobalSound() {
         manage.BoostAudioSource.clip = manage.RunBoostSound;
         manage.BoostAudioSource.Play();
+    }
+    public void speedUpFunc()
+    {
+        if (pv.IsMine) {
+            pv.RPC("RunGlobalSound", RpcTarget.AllBuffered, null);
+
+        }
         manage.PowerUpUsedSave();
-        StartCoroutine(SpeedUp(this.gameObject));
+        StartCoroutine(SpeedUp(this.gameObject,1.5f));
         Manager.manage.attackBtn.gameObject.SetActive(false);
 
     }
+    bool InitBoost;
+    public IEnumerator InitSpeedUp() {
+        manage.InitialBoost = false;
+        if (pv.IsMine) {
+            if (InitBoost == false) {
+                InitBoost = true;
+                manage.t1.gameObject.SetActive(true);
+                int s = 0;
+                s += 1;
+                manage.t1.text = s.ToString();
+                Manager.manage.attackBtn.interactable = false;
+                if (pfxBoost) pfxBoost.Play();
+                float temp1 = runSpeed;
+                controlData.TargetSpeed += 50;
+                controlData.MaxRunForce += 500;
+                MinRunForce += 500;
+                //  runSpeed += Time.deltaTime * controlData.MaxRunForce * 100;
+                //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed*1.5f;
+                yield return new WaitForSeconds(1.5f);
+                manage.BooseTimeSave();
+                Debug.Log("BoosterUSed");
+                Debug.Log(manage.InitialBoost);
+                //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed/1.5f ;
+                //   runSpeed += Time.deltaTime * controlData.MaxRunForce / 100;
+                controlData.TargetSpeed -= 50;
+                controlData.MaxRunForce -= 500;
+                MinRunForce -= 500;
+                runSpeed = temp1;
+                runSpeed += 1;
+                if (pfxBoost) pfxBoost.Stop();
+                Manager.manage.attackBtn.interactable = true;
+            }
+        }
+    }
 
-    public IEnumerator SpeedUp(GameObject temp, float speedUpTime = 1f)
+    public IEnumerator SpeedUp(GameObject temp, float speedUpTime)
     {
         if (pv.IsMine)
         {
@@ -153,6 +195,9 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             controlData.MaxRunForce -= 2000;
             MinRunForce -= 2000;
             runSpeed = temp1;
+            runSpeed += 1;
+            manage.BoostAudioSource.Stop();
+
             if (pfxBoost) pfxBoost.Stop();
             Manager.manage.attackBtn.interactable = true;
         }
@@ -262,10 +307,13 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         }
         secondTaken = 0;
         SecStart = true;
+     //   Camera.main.orthographicSize = 10;
+
     }
     [PunRPC]
     public void RunSync() {
         run = false;
+        GetComponent<Rigidbody2D>().isKinematic = false;
     }
     public float secondTaken;
     public bool SecStart;
@@ -482,12 +530,17 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     int wallBoostBuildup = 0;
 
     public bool NoRun;
-  //  [PunRPC]
+    [PunRPC]
+    public void shurikenSoundGlobal() {
+        manage.BoostAudioSource.clip = manage.ShurikenStunSound;
+        manage.BoostAudioSource.Play();
+    }
     public void PlayerPunished()
     {
         if (pv.IsMine) {
-            manage.BoostAudioSource.clip = manage.ShurikenStunSound;
-            manage.BoostAudioSource.Play();
+            pv.RPC("shurikenSoundGlobal", RpcTarget.AllBuffered, null);
+
+           
         }
         Statistics.stats.Pref("Stunned");
         if(pv.IsMine)
@@ -546,6 +599,18 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
 
         }
+        if (Input.touchCount == 1 || Input.GetKeyDown(KeyCode.UpArrow)) {
+            if (manage.TrafficLight[2].activeInHierarchy) {
+                manage.InitialBoost = true;
+            }
+                
+        }
+        if (manage.InitialBoost) {
+            if (!manage.TrafficLight[2].activeInHierarchy) {
+                StartCoroutine(InitSpeedUp());
+            }
+
+        }
         if (pv.IsMine)
         {
             res = Physics2D.OverlapBoxAll(wallCheckPoint.position, new Vector2(wallCheckWi, wallCheckHi), 0.15f, WallLayer);
@@ -593,10 +658,12 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 
                 if (res.Length == 0)
                 {
+                  
                     animator.SetBool("wallslide", false);
 
                     if (Input.touchCount == 1 || Input.GetKeyDown(KeyCode.UpArrow))
                     {
+                        
                         if (Input.mousePosition.x > Screen.width * .25f || Input.mousePosition.y > Screen.width * .25f)
                         {
                             if (DOTouchCount)
@@ -892,23 +959,21 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         }
         if (pv.IsMine)
         {
-           
-            if (collision.tag == "Finish")
-            {
+
+            if (collision.tag == "Finish") {
                 Debug.LogError("finish");
                 Statistics.stats.Pref("FinishTrack" + manage.UI.selectedLevel);
                 SecStart = false;
                 Finished = true;
-             
-                if (manage.reach < 10)
-                {
+
+                if (manage.reach < 10) {
                     Statistics.stats.Pref("TotalWin");
 
 
                     won.gameObject.SetActive(true);
                     Camera.main.GetComponent<CameraFollow>().offset = new Vector3(0, 1.2f, -10f);
-                    GetComponent<Animator>().SetBool("Idle",true);
-                 //   GetComponent<SpriteRenderer>().sortingOrder = 2;
+                    GetComponent<Animator>().SetBool("Idle", true);
+                    //   GetComponent<SpriteRenderer>().sortingOrder = 2;
                     StartCoroutine(stop());
                     //    manage.won.gameObject.SetActive(true);
 
@@ -919,47 +984,49 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                     //  ScoreShow();
                     pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
 
+
                     return;
                 }
-                else
-                {
-                    if(failed!=null)
-                    {
+                else {
+                    if (failed != null) {
                         Statistics.stats.Pref("TotalLose");
-                        failed.gameObject.SetActive(true);
                         Camera.main.GetComponent<CameraFollow>().offset = new Vector3(0, 1.2f, -10f);
                         GetComponent<Animator>().SetBool("Idle", true);
 
                         run = true;
                         winpos = transform.position;
-                      //  pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
+                        //  pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
 
                         //  ScoreShow();
 
                     }
-                  //  pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
+                    //  pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
 
 
                 }
                 int count = 0;
-                for (int i=0;i<manage.totalPlayer.Count;i++)
-                {
-                   
-                    if(manage.totalPlayer[i].GetComponent<PlayerMovement>().Finished==true)
-                    {
+                for (int i = 0; i < manage.totalPlayer.Count; i++) {
+
+                    if (manage.totalPlayer[i].GetComponent<PlayerMovement>().Finished == true) {
                         count += 1;
                     }
 
                 }
                 // pv.RPC("ScoreShow", RpcTarget.AllBuffered, null);
-                if (manage.UI.PlayerCount==count)
-                {
-                 //   pv.RPC("ScoreShow", RpcTarget.AllBuffered, null);
+                if (manage.UI.PlayerCount == count) {
+                    //   pv.RPC("ScoreShow", RpcTarget.AllBuffered, null);
 
                 }
 
                 manage.GroundTimeSave();
-              //  pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
+                //  pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
+                if (manage.playerReached[0].gameObject==this.gameObject) {
+                    won.gameObject.SetActive(true);
+
+                } else {
+                    failed.gameObject.SetActive(true);
+
+                }
 
             }
         }
