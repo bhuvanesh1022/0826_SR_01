@@ -101,6 +101,8 @@ public class Manager : MonoBehaviourPun
     public AudioSource BoostAudioSource;
     public AudioClip JumpClip;
     public AudioClip WallJumpClip;
+    public bool InitialBoost;
+    public List<GameObject> startPoint = new List<GameObject>();
     public void PowerUpReplacedSave()
     {
         if (PlayerPrefs.GetInt("PowerUpReplaced") == 0.0f)
@@ -449,8 +451,8 @@ public class Manager : MonoBehaviourPun
         UIHandler temp1 = GameObject.Find("Launcher").GetComponent<UIHandler>();
         id = temp1.chosenCharacter;
 
-        GameObject temp = PhotonNetwork.Instantiate(playerPrefab[temp1.chosenCharacter].name, playerPrefab[temp1.chosenCharacter].transform.position,playerPrefab[temp1.chosenCharacter].transform.rotation);
-        
+        GameObject temp = PhotonNetwork.Instantiate(playerPrefab[temp1.chosenCharacter].name, new Vector2(10,10),playerPrefab[temp1.chosenCharacter].transform.rotation);
+        temp.GetComponent<PlayerMovement>().winpos = startPoint[UI.EnteredCount-1].transform.position;
         Camera.main.transform.GetComponent<CameraFollow>().target = temp.transform;
        
     }

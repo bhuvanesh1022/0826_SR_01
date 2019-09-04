@@ -182,7 +182,7 @@ public class PowerUp : MonoBehaviour
     {
         GetComponent<Collider2D>().enabled = false;
         sprit.enabled = false;
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(0.5f);
         GetComponent<Collider2D>().enabled = true;
         sprit.enabled = true;
 

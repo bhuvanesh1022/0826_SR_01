@@ -29,6 +29,7 @@ public class UIHandler : MonoBehaviourPunCallbacks
     public bool EnteredFirst;
     public Text NoOfPlayer;
     public GameObject NoOfPlayerParent;
+    public int EnteredCount;
 
     public void Onclick_CreateRoom()
         {
@@ -56,8 +57,7 @@ public class UIHandler : MonoBehaviourPunCallbacks
     [PunRPC]
     public void Controller()
     {
-
-       
+        
         PlayerCount += 1;
        
 
@@ -90,7 +90,8 @@ public class UIHandler : MonoBehaviourPunCallbacks
 
         //  
         pv.RPC("Controller", RpcTarget.AllBuffered, null);
-
+        //if (pv.IsMine)
+        
         createRoom.gameObject.SetActive(false);
          JoinRoom.gameObject.SetActive(false);
         //  character1.gameObject.SetActive(true);
@@ -110,7 +111,8 @@ public class UIHandler : MonoBehaviourPunCallbacks
           //  pv.RPC("char1", RpcTarget.AllBuffered, null);
 
         }
-
+        Debug.LogError(PhotonNetwork.PlayerList.Length);
+        EnteredCount = PhotonNetwork.PlayerList.Length;
 
 
     }
