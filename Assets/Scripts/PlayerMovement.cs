@@ -574,7 +574,20 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     public float PrevXPos;
     private void FixedUpdate()
     {
-        if(PrevXPos+0.1 >= transform.position.x)
+
+        if (manage.attackBtn.gameObject.activeInHierarchy) {
+
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                speedUpFunc();
+            }
+        }
+        if (manage.ShurikenBtn.gameObject.activeInHierarchy) {
+
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                ShurikenaAttackFunc();
+            }
+        }
+        if (PrevXPos+0.1 >= transform.position.x)
         {
             PrevXPos = transform.position.x;
         }else
