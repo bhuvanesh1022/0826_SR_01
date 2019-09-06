@@ -37,6 +37,7 @@ public class Manager : MonoBehaviourPun
     public int FirstTouch=0;
     public float FinalDist;
     public GameObject finish;
+    public List<GameObject> LevelFinish = new List<GameObject>();
     //  public List<float> Distances = new List<float>();
     public Text t1;
     public Text t2;
@@ -274,8 +275,8 @@ public class Manager : MonoBehaviourPun
         UI = GameObject.Find("Launcher").GetComponent<UIHandler>();
         userNameClass= GameObject.Find("username").GetComponent<UserNameSync>();
 
-        levels[UI.selectedLevel].gameObject.SetActive(true);
-
+        levels[UI.selectedLevel-1].gameObject.SetActive(true);
+        finish = LevelFinish[ UI.selectedLevel-1];
         FinalDist = Vector3.Distance(new Vector3(0, 0, 0), finish.transform.position);
         pv = GetComponent<PhotonView>();
         SpawnPlayer();
