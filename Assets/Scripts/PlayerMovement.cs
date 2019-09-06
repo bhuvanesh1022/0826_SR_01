@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         //    yield return null;
         //}
         run = true;
-         GetComponent<Animator>().SetBool("Idle", true);
+         animator.SetBool("Idle", true);
     //   runSpeed = 0;
         //  pv.RPC("WaitForPlayerFunc", RpcTarget.AllBuffered, null);
         WaitForPlayerFunc();
@@ -176,6 +176,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     public IEnumerator SpeedUp(GameObject temp, float speedUpTime)
     {
+        animator.SetBool("boostrun", true);
+
         if (pv.IsMine)
         {
             Manager.manage.attackBtn.interactable = false;
@@ -202,6 +204,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             Manager.manage.attackBtn.interactable = true;
         }
 
+        animator.SetBool("boostrun", false);
+        animator.SetTrigger("run");
 
     }
     public void startcountFunc()
@@ -299,7 +303,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
         
           runSpeed = 10;
-        GetComponent<Animator>().SetBool("Idle", false);
+        animator.SetBool("Idle", false);
 
         for (int i = 0; i < manage.TrafficLight.Count; i++)
         {
@@ -307,6 +311,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         }
         secondTaken = 0;
         SecStart = true;
+        animator.SetTrigger("run");
+
      //   Camera.main.orthographicSize = 10;
 
     }
@@ -385,7 +391,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         void Update()
     {
 
-
+         
         //horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         if (pv.IsMine)
         {
@@ -551,15 +557,20 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     }
     IEnumerator PlayerPunishedRoutine()
     {
+        animator.SetBool("stun", true);
+        
         //  runSpeed = 0;
-       // runSpeed = controlData.TargetSpeed * 1.5f;
+        // runSpeed = controlData.TargetSpeed * 1.5f;
         NoRun = true;
         StartCoroutine(CharacterStop(transform.position));
         yield return new WaitForSeconds(4f);
 
         NoRun = false;
-       // runSpeed = controlData.TargetSpeed;
-     //  runSpeed = controlData.TargetSpeed;
+
+        animator.SetBool("stun", false);
+        animator.SetTrigger("run");
+        // runSpeed = controlData.TargetSpeed;
+        //  runSpeed = controlData.TargetSpeed;
 
     }
     IEnumerator CharacterStop(Vector3 pos)
@@ -996,7 +1007,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                     //  ScoreShow();
                     pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
-
+                    animator.SetBool("win", true);
 
                     return;
                 }
@@ -1035,10 +1046,12 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 //  pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
                 if (manage.playerReached[0].gameObject==this.gameObject) {
                     won.gameObject.SetActive(true);
+                    animator.SetBool("win", true);
+                    Debug.LogError("Triggered");
 
                 } else {
                     failed.gameObject.SetActive(true);
-
+                    animator.SetBool("loss", true);
                 }
 
             }
