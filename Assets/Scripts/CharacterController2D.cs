@@ -137,14 +137,18 @@ public class CharacterController2D : MonoBehaviour
         //}
         if(m_Grounded)
         {
-            animator.SetBool("Jump", false);
+         //   animator.SetBool("Jump", false);
+            animator.SetTrigger("run");
+            
             transform.localScale = scale;
 
 
         }
         else
         {
-            animator.SetBool("Jump", true);
+            //   animator.SetBool("Jump", true);
+            animator.ResetTrigger("Jump");
+            animator.SetFloat("fall", m_Rigidbody2D.velocity.y);
 
         }
 
