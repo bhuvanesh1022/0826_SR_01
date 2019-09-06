@@ -31274,6 +31274,186 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: -10, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -9, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -8, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -7, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -6, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -5, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -4, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -3, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -2, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -1, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 0, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 1, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 2, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 3, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 4, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 5, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 6, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 7, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 8, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 9, y: -1, z: 0}
+    second:
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: 110, y: -1, z: 0}
     second:
       m_TileIndex: 1
@@ -31625,6 +31805,186 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: -10, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -9, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -8, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -7, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -6, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -5, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -4, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -3, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -2, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -1, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 0, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 1, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 2, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 3, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 4, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 5, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 6, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 7, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 8, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 9, y: 3, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: 104, y: 3, z: 0}
     second:
       m_TileIndex: 1
@@ -31800,6 +32160,186 @@ Tilemap:
     second:
       m_TileIndex: 2
       m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -10, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -9, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -8, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -7, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -6, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -5, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -4, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -3, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -2, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -1, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 0, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 1, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 2, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 3, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 4, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 5, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 6, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 7, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 8, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 9, y: 7, z: 0}
+    second:
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -33582,14 +34122,14 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 237
     m_Data: {fileID: 11400000, guid: 83411dc68b31bac48afdd313d02962ab, type: 2}
-  - m_RefCount: 319
+  - m_RefCount: 339
     m_Data: {fileID: 11400000, guid: 38914be5d6e902d44a37b121bd6b11e6, type: 2}
-  - m_RefCount: 967
+  - m_RefCount: 987
     m_Data: {fileID: 11400000, guid: 95c4185f3a8196844af1d9bc213767b6, type: 2}
   - m_RefCount: 372
     m_Data: {fileID: 11400000, guid: e3716bc3ce681da47a6ac1fb108a40c5, type: 2}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 20
+    m_Data: {fileID: 11400000, guid: d78b8d317ec254b419cbf983d70feba1, type: 2}
   - m_RefCount: 627
     m_Data: {fileID: 11400000, guid: eb8579eeba93eaf49b3eb86f599b1919, type: 2}
   - m_RefCount: 811
@@ -33598,17 +34138,18 @@ Tilemap:
   - m_RefCount: 237
     m_Data: {fileID: -3651307649959032754, guid: 7ea64b94def0f46c8a4306f5421a1d38,
       type: 3}
-  - m_RefCount: 319
+  - m_RefCount: 339
     m_Data: {fileID: -1387914171166808362, guid: 7ea64b94def0f46c8a4306f5421a1d38,
       type: 3}
-  - m_RefCount: 967
+  - m_RefCount: 987
     m_Data: {fileID: -5951667182685980672, guid: 7ea64b94def0f46c8a4306f5421a1d38,
       type: 3}
   - m_RefCount: 372
     m_Data: {fileID: -5670491261849306706, guid: 7ea64b94def0f46c8a4306f5421a1d38,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 20
+    m_Data: {fileID: 7240226258167432490, guid: 7ea64b94def0f46c8a4306f5421a1d38,
+      type: 3}
   - m_RefCount: 627
     m_Data: {fileID: 5940840909849336395, guid: 7ea64b94def0f46c8a4306f5421a1d38,
       type: 3}
@@ -33616,7 +34157,7 @@ Tilemap:
     m_Data: {fileID: -3261969620831420334, guid: 7ea64b94def0f46c8a4306f5421a1d38,
       type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 3333
+  - m_RefCount: 3393
     m_Data:
       e00: 1
       e01: 0
@@ -33635,7 +34176,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 3333
+  - m_RefCount: 3393
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -37023,6 +37564,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37101,6 +37652,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShurikenPowerUp (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 92
       objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -37181,6 +37742,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedUpPowerUp (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 54
+      objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37255,6 +37826,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShurikenPowerUp (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -37335,6 +37916,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (16)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37413,6 +38004,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShurikenPowerUp (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 57
       objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -37493,6 +38094,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 56
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37572,6 +38183,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedUpPowerUp (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 91
+      objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37647,6 +38268,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedUpPowerUp (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 52
+      objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37721,6 +38352,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShurikenPowerUp (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -37801,6 +38442,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (8)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 62
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37880,6 +38531,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedUpPowerUp (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 68
+      objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37954,6 +38615,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeedUpPowerUp (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 66
       objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
@@ -38030,6 +38701,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedUpPowerUp (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 71
+      objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38105,6 +38786,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedUpPowerUp (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 73
+      objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38179,6 +38870,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShurikenPowerUp (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 61
       objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -38259,6 +38960,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedUpPowerUp (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38333,6 +39044,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeedUpPowerUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
@@ -38409,6 +39130,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedUpPowerUp (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38483,6 +39214,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeedUpPowerUp (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 58
       objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
@@ -38559,6 +39300,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedUpPowerUp (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38633,6 +39384,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShurikenPowerUp
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -38713,6 +39474,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedUpPowerUp (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 89
+      objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38787,6 +39558,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShurikenPowerUp (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -38867,6 +39648,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedUpPowerUp (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 67
+      objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38942,6 +39733,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedUpPowerUp (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 69
+      objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39016,6 +39817,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShurikenPowerUp (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -39096,6 +39907,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (14)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 87
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39174,6 +39995,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShurikenPowerUp (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 83
       objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -39254,6 +40085,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 59
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39332,6 +40173,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShurikenPowerUp (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -39412,6 +40263,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (19)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 93
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39490,6 +40351,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShurikenPowerUp (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -39570,6 +40441,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (5)
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39648,6 +40529,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeedUpPowerUp (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 86
       objectReference: {fileID: 0}
     - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
