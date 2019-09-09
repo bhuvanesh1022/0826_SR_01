@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviourPun,IPunObservable
 {
@@ -582,7 +583,20 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         }
     }
 
+    public void oppositeJump() {
+        transform.position = new Vector2(transform.position.x - 0.5f, transform.position.y);
+        rb2d.velocity = new Vector2(0, 0);
+        rb2d.angularVelocity = 0f;
+        rb2d.AddForce(new Vector2((-controlData.walljumpForceLeft * 1000f * 2.5f * Time.deltaTime), (controlData.m_JumpForce * controlData.walljumpAmplitudeLeft * 1000f * Time.deltaTime)));
+        //  Debug.LogError("jump");
+        manage.wallJumpSave();
+
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        wallCheckPoint = BackCheck.transform;
+    }
+
     public float PrevXPos;
+    public float StraightJumpX;
     private void FixedUpdate()
     {
 
@@ -664,7 +678,9 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             {
                 if (straigtJump)
                 {
-                    StartCoroutine(WallJumpRoutine());
+                    Debug.LogError("straigh jump");
+                    StraightJumpX = transform.position.x;
+              //      StartCoroutine(WallJumpRoutine());
                    // Debug.LogError("Jump");
                     manage.JumpUsedSave();
                     straigtJump = false;
@@ -722,7 +738,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 {
                     if (Input.touchCount == 1  || Input.GetKeyDown(KeyCode.UpArrow))
                     {
-                        if (Input.mousePosition.x > Screen.width * .25f || Input.mousePosition.y > Screen.width * .25f)
+                        if (Input.mousePosition.x > Screen.width * .25f || Input.mousePosition.y > Screen.width * .25f )
                         {
                             if (DOTouchCount)
                             {
@@ -734,7 +750,9 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                                 }
                                 manage.BoostAudioSource.clip = manage.JumpClip;
                                 manage.BoostAudioSource.Play();
-                                controller.Move(0 * Time.deltaTime, crouch, true);
+                    Debug.LogError("straigh jump");
+                                oppositeJump();
+                                //   controller.Move(0 * Time.deltaTime, crouch, true);
                                 DOTouchCount = false;
                             }
                         }
@@ -803,7 +821,9 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                     //  print(GetComponent<CharacterController2D>().m_Grounded);
                     animator.SetBool("wallslide", true);
                     rb2d.velocity = new Vector2(rb2d.velocity.x, -controlData.WallSlideGravity);
-                   //   rb2d.velocity = new Vector2(rb2d.velocity.x, controlData.terminalVelocity);
+                  //  rb2d.velocity = new Vector2(0, -controlData.WallSlideGravity);
+
+                    //   rb2d.velocity = new Vector2(rb2d.velocity.x, controlData.terminalVelocity);
                 }
                 else
                 {
@@ -882,10 +902,11 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     {
         manage.BoostAudioSource.clip = manage.WallJumpClip;
         manage.BoostAudioSource.Play();
-        if (temp.GetComponent<Collider2D>())
-        {
-            temp.enabled = false;
+        if (temp!=null) {
+            if (temp.GetComponent<Collider2D>()) {
+                temp.enabled = false;
 
+            }
         }
         yield return null;
         if (front)
@@ -896,7 +917,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             rb2d.angularVelocity = 0f;
             rb2d.AddForce(new Vector2((controlData.walljumpForceLeft * 2.5f * 1000f * Time.deltaTime), (controlData.m_JumpForce * controlData.walljumpAmplitudeLeft * 1000f * Time.deltaTime)));
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-          //  Debug.LogError("jump");
+         //   Debug.LogError("jump");
             manage.wallJumpSave();
             wallCheckPoint = frontCheck.transform;
 
@@ -907,7 +928,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             rb2d.velocity = new Vector2(0, 0);
             rb2d.angularVelocity = 0f;
             rb2d.AddForce(new Vector2((-controlData.walljumpForceLeft * 1000f * 2.5f * Time.deltaTime), (controlData.m_JumpForce * controlData.walljumpAmplitudeLeft * 1000f * Time.deltaTime)));
-          //  Debug.LogError("jump");
+         //  Debug.LogError("jump");
             manage.wallJumpSave();
 
             transform.localScale = new Vector3(transform.localScale.x*-1, transform.localScale.y, transform.localScale.z);
@@ -1065,7 +1086,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             }
         }
 
-        Debug.LogError("s");
+       
         pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
 
     }

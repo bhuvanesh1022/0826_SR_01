@@ -121,11 +121,11 @@ public class CharacterController2D : MonoBehaviour
     public float fallmult=200.5f;
     public float lowMult = 2f;
     [SerializeField] private float GroundCheckWi, GroundCheckHi;
-
+    public Vector3 vel;
     public void Move(float move, bool crouch, bool jump)
     {
         
-
+        
         // If crouching, check to see if the character can stand up
         //if (!crouch)
         //{
@@ -199,6 +199,7 @@ public class CharacterController2D : MonoBehaviour
             if (GetComponent<PlayerMovement>().res.Length == 0)
             {
                 // Move the character by finding the target velocity
+             //   Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
                 Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
                 // And then smoothing it out and applying it to the character
                 m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
@@ -222,7 +223,10 @@ public class CharacterController2D : MonoBehaviour
 
             if (m_Grounded)
             {
+
                 m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
+
+              //  m_Rigidbody2D.velocity = new Vector2(2, 0);
                 m_Rigidbody2D.AddForce(new Vector2(0f, GetComponent<PlayerMovement>().controlData.m_JumpForce), ForceMode2D.Impulse);
                 animator.SetTrigger("Jump");
                 animator.SetBool("Jump",true);
@@ -240,16 +244,10 @@ public class CharacterController2D : MonoBehaviour
     }
     private void Update()
     {
-        //if (m_Rigidbody2D.velocity.y < 0)
-        //{
-        //    m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * 2 * Time.deltaTime;
-
-        //}
-        //else
-        //{
-        //    m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * 2.5f* Time.deltaTime;
-
-        //}
+        if (m_Rigidbody2D.velocity.x>=-3f && m_Rigidbody2D.velocity.x<0) {
+            m_Rigidbody2D.velocity = new Vector2(0,m_Rigidbody2D.velocity.y);
+        }
+        vel = m_Rigidbody2D.velocity;
     }
 
     private void Flip()
