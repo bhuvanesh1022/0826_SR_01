@@ -4337,6 +4337,7 @@ MonoBehaviour:
   lowMult: 2
   GroundCheckWi: 1
   GroundCheckHi: 1
+  vel: {x: 0, y: 0, z: 0}
 --- !u!114 &2688428234942579789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4415,7 +4416,7 @@ MonoBehaviour:
   won: {fileID: 8853496977496011264}
   failed: {fileID: 4996846502528928034}
   run: 0
-  PlayerSPrite: {fileID: 7841213981274837522, guid: eaa711e6ed6b95741b4bf7bda4b5d8fa,
+  PlayerSPrite: {fileID: 791358429082049817, guid: 056d078edc995884c803b9969f97b4d0,
     type: 3}
   username: 
   pfxBoost: {fileID: 0}
@@ -4471,6 +4472,7 @@ MonoBehaviour:
   WallJumpActive: 0
   NoRun: 0
   PrevXPos: 0
+  StraightJumpX: 0
   rb2d: {fileID: 821950230551156586}
   info: 
   winpos: {x: 0, y: -2, z: 0}

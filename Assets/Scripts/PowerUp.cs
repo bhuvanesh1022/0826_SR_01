@@ -135,7 +135,7 @@ public class PowerUp : MonoBehaviour
 
                     }
 
-                    Debug.LogError("speedRun");
+
                 }
                 else if (power == Power.Shuriken)
                 {
