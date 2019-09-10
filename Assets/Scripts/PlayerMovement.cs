@@ -1017,7 +1017,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                     won.gameObject.SetActive(true);
                     Camera.main.GetComponent<CameraFollow>().offset = new Vector3(0, 1.2f, -10f);
-                    GetComponent<Animator>().SetBool("Idle", true);
+                    animator.SetBool("Idle", true);
                     //   GetComponent<SpriteRenderer>().sortingOrder = 2;
                     StartCoroutine(stop());
                     //    manage.won.gameObject.SetActive(true);
@@ -1036,7 +1036,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                     if (failed != null) {
                         Statistics.stats.Pref("TotalLose");
                         Camera.main.GetComponent<CameraFollow>().offset = new Vector3(0, 1.2f, -10f);
-                        GetComponent<Animator>().SetBool("Idle", true);
+                        animator.SetBool("Idle", true);
 
                         run = true;
                         winpos = transform.position;
