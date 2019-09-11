@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class cc : MonoBehaviour
 {
+
+    //to Check
+
     [SerializeField] private Animator animator;
     [SerializeField] public float m_JumpForce ;                          // Amount of force added when the player jumps.
     [SerializeField] public Text m_JumpForceTxt;
