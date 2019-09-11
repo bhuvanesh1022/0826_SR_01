@@ -637,18 +637,18 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
 
         }
-        if (Input.touchCount == 1 || Input.GetKeyDown(KeyCode.UpArrow)) {
-            if (manage.TrafficLight[2].activeInHierarchy) {
-                manage.InitialBoost = true;
-            }
+        //if (Input.touchCount == 1 || Input.GetKeyDown(KeyCode.UpArrow)) {
+        //    if (manage.TrafficLight[2].activeInHierarchy) {
+        //        manage.InitialBoost = true;
+        //    }
                 
-        }
-        if (manage.InitialBoost) {
-            if (!manage.TrafficLight[2].activeInHierarchy) {
-                StartCoroutine(InitSpeedUp());
-            }
+        //}
+        //if (manage.InitialBoost) {
+        //    if (!manage.TrafficLight[2].activeInHierarchy) {
+        //        StartCoroutine(InitSpeedUp());
+        //    }
 
-        }
+        //}
         if (pv.IsMine)
         {
             res = Physics2D.OverlapBoxAll(wallCheckPoint.position, new Vector2(wallCheckWi, wallCheckHi), 0.15f, WallLayer);
@@ -751,8 +751,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                                 manage.BoostAudioSource.clip = manage.JumpClip;
                                 manage.BoostAudioSource.Play();
                     Debug.LogError("straigh jump");
-                                oppositeJump();
-                                //   controller.Move(0 * Time.deltaTime, crouch, true);
+                             //   oppositeJump();
+                                   controller.Move(0 * Time.deltaTime, crouch, true);
                                 DOTouchCount = false;
                             }
                         }

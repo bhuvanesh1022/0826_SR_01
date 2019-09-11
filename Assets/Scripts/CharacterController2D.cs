@@ -124,8 +124,8 @@ public class CharacterController2D : MonoBehaviour
     public Vector3 vel;
     public void Move(float move, bool crouch, bool jump)
     {
-        
-        
+
+        animator.SetBool("run", m_Grounded);
         // If crouching, check to see if the character can stand up
         //if (!crouch)
         //{
@@ -138,7 +138,7 @@ public class CharacterController2D : MonoBehaviour
         if(m_Grounded)
         {
          //   animator.SetBool("Jump", false);
-            animator.SetTrigger("run");
+         //   animator.SetTrigger("run");
             
             transform.localScale = scale;
 
@@ -229,7 +229,7 @@ public class CharacterController2D : MonoBehaviour
               //  m_Rigidbody2D.velocity = new Vector2(2, 0);
                 m_Rigidbody2D.AddForce(new Vector2(0f, GetComponent<PlayerMovement>().controlData.m_JumpForce), ForceMode2D.Impulse);
                 animator.SetTrigger("Jump");
-                animator.SetBool("Jump",true);
+            //    animator.SetBool("Jump",true);
                 move *= 0.8f;
 
                 //m_Grounded = false;

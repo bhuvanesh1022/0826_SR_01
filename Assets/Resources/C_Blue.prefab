@@ -4218,7 +4218,7 @@ GameObject:
   - component: {fileID: 4164734705291232388}
   - component: {fileID: 6176191659205045671}
   m_Layer: 8
-  m_Name: Characterbase 1
+  m_Name: C_Blue
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4306,7 +4306,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 4096
   m_GroundCheck: {fileID: 190869898603779519}
   m_CeilingCheck: {fileID: 6419195402264353925}
   m_CrouchDisableCollider: {fileID: 0}
