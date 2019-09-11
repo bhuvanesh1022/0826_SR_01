@@ -2615,6 +2615,7 @@ Tilemap:
       m_TileIndex: 2
       m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2624,6 +2625,11 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
 >>>>>>> tracks updated for wall jumps
+=======
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+>>>>>>> Developer
       m_ColliderType: 1
   - first: {x: 265, y: -12, z: 0}
     second:
@@ -2639,6 +2645,7 @@ Tilemap:
       m_TileIndex: 2
       m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2648,6 +2655,11 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
 >>>>>>> tracks updated for wall jumps
+=======
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+>>>>>>> Developer
       m_ColliderType: 1
   - first: {x: 265, y: -11, z: 0}
     second:
@@ -2663,6 +2675,7 @@ Tilemap:
       m_TileIndex: 2
       m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2672,6 +2685,11 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
 >>>>>>> tracks updated for wall jumps
+=======
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+>>>>>>> Developer
       m_ColliderType: 1
   - first: {x: 265, y: -10, z: 0}
     second:
@@ -2750,6 +2768,7 @@ Tilemap:
       m_TileIndex: 2
       m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2759,6 +2778,11 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
 >>>>>>> tracks updated for wall jumps
+=======
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+>>>>>>> Developer
       m_ColliderType: 1
   - first: {x: 198, y: -6, z: 0}
     second:
@@ -2769,8 +2793,11 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
 =======
+=======
+>>>>>>> Developer
   - first: {x: 199, y: -6, z: 0}
     second:
       m_TileIndex: 2
@@ -2789,12 +2816,16 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+<<<<<<< HEAD
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
   - first: {x: 224, y: -6, z: 0}
     second:
       m_TileIndex: 2
       m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2804,6 +2835,11 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
 >>>>>>> tracks updated for wall jumps
+=======
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+>>>>>>> Developer
       m_ColliderType: 1
   - first: {x: 265, y: -6, z: 0}
     second:
@@ -2846,6 +2882,7 @@ Tilemap:
       m_TileIndex: 2
       m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2855,6 +2892,11 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
 >>>>>>> tracks updated for wall jumps
+=======
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+>>>>>>> Developer
       m_ColliderType: 1
   - first: {x: 198, y: -5, z: 0}
     second:
@@ -2865,8 +2907,11 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
 =======
+=======
+>>>>>>> Developer
   - first: {x: 199, y: -5, z: 0}
     second:
       m_TileIndex: 2
@@ -2876,12 +2921,16 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+<<<<<<< HEAD
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
   - first: {x: 224, y: -5, z: 0}
     second:
       m_TileIndex: 2
       m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2891,6 +2940,11 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
 >>>>>>> tracks updated for wall jumps
+=======
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+>>>>>>> Developer
       m_ColliderType: 1
   - first: {x: 265, y: -5, z: 0}
     second:
@@ -2933,6 +2987,7 @@ Tilemap:
       m_TileIndex: 2
       m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2942,6 +2997,11 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
 >>>>>>> tracks updated for wall jumps
+=======
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+>>>>>>> Developer
       m_ColliderType: 1
   - first: {x: 198, y: -4, z: 0}
     second:
@@ -2952,8 +3012,11 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
 =======
+=======
+>>>>>>> Developer
   - first: {x: 199, y: -4, z: 0}
     second:
       m_TileIndex: 2
@@ -2963,12 +3026,16 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+<<<<<<< HEAD
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
   - first: {x: 224, y: -4, z: 0}
     second:
       m_TileIndex: 2
       m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2978,6 +3045,11 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
 >>>>>>> tracks updated for wall jumps
+=======
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+>>>>>>> Developer
       m_ColliderType: 1
   - first: {x: 265, y: -4, z: 0}
     second:
@@ -3020,6 +3092,7 @@ Tilemap:
       m_TileIndex: 2
       m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -3029,6 +3102,11 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
 >>>>>>> tracks updated for wall jumps
+=======
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+>>>>>>> Developer
       m_ColliderType: 1
   - first: {x: 198, y: -3, z: 0}
     second:
@@ -3675,6 +3753,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 38914be5d6e902d44a37b121bd6b11e6, type: 2}
   - m_RefCount: 54
     m_Data: {fileID: 11400000, guid: 95c4185f3a8196844af1d9bc213767b6, type: 2}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
   - m_RefCount: 10
     m_Data: {fileID: 0}
@@ -3682,6 +3761,10 @@ Tilemap:
   - m_RefCount: 20
     m_Data: {fileID: 11400000, guid: 720ba70b11b4cf84cb28190bb29469a3, type: 2}
 >>>>>>> tracks updated for wall jumps
+=======
+  - m_RefCount: 20
+    m_Data: {fileID: 11400000, guid: 720ba70b11b4cf84cb28190bb29469a3, type: 2}
+>>>>>>> Developer
   m_TileSpriteArray:
   - m_RefCount: 126
     m_Data: {fileID: -1387914171166808362, guid: 7ea64b94def0f46c8a4306f5421a1d38,
@@ -3689,6 +3772,7 @@ Tilemap:
   - m_RefCount: 54
     m_Data: {fileID: -5951667182685980672, guid: 7ea64b94def0f46c8a4306f5421a1d38,
       type: 3}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
   - m_RefCount: 10
     m_Data: {fileID: 0}
@@ -3697,12 +3781,17 @@ Tilemap:
   m_TileMatrixArray:
   - m_RefCount: 190
 =======
+=======
+>>>>>>> Developer
   - m_RefCount: 20
     m_Data: {fileID: -6059179114334191616, guid: 7dea29e4c9f9d9d46a4872263c632e92,
       type: 3}
   m_TileMatrixArray:
   - m_RefCount: 200
+<<<<<<< HEAD
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     m_Data:
       e00: 1
       e01: 0
@@ -37412,6 +37501,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (1)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -37425,6 +37515,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37529,6 +37621,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (18)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -37542,6 +37635,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37746,6 +37841,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (10)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -37759,6 +37855,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37863,6 +37961,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (16)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -37876,6 +37975,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37980,6 +38081,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (3)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -37993,6 +38095,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38097,6 +38201,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (2)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -38110,6 +38215,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38414,6 +38521,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (17)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -38427,6 +38535,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38531,6 +38641,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (8)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -38544,6 +38655,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39048,6 +39161,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (6)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -39061,6 +39175,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39665,6 +39781,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -39678,6 +39795,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39882,6 +40001,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (13)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -39895,6 +40015,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40110,6 +40232,7 @@ PrefabInstance:
     - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
       propertyPath: InstantiationId
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
       value: 65
       objectReference: {fileID: 0}
@@ -40273,6 +40396,113 @@ PrefabInstance:
       value: 55
 =======
       value: 66
+=======
+      value: 64
+>>>>>>> Developer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945110347042703386, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.36862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945110347042703386, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.36078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945110347042703386, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.36078432
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 19a35f44f8fbb9c499a94f650485460e, type: 3}
+--- !u!4 &564185069508114856 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5935178600316529681}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6230720968651944974
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5271140442108107403}
+    m_Modifications:
+    - target: {fileID: 6163631465738393016, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: m_Name
+<<<<<<< HEAD
+      value: ShurikenPowerUp (9)
+>>>>>>> tracks updated for wall jumps
+=======
+      value: SpeedUpPowerUp (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 229
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393017, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163631465738393013, guid: 19a35f44f8fbb9c499a94f650485460e,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 66
       objectReference: {fileID: 0}
     - target: {fileID: 7945110347042703386, guid: 19a35f44f8fbb9c499a94f650485460e,
         type: 3}
@@ -40308,7 +40538,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShurikenPowerUp (9)
->>>>>>> tracks updated for wall jumps
+>>>>>>> Developer
       objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -40414,6 +40644,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (14)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -40427,6 +40658,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40531,6 +40764,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (12)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -40544,6 +40778,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40648,6 +40884,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (4)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -40661,6 +40898,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40765,6 +41004,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (11)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -40778,6 +41018,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40882,6 +41124,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (19)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -40895,6 +41138,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40999,6 +41244,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (15)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -41012,6 +41258,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -41116,6 +41364,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShurikenPowerUp (5)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< GroundDetectionFix
     - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
@@ -41129,6 +41378,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
 =======
 >>>>>>> tracks updated for wall jumps
+=======
+>>>>>>> Developer
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
