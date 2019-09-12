@@ -28,6 +28,12 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     [SerializeField] ParticleSystem pfxBoost, pfxWallBoost;
 
+    public int MaxSpeedBoost = 0;
+
+    public int MaxStunned = 0;
+    public int MaxStunUsed = 0;
+    public int MaxJump = 0;
+
 
     public List<Anima2D.SpriteMeshInstance> Order = new List<Anima2D.SpriteMeshInstance>();
   
@@ -113,6 +119,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     public void ShurikenaAttackFunc()
     {
+        MaxStunUsed++;
         StartCoroutine(zoomOut());
         if (pv.IsMine) {
             manage.BoostAudioSource.clip = manage.ShurikenHitSound;
@@ -170,6 +177,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     }
     public void speedUpFunc()
     {
+        MaxSpeedBoost++;
         StartCoroutine(ZoomIn());
         if (pv.IsMine) {
             pv.RPC("RunGlobalSound", RpcTarget.AllBuffered, null);
@@ -584,6 +592,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     }
     public void PlayerPunished()
     {
+        MaxStunned++;
         if (pv.IsMine) {
             pv.RPC("shurikenSoundGlobal", RpcTarget.AllBuffered, null);
 
@@ -1023,13 +1032,46 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         if (manage.LocalPlayer.GetComponent<PlayerMovement>().Finished) {
 
             manage.ScoreCardMenu.gameObject.SetActive(true);
+            manage.MaxUsedMenu.gameObject.SetActive(true);
 
             for (int i = 0; i < manage.scoreShow; i++) {
                 manage.ScoreCard[i].transform.GetChild(0).GetComponent<Text>().text = manage.playerReached[i].username.ToString();
                 float score = manage.playerReached[i].secondTaken;
                 manage.ScoreCard[i].transform.GetChild(1).GetComponent<Text>().text = score.ToString("#.00");
             }
+            int MaxSpeedBoost=0, MaxStunned=0, MaxStunUsed=0, MaxJump = 0;
+            string MaxSpeedBoost_s="", MaxStunned_s="", MaxStunUsed_s="", MaxJump_s = "";
+            for (int i=0;i<manage.totalPlayer.Count;i++)
+            {
+                if(MaxSpeedBoost < manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxSpeedBoost)
+                {
+                    MaxSpeedBoost = manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxSpeedBoost;
+                    MaxSpeedBoost_s= manage.totalPlayer[i].GetComponent<PlayerMovement>().username;
+                }
+                if (MaxStunned < manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxStunned)
+                {
+                    MaxStunned = manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxStunned;
+                    MaxStunned_s = manage.totalPlayer[i].GetComponent<PlayerMovement>().username;
+                }
+                if (MaxStunUsed < manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxStunUsed)
+                {
+                    MaxStunUsed = manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxStunUsed;
+                    MaxStunUsed_s = manage.totalPlayer[i].GetComponent<PlayerMovement>().username;
+                }
+                if (MaxJump < manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxJump)
+                {
+                    MaxJump = manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxJump;
+                    MaxJump_s = manage.totalPlayer[i].GetComponent<PlayerMovement>().username;
+                }
+            }
+            manage.MaxUsed[0].GetComponent<Text>().text = MaxSpeedBoost_s;
+            manage.MaxUsed[1].GetComponent<Text>().text = MaxStunned_s;
+            manage.MaxUsed[2].GetComponent<Text>().text = MaxStunUsed_s;
+            manage.MaxUsed[3].GetComponent<Text>().text = MaxJump_s;
+
+
         }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -1167,7 +1209,13 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             stream.SendNext(username);
             stream.SendNext(Finished);
             stream.SendNext(secondTaken);
-            
+            stream.SendNext(MaxSpeedBoost);
+            stream.SendNext(MaxStunned);
+            stream.SendNext(MaxStunUsed);
+            stream.SendNext(MaxJump);
+
+
+
         }
         else if(stream.IsReading)
         {
@@ -1175,7 +1223,12 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
            username = (string)stream.ReceiveNext();
            Finished = (bool)stream.ReceiveNext();
            secondTaken = (float)stream.ReceiveNext();
-           
+            MaxSpeedBoost=(int)stream.ReceiveNext();
+            MaxStunned = (int)stream.ReceiveNext();
+            MaxStunUsed = (int)stream.ReceiveNext();
+            MaxJump = (int)stream.ReceiveNext();
+
+
         }
     }
 
