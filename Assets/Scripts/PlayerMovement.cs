@@ -113,6 +113,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     public void ShurikenaAttackFunc()
     {
+        StartCoroutine(zoomOut());
         if (pv.IsMine) {
             manage.BoostAudioSource.clip = manage.ShurikenHitSound;
             manage.BoostAudioSource.Play();
@@ -129,8 +130,47 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         manage.BoostAudioSource.clip = manage.RunBoostSound;
         manage.BoostAudioSource.Play();
     }
+    IEnumerator ZoomIn()
+    {
+        Camera.main.GetComponent<CameraFollow>().offset.y = 3;
+        while (Camera.main.orthographicSize>8)
+        {
+            Camera.main.orthographicSize -= 0.05f;
+            yield return null;
+        }
+        Camera.main.orthographicSize = 8f;
+        while (Camera.main.orthographicSize < 10)
+        {
+            Camera.main.orthographicSize += 0.05f;
+            yield return null;
+        }
+        Camera.main.orthographicSize = 10f;
+        Camera.main.GetComponent<CameraFollow>().offset.y = 6;
+
+    }
+    IEnumerator zoomOut()
+    {
+        Camera.main.GetComponent<CameraFollow>().offset.x = 15f;
+
+        while (Camera.main.orthographicSize < 13)
+        {
+            Camera.main.orthographicSize += 0.1f;
+            yield return null;
+        }
+        Camera.main.orthographicSize = 13f;
+        while (Camera.main.orthographicSize > 10)
+        {
+            Camera.main.orthographicSize -= 0.1f;
+            yield return null;
+        }
+         Camera.main.orthographicSize = 10f;
+        Camera.main.GetComponent<CameraFollow>().offset.x = 6.5f;
+
+        
+    }
     public void speedUpFunc()
     {
+        StartCoroutine(ZoomIn());
         if (pv.IsMine) {
             pv.RPC("RunGlobalSound", RpcTarget.AllBuffered, null);
 
