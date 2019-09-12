@@ -229,6 +229,7 @@ public class CharacterController2D : MonoBehaviour
               //  m_Rigidbody2D.velocity = new Vector2(2, 0);
                 m_Rigidbody2D.AddForce(new Vector2(0f, GetComponent<PlayerMovement>().controlData.m_JumpForce), ForceMode2D.Impulse);
                 animator.SetTrigger("Jump");
+                GetComponent<PlayerMovement>().MaxJump++;
             //    animator.SetBool("Jump",true);
                 move *= 0.8f;
 

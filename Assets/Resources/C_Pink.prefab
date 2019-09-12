@@ -811,6 +811,10 @@ MonoBehaviour:
   username: 
   pfxBoost: {fileID: 0}
   pfxWallBoost: {fileID: 0}
+  MaxSpeedBoost: 0
+  MaxStunned: 0
+  MaxStunUsed: 0
+  MaxJump: 0
   Order:
   - {fileID: 8743917093854275240}
   - {fileID: 8743917094537838331}

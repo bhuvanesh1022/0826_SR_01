@@ -80,7 +80,11 @@ public class Manager : MonoBehaviourPun
     //}
     // Start is called before the first frame update
     public GameObject ScoreCardMenu;
+    public GameObject MaxUsedMenu;
+
     public List<GameObject> ScoreCard = new List<GameObject>();
+    public List<GameObject> MaxUsed = new List<GameObject>();
+
 
     public int TotalRace=0;
     public int WallJump=0;
@@ -105,6 +109,12 @@ public class Manager : MonoBehaviourPun
     public AudioClip WallJumpClip;
     public bool InitialBoost;
     public List<GameObject> startPoint = new List<GameObject>();
+
+    public Text MaxSpeedUsed;
+    public Text MaxStunned;
+    public Text MaxStunUsed;
+    public Text MaxJump;
+
     public void PowerUpReplacedSave()
     {
         if (PlayerPrefs.GetInt("PowerUpReplaced") == 0.0f)
