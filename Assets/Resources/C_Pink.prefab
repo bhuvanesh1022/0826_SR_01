@@ -868,6 +868,10 @@ MonoBehaviour:
   wallCheckWi: 0.15
   wallCheckHi: 1.2
   Finished: 0
+  MaxSpeedUsername: []
+  MaxStunnedUsername: []
+  MaxStunUsedUsername: []
+  MaxJumpUsername: []
 --- !u!61 &660752707481510862
 BoxCollider2D:
   m_ObjectHideFlags: 0
