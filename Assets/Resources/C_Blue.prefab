@@ -4483,10 +4483,6 @@ MonoBehaviour:
   wallCheckWi: 0.15
   wallCheckHi: 1.2
   Finished: 0
-  MaxSpeedBoost1: 0
-  MaxStunned1: 0
-  MaxStunUsed1: 0
-  MaxJump1: 0
   MaxSpeedUsername: []
   MaxStunnedUsername: []
   MaxStunUsedUsername: []

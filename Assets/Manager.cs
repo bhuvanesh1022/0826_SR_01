@@ -115,7 +115,7 @@ public class Manager : MonoBehaviourPun
     public Text MaxStunUsed;
     public Text MaxJump;
 
-    public GameObject Screen_Stun;
+   // public GameObject Screen_Stun;
     public GameObject Screen_Power;
 
 

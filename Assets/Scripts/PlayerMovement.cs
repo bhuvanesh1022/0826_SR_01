@@ -157,13 +157,14 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         Camera.main.GetComponent<CameraFollow>().offset.y = 1;
         while (Camera.main.orthographicSize>5)
         {
-            Camera.main.orthographicSize -= 0.05f;
+            Camera.main.orthographicSize -= 0.5f;
             yield return null;
         }
         Camera.main.orthographicSize = 5f;
+        yield return new WaitForSeconds(1f);
         while (Camera.main.orthographicSize < 10)
         {
-            Camera.main.orthographicSize += 0.05f;
+            Camera.main.orthographicSize += 0.1f;
             yield return null;
         }
         Camera.main.orthographicSize = 10f;
@@ -176,10 +177,12 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
         while (Camera.main.orthographicSize < 13)
         {
-            Camera.main.orthographicSize += 0.1f;
+            Camera.main.orthographicSize += 0.5f;
             yield return null;
         }
         Camera.main.orthographicSize = 13f;
+        yield return new WaitForSeconds(0.5f);
+
         while (Camera.main.orthographicSize > 10)
         {
             Camera.main.orthographicSize -= 0.1f;
@@ -248,7 +251,6 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
         if (pv.IsMine)
         {
-            manage.Screen_Power.gameObject.SetActive(true);
             Manager.manage.attackBtn.interactable = false;
             if (pfxBoost) pfxBoost.Play();
             float temp1 = runSpeed;
@@ -257,7 +259,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             MinRunForce += 2000;
             //  runSpeed += Time.deltaTime * controlData.MaxRunForce * 100;
             //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed*1.5f;
-            yield return new WaitForSeconds(speedUpTime);
+            yield return new WaitForSeconds( 0.5f);
+            manage.Screen_Power.gameObject.SetActive(true);
+
+            yield return new WaitForSeconds(speedUpTime-0.5f);
             manage.BooseTimeSave();
             Debug.Log("BoosterUSed");
             //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed/1.5f ;
@@ -637,24 +642,56 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     }
     IEnumerator PlayerPunishedRoutine()
     {
-        manage.Screen_Stun.gameObject.SetActive(true);
+        NoRun = true;
 
         animator.SetBool("stun", true);
+        StartCoroutine(CharacterStop(transform.position));
+
+        yield return new WaitForSeconds(0.25f);
+        while (Camera.main.GetComponent<CameraFollow>().offset.y > 1f)
+        {
+            Camera.main.GetComponent<CameraFollow>().offset.y -= 0.5f;
+            Camera.main.GetComponent<CameraFollow>().offset.x -= 0.5f;
+
+            yield return null;
+        }
+        Camera.main.GetComponent<CameraFollow>().offset.y = 1f;
+        Camera.main.GetComponent<CameraFollow>().offset.x = 1f;
+
+        while (Camera.main.orthographicSize > 7.5f)
+        {
+            Camera.main.orthographicSize -= 0.5f;
+            yield return null;
+        }
+        Camera.main.orthographicSize = 7.5f;
+
         
         //  runSpeed = 0;
         // runSpeed = controlData.TargetSpeed * 1.5f;
-        NoRun = true;
-        StartCoroutine(CharacterStop(transform.position));
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3.5f);
 
         NoRun = false;
 
         animator.SetBool("stun", false);
         animator.SetTrigger("run");
-        manage.Screen_Stun.gameObject.SetActive(false);
 
         // runSpeed = controlData.TargetSpeed;
         //  runSpeed = controlData.TargetSpeed;
+        while (Camera.main.GetComponent<CameraFollow>().offset.y < 6f)
+        {
+            Camera.main.GetComponent<CameraFollow>().offset.y += 0.5f;
+            Camera.main.GetComponent<CameraFollow>().offset.x += 0.5f;
+
+            yield return null;
+        }
+        Camera.main.GetComponent<CameraFollow>().offset.y = 6f;
+        Camera.main.GetComponent<CameraFollow>().offset.x = 6.5f;
+        while (Camera.main.orthographicSize < 10f)
+        {
+            Camera.main.orthographicSize += 0.5f;
+            yield return null;
+        }
+        Camera.main.orthographicSize = 10f;
 
     }
     IEnumerator CharacterStop(Vector3 pos)
