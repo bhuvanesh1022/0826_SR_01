@@ -117,8 +117,15 @@ public class Manager : MonoBehaviourPun
 
    // public GameObject Screen_Stun;
     public GameObject Screen_Power;
+    public GameObject ThrownShurikenIMG;
 
+    public IEnumerator SHurikenTHrownINst()
+    {
+        manage.ThrownShurikenIMG.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        manage.ThrownShurikenIMG.gameObject.SetActive(false);
 
+    }
     public void PowerUpReplacedSave()
     {
         if (PlayerPrefs.GetInt("PowerUpReplaced") == 0.0f)
