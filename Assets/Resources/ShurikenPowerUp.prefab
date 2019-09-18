@@ -185,7 +185,7 @@ MonoBehaviour:
   attackButton: {fileID: 0}
   throwableSpeed: 500
   shuriken: {fileID: 0}
-  pv: {fileID: 0}
+  pv: {fileID: -6256479556323416455}
   SentBy: {fileID: 0}
   sprit: {fileID: 0}
   power: 2

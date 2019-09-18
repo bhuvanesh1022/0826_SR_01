@@ -99,11 +99,13 @@ public class PowerUp : MonoBehaviour
         {
             if (collision.tag == "Player")
             {
-                if(collision.gameObject!=SentBy)
+                if (collision.gameObject != SentBy)
                 {
                     Debug.LogError(collision.name);
+                    if(pv.IsMine)
+                        Manager.manage.StartCoroutine(Manager.manage.SHurikenTHrownINst());
                     //   collision.gameObject.GetComponent<PlayerMovement>().pv.RPC("PlayerPunished", RpcTarget.AllBuffered, null);
-                    if(!collectedCharacter.Contains(collision.gameObject))
+                    if (!collectedCharacter.Contains(collision.gameObject))
                     {
                         collision.gameObject.GetComponent<PlayerMovement>().PlayerPunished();
                         collectedCharacter.Add(collision.gameObject);
@@ -111,6 +113,14 @@ public class PowerUp : MonoBehaviour
                     //   this.gameObject.GetComponent<Collider2D>().enabled = false;
                     //  Destroy(this.gameObject);
                     //   StartCoroutine(PlayerPunished(collision.gameObject.GetComponent<PlayerMovement>()));
+                }
+                else
+                {
+                    if(collision.gameObject!=Manager.manage.LocalPlayer)
+                    {
+                        Debug.LogError("hehe");
+
+                    }
                 }
             }
         }

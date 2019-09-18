@@ -117,6 +117,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     public GameObject ShurikenObj;
 
+
+    
     public void ShurikenaAttackFunc()
     {
         MaxStunUsed++;
@@ -668,7 +670,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         
         //  runSpeed = 0;
         // runSpeed = controlData.TargetSpeed * 1.5f;
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(1.25f);
 
         NoRun = false;
 
@@ -757,18 +759,22 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
 
         }
-        //if (Input.touchCount == 1 || Input.GetKeyDown(KeyCode.UpArrow)) {
-        //    if (manage.TrafficLight[2].activeInHierarchy) {
-        //        manage.InitialBoost = true;
-        //    }
-                
-        //}
-        //if (manage.InitialBoost) {
-        //    if (!manage.TrafficLight[2].activeInHierarchy) {
-        //        StartCoroutine(InitSpeedUp());
-        //    }
+        if (Input.touchCount == 1 || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (manage.TrafficLight[2].activeInHierarchy)
+            {
+                manage.InitialBoost = true;
+            }
 
-        //}
+        }
+        if (manage.InitialBoost)
+        {
+            if (!manage.TrafficLight[2].activeInHierarchy)
+            {
+                StartCoroutine(InitSpeedUp());
+            }
+
+        }
         if (pv.IsMine)
         {
             res = Physics2D.OverlapBoxAll(wallCheckPoint.position, new Vector2(wallCheckWi, wallCheckHi), 0.15f, WallLayer);
