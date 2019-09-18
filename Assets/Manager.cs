@@ -115,6 +115,10 @@ public class Manager : MonoBehaviourPun
     public Text MaxStunUsed;
     public Text MaxJump;
 
+   // public GameObject Screen_Stun;
+    public GameObject Screen_Power;
+
+
     public void PowerUpReplacedSave()
     {
         if (PlayerPrefs.GetInt("PowerUpReplaced") == 0.0f)

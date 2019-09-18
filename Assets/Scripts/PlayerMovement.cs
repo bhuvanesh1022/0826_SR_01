@@ -137,18 +137,34 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         manage.BoostAudioSource.clip = manage.RunBoostSound;
         manage.BoostAudioSource.Play();
     }
-    IEnumerator ZoomIn()
+
+    IEnumerator CameraShake(float duration,float Magnitude,float vect)
     {
-        Camera.main.GetComponent<CameraFollow>().offset.y = 3;
-        while (Camera.main.orthographicSize>8)
+        Vector3 orgPos = Camera.main.transform.localPosition;
+        float elapse = 0;
+        while(elapse<duration)
         {
-            Camera.main.orthographicSize -= 0.05f;
+            float x = Random.Range(-vect,vect)*Magnitude;
+            float y = Random.Range(-vect, vect) * Magnitude;
+            Camera.main.transform.localPosition = new Vector3(orgPos.x+x, orgPos.y+y, orgPos.z);
+            elapse += Time.deltaTime;
             yield return null;
         }
-        Camera.main.orthographicSize = 8f;
+        Camera.main.transform.position = orgPos;
+    }
+    IEnumerator ZoomIn()
+    {
+        Camera.main.GetComponent<CameraFollow>().offset.y = 1;
+        while (Camera.main.orthographicSize>5)
+        {
+            Camera.main.orthographicSize -= 0.5f;
+            yield return null;
+        }
+        Camera.main.orthographicSize = 5f;
+        yield return new WaitForSeconds(1f);
         while (Camera.main.orthographicSize < 10)
         {
-            Camera.main.orthographicSize += 0.05f;
+            Camera.main.orthographicSize += 0.1f;
             yield return null;
         }
         Camera.main.orthographicSize = 10f;
@@ -161,10 +177,12 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
         while (Camera.main.orthographicSize < 13)
         {
-            Camera.main.orthographicSize += 0.1f;
+            Camera.main.orthographicSize += 0.5f;
             yield return null;
         }
         Camera.main.orthographicSize = 13f;
+        yield return new WaitForSeconds(0.5f);
+
         while (Camera.main.orthographicSize > 10)
         {
             Camera.main.orthographicSize -= 0.1f;
@@ -177,9 +195,12 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     }
     public void speedUpFunc()
     {
+        StartCoroutine(CameraShake(0.15f, 0.2f, 0.5f));
+
         MaxSpeedBoost++;
         StartCoroutine(ZoomIn());
         if (pv.IsMine) {
+
             pv.RPC("RunGlobalSound", RpcTarget.AllBuffered, null);
 
         }
@@ -227,6 +248,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     {
         animator.SetBool("boostrun", true);
 
+
         if (pv.IsMine)
         {
             Manager.manage.attackBtn.interactable = false;
@@ -237,7 +259,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             MinRunForce += 2000;
             //  runSpeed += Time.deltaTime * controlData.MaxRunForce * 100;
             //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed*1.5f;
-            yield return new WaitForSeconds(speedUpTime);
+            yield return new WaitForSeconds( 0.5f);
+            manage.Screen_Power.gameObject.SetActive(true);
+
+            yield return new WaitForSeconds(speedUpTime-0.5f);
             manage.BooseTimeSave();
             Debug.Log("BoosterUSed");
             //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed/1.5f ;
@@ -251,6 +276,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
             if (pfxBoost) pfxBoost.Stop();
             Manager.manage.attackBtn.interactable = true;
+            manage.Screen_Power.gameObject.SetActive(false);
+
         }
 
         animator.SetBool("boostrun", false);
@@ -496,8 +523,13 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 //animator.SetTrigger("4To2");
             }
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+
+        }
         if ( Input.GetKeyDown(KeyCode.UpArrow))
         {
+
             jump = true;
             
             //animator.SetTrigger("Jump");
@@ -592,8 +624,11 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     }
     public void PlayerPunished()
     {
+
         MaxStunned++;
         if (pv.IsMine) {
+            StartCoroutine(CameraShake(0.15f, 0.2f, 2));
+
             pv.RPC("shurikenSoundGlobal", RpcTarget.AllBuffered, null);
 
            
@@ -607,20 +642,56 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     }
     IEnumerator PlayerPunishedRoutine()
     {
+        NoRun = true;
+
         animator.SetBool("stun", true);
+        StartCoroutine(CharacterStop(transform.position));
+
+        yield return new WaitForSeconds(0.25f);
+        while (Camera.main.GetComponent<CameraFollow>().offset.y > 1f)
+        {
+            Camera.main.GetComponent<CameraFollow>().offset.y -= 0.5f;
+            Camera.main.GetComponent<CameraFollow>().offset.x -= 0.5f;
+
+            yield return null;
+        }
+        Camera.main.GetComponent<CameraFollow>().offset.y = 1f;
+        Camera.main.GetComponent<CameraFollow>().offset.x = 1f;
+
+        while (Camera.main.orthographicSize > 7.5f)
+        {
+            Camera.main.orthographicSize -= 0.5f;
+            yield return null;
+        }
+        Camera.main.orthographicSize = 7.5f;
+
         
         //  runSpeed = 0;
         // runSpeed = controlData.TargetSpeed * 1.5f;
-        NoRun = true;
-        StartCoroutine(CharacterStop(transform.position));
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3.5f);
 
         NoRun = false;
 
         animator.SetBool("stun", false);
         animator.SetTrigger("run");
+
         // runSpeed = controlData.TargetSpeed;
         //  runSpeed = controlData.TargetSpeed;
+        while (Camera.main.GetComponent<CameraFollow>().offset.y < 6f)
+        {
+            Camera.main.GetComponent<CameraFollow>().offset.y += 0.5f;
+            Camera.main.GetComponent<CameraFollow>().offset.x += 0.5f;
+
+            yield return null;
+        }
+        Camera.main.GetComponent<CameraFollow>().offset.y = 6f;
+        Camera.main.GetComponent<CameraFollow>().offset.x = 6.5f;
+        while (Camera.main.orthographicSize < 10f)
+        {
+            Camera.main.orthographicSize += 0.5f;
+            yield return null;
+        }
+        Camera.main.orthographicSize = 10f;
 
     }
     IEnumerator CharacterStop(Vector3 pos)
@@ -1025,6 +1096,44 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     [SerializeField] private float wallCheckWi, wallCheckHi;
     public bool Finished;
 
+    public void UserNameShow()
+    {
+        MaxSpeedUsername.Clear();
+        MaxStunnedUsername.Clear();
+        MaxStunUsedUsername.Clear();
+        MaxJumpUsername.Clear();
+
+        Debug.LogError("s");
+        for (int i = 0; i < manage.totalPlayer.Count; i++)
+        {
+
+           // if (MaxSpeedBoost1 == manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxJump)
+            {
+                if(!MaxJumpUsername.Contains(manage.totalPlayer[i].GetComponent<PlayerMovement>().username))
+                {
+                    MaxJumpUsername.Add(manage.totalPlayer[i].GetComponent<PlayerMovement>().username);
+
+                }
+
+              //  Debug.LogError(MaxSpeedBoost1);
+                Debug.LogError(manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxJump);
+
+
+            }
+
+        }
+        for(int i=0;i< MaxJumpUsername.Count;i++)
+        {
+                manage.MaxUsed[0].GetComponent<Text>().text += MaxJumpUsername[i];
+            manage.MaxUsed[0].GetComponent<Text>().text += ",";
+        }
+    }
+ //  public
+    public List<string> MaxSpeedUsername = new List<string>();
+    public List<string> MaxStunnedUsername = new List<string>();
+    public List<string> MaxStunUsedUsername = new List<string>();
+    public List<string> MaxJumpUsername = new List<string>();
+
 
     [PunRPC]
     public void NewScoreCard() {
@@ -1039,35 +1148,37 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 float score = manage.playerReached[i].secondTaken;
                 manage.ScoreCard[i].transform.GetChild(1).GetComponent<Text>().text = score.ToString("#.00");
             }
-            int MaxSpeedBoost=0, MaxStunned=0, MaxStunUsed=0, MaxJump = 0;
+            int MaxSpeedBoost1 = 0, MaxStunned1 = 0, MaxStunUsed1 = 0, MaxJump1 = 0;
             string MaxSpeedBoost_s="", MaxStunned_s="", MaxStunUsed_s="", MaxJump_s = "";
             for (int i=0;i<manage.totalPlayer.Count;i++)
             {
-                if(MaxSpeedBoost < manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxSpeedBoost)
+                if(MaxSpeedBoost1 < manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxSpeedBoost)
                 {
-                    MaxSpeedBoost = manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxSpeedBoost;
+                    MaxSpeedBoost1 = manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxSpeedBoost;
                     MaxSpeedBoost_s= manage.totalPlayer[i].GetComponent<PlayerMovement>().username;
                 }
-                if (MaxStunned < manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxStunned)
+                if (MaxStunned1 < manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxStunned)
                 {
-                    MaxStunned = manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxStunned;
+                    MaxStunned1 = manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxStunned;
                     MaxStunned_s = manage.totalPlayer[i].GetComponent<PlayerMovement>().username;
                 }
-                if (MaxStunUsed < manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxStunUsed)
+                if (MaxStunUsed1 < manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxStunUsed)
                 {
-                    MaxStunUsed = manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxStunUsed;
+                    MaxStunUsed1 = manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxStunUsed;
                     MaxStunUsed_s = manage.totalPlayer[i].GetComponent<PlayerMovement>().username;
                 }
-                if (MaxJump < manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxJump)
+                if (MaxJump1 < manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxJump)
                 {
-                    MaxJump = manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxJump;
+                    MaxJump1 = manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxJump;
                     MaxJump_s = manage.totalPlayer[i].GetComponent<PlayerMovement>().username;
                 }
             }
-            manage.MaxUsed[0].GetComponent<Text>().text = MaxSpeedBoost_s;
-            manage.MaxUsed[1].GetComponent<Text>().text = MaxStunned_s;
-            manage.MaxUsed[2].GetComponent<Text>().text = MaxStunUsed_s;
-            manage.MaxUsed[3].GetComponent<Text>().text = MaxJump_s;
+           // UserNameShow();
+
+              manage.MaxUsed[0].GetComponent<Text>().text = MaxSpeedBoost_s;
+             manage.MaxUsed[1].GetComponent<Text>().text = MaxStunned_s;
+             manage.MaxUsed[2].GetComponent<Text>().text = MaxStunUsed_s;
+              manage.MaxUsed[3].GetComponent<Text>().text = MaxJump_s;
 
 
         }
@@ -1110,6 +1221,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                     //  ScoreShow();
                     pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
+                  //  UserNameShow();
+
                     animator.SetBool("win", true);
 
                     return;
