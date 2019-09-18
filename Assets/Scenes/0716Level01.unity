@@ -16586,7 +16586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab:
-  - {fileID: 6673952899984727467, guid: 032ebed1581f7b54fb71c31152463972, type: 3}
+  - {fileID: 3676201244449605431, guid: a1a63199f7aaa1549b9fef1bb1ab2509, type: 3}
   - {fileID: 6673952899984727467, guid: 032ebed1581f7b54fb71c31152463972, type: 3}
   - {fileID: 1106435403584450, guid: 134f4e0c5af707a4091217563b53bc5e, type: 3}
   - {fileID: 1106435403584450, guid: 134f4e0c5af707a4091217563b53bc5e, type: 3}
