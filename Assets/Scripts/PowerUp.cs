@@ -131,9 +131,15 @@ public class PowerUp : MonoBehaviour
 
                     }
                     Debug.LogError(collision.name);
-                    Manager.manage.ShurikenHitText(SentBy.name, collision.name);
-                    //if (pv.IsMine)
-                        //Manager.manage.StartCoroutine(Manager.manage.ShowShurikenHitText());
+                    Manager.manage.ShurikenHitText(SentByusername, collision.name);
+                    if (pv.IsMine)
+                    {
+                        
+                       // Manager.manage.StartCoroutine(Manager.manage.ShowShurikenHitText());
+
+                        Manager.manage.StartCoroutine(Manager.manage.SHurikenTHrownINst());
+
+                    }
                     //   collision.gameObject.GetComponent<PlayerMovement>().pv.RPC("PlayerPunished", RpcTarget.AllBuffered, null);
                     if (!collectedCharacter.Contains(collision.gameObject))
                     {
@@ -143,7 +149,7 @@ public class PowerUp : MonoBehaviour
 
                         collision.gameObject.GetComponent<PlayerMovement>().PlayerPunished();
                         collectedCharacter.Add(collision.gameObject);
-                        pv.RPC("ShurikenHitUserName", RpcTarget.AllBuffered, SentBy.GetComponent<PlayerMovement>().username, collectedCharacter[collectedCharacter.Count-1].GetComponent<PlayerMovement>().username);
+                     //   pv.RPC("ShurikenHitUserName", RpcTarget.AllBuffered, SentBy.GetComponent<PlayerMovement>().username, collectedCharacter[collectedCharacter.Count-1].GetComponent<PlayerMovement>().username);
 
                     }
                     //   this.gameObject.GetComponent<Collider2D>().enabled = false;

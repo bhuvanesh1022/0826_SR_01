@@ -1,9 +1,8 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class Manager : MonoBehaviourPun
 {
@@ -149,9 +148,9 @@ public class Manager : MonoBehaviourPun
 
     public IEnumerator SHurikenTHrownINst()
     {
-        //manage.ThrownShurikenIMG.gameObject.SetActive(true);
+        manage.ThrownShurikenIMG.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
-        //manage.ThrownShurikenIMG.gameObject.SetActive(false);
+        manage.ThrownShurikenIMG.gameObject.SetActive(false);
 
     }
     public void PowerUpReplacedSave()

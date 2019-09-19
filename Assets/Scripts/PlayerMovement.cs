@@ -129,6 +129,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         }
      PowerUp temp = PhotonNetwork.Instantiate(Manager.manage.ShurikenPrefab.name, ShurikenObj.transform.position, Quaternion.identity).GetComponent<PowerUp>();
         temp.SentBy = this.gameObject;
+        temp.SentByusername = this.username;
         manage.ShurikenBtn.gameObject.SetActive(false);
         manage.PowerUpUsedSave();
         Statistics.stats.Pref("StunHit");
@@ -644,8 +645,20 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     }
     IEnumerator PlayerPunishedRoutine()
     {
+       
         NoRun = true;
-
+        bool Shurikentemp=false; bool SpeedTemp=false;
+        if(manage.attackBtn.gameObject.activeInHierarchy)
+        {
+            SpeedTemp = true;
+            manage.attackBtn.gameObject.SetActive(false);
+        }
+       
+        if (manage.ShurikenBtn.gameObject.activeInHierarchy)
+        {
+            Shurikentemp = true;
+            manage.ShurikenBtn.gameObject.SetActive(false);
+        }
         animator.SetBool("stun", true);
         StartCoroutine(CharacterStop(transform.position));
 
@@ -694,6 +707,15 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             yield return null;
         }
         Camera.main.orthographicSize = 10f;
+
+        if(Shurikentemp)
+        {
+            manage.ShurikenBtn.gameObject.SetActive(true);
+        }
+        if(SpeedTemp)
+        {
+            manage.attackBtn.gameObject.SetActive(true);
+        }
 
     }
     IEnumerator CharacterStop(Vector3 pos)
