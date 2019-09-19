@@ -16,6 +16,8 @@ public class PowerUp : MonoBehaviour
     public GameObject shuriken;
     public PhotonView pv;
     public GameObject SentBy;
+    public string SentByusername;
+
     public SpriteRenderer sprit;
 
     private void Start()
@@ -37,6 +39,14 @@ public class PowerUp : MonoBehaviour
 
         }
     }
+    [PunRPC]
+    void ShurikenHitUserName(string user,string name)
+    {
+        Debug.LogError(user);
+        Debug.LogError(name);
+
+    }
+
     IEnumerator destro()
     {
         yield return new WaitForSeconds(5f);
@@ -44,6 +54,7 @@ public class PowerUp : MonoBehaviour
         {
             if (SentBy == Manager.manage.LocalPlayer)
             {
+
                 collectedCharacter.RemoveAt(i);
                 break;
             }
@@ -91,6 +102,8 @@ public class PowerUp : MonoBehaviour
     public enum Power { SpeedRun, Shuriken, ShurikenAttack };
     public Power power;
     public List<GameObject> collectedCharacter = new List<GameObject>();
+
+    List<string> ShurikenUsername = new List<string>();
   
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -101,14 +114,36 @@ public class PowerUp : MonoBehaviour
             {
                 if (collision.gameObject != SentBy)
                 {
+                   // if (collision.GetComponent<PlayerMovement>().username != SentBy.GetComponent<PlayerMovement>().username)
+                    {
+                        if(ShurikenUsername.Count<=2)
+                        {
+                            if(!ShurikenUsername.Contains(collision.GetComponent<PlayerMovement>().username))
+                            {
+                                ShurikenUsername.Add(collision.GetComponent<PlayerMovement>().username);
+                            }
+                            if(ShurikenUsername.Count==2)
+                            {
+                                ShurikenUsername.Clear();
+
+                            }
+                        }
+
+                    }
                     Debug.LogError(collision.name);
                     if(pv.IsMine)
                         Manager.manage.StartCoroutine(Manager.manage.SHurikenTHrownINst());
                     //   collision.gameObject.GetComponent<PlayerMovement>().pv.RPC("PlayerPunished", RpcTarget.AllBuffered, null);
                     if (!collectedCharacter.Contains(collision.gameObject))
                     {
+                      
+                           
+                        
+
                         collision.gameObject.GetComponent<PlayerMovement>().PlayerPunished();
                         collectedCharacter.Add(collision.gameObject);
+                        pv.RPC("ShurikenHitUserName", RpcTarget.AllBuffered, SentBy.GetComponent<PlayerMovement>().username, collectedCharacter[collectedCharacter.Count-1].GetComponent<PlayerMovement>().username);
+
                     }
                     //   this.gameObject.GetComponent<Collider2D>().enabled = false;
                     //  Destroy(this.gameObject);
