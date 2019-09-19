@@ -35,7 +35,7 @@ public class Manager : MonoBehaviourPun
     public UserNameSync userNameClass;
 
 
-    public int FirstTouch=0;
+    public int FirstTouch = 0;
     public float FinalDist;
     public GameObject finish;
     public List<GameObject> LevelFinish = new List<GameObject>();
@@ -86,10 +86,10 @@ public class Manager : MonoBehaviourPun
     public List<GameObject> MaxUsed = new List<GameObject>();
 
 
-    public int TotalRace=0;
-    public int WallJump=0;
+    public int TotalRace = 0;
+    public int WallJump = 0;
 
-    public float GroundTime=0;
+    public float GroundTime = 0;
     public float AirTime = 0;
     public int PowerUpCollcted = 0;
     public int PowerUpUsed = 0;
@@ -115,15 +115,43 @@ public class Manager : MonoBehaviourPun
     public Text MaxStunUsed;
     public Text MaxJump;
 
-   // public GameObject Screen_Stun;
+    // public GameObject Screen_Stun;
     public GameObject Screen_Power;
     public GameObject ThrownShurikenIMG;
+    public Text ShurikenText;
+
+    public List<string> ShurikenTexts;
+
+    public void Awake()
+    {
+        ShurikenTexts = new List<string> { " landed a solid hit on ", 
+                                            " made mincemeat of ", 
+                                            " wants to get a closer look at ", 
+                                            " has extracted all dignity from ", 
+                                            " is showing no mercy to ", 
+                                            " with the killshot on ", 
+                                            " has completely flummoxed "};
+    }
+
+    public void ShurikenHitText(string ninja, string victim)
+    {
+        ShurikenText.text = ninja + ShurikenTexts[Random.Range(0, ShurikenTexts.Count)] + victim;
+
+        StartCoroutine(ShowShurikenHitText());
+    }
+
+    public IEnumerator ShowShurikenHitText()
+    {
+        ShurikenText.enabled = true;
+        yield return new WaitForSeconds(1f);
+        ShurikenText.enabled = false;
+    }
 
     public IEnumerator SHurikenTHrownINst()
     {
-        manage.ThrownShurikenIMG.gameObject.SetActive(true);
+        //manage.ThrownShurikenIMG.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
-        manage.ThrownShurikenIMG.gameObject.SetActive(false);
+        //manage.ThrownShurikenIMG.gameObject.SetActive(false);
 
     }
     public void PowerUpReplacedSave()
@@ -192,7 +220,7 @@ public class Manager : MonoBehaviourPun
         }
         else
         {
-             PowerUpCollcted = PlayerPrefs.GetInt("PowerUpCollcted");
+            PowerUpCollcted = PlayerPrefs.GetInt("PowerUpCollcted");
             PowerUpCollcted = PowerUpCollcted + 1;
             PlayerPrefs.SetInt("PowerUpCollcted", PowerUpCollcted);
         }
@@ -206,7 +234,7 @@ public class Manager : MonoBehaviourPun
         }
         else
         {
-             WallJump = PlayerPrefs.GetInt("WallJump");
+            WallJump = PlayerPrefs.GetInt("WallJump");
             WallJump = WallJump + 1;
             PlayerPrefs.SetInt("WallJump", WallJump);
         }
@@ -223,7 +251,7 @@ public class Manager : MonoBehaviourPun
             float temp = PlayerPrefs.GetFloat("GroundTime");
             temp = temp + GroundTime;
             PlayerPrefs.SetFloat("GroundTime", temp);
-          GroundTime = PlayerPrefs.GetFloat("GroundTime");
+            GroundTime = PlayerPrefs.GetFloat("GroundTime");
         }
         if (PlayerPrefs.GetFloat("AirTime") == 0.0f)
         {
@@ -253,7 +281,7 @@ public class Manager : MonoBehaviourPun
 
     public void AirTimeSave()
     {
-       
+
     }
     IEnumerator StartSecRoutine()
     {
@@ -261,7 +289,7 @@ public class Manager : MonoBehaviourPun
         while (StartSec > 0)
         {
             yield return new WaitForSeconds(1f);
-          //  pv.RPC("StartSecfunc", RpcTarget.AllBuffered, null);
+            //  pv.RPC("StartSecfunc", RpcTarget.AllBuffered, null);
 
         }
     }
@@ -295,10 +323,10 @@ public class Manager : MonoBehaviourPun
         controlData = GameObject.Find("ControlData").GetComponent<ControlData>();
 
         UI = GameObject.Find("Launcher").GetComponent<UIHandler>();
-        userNameClass= GameObject.Find("username").GetComponent<UserNameSync>();
+        userNameClass = GameObject.Find("username").GetComponent<UserNameSync>();
 
-        levels[UI.selectedLevel-1].gameObject.SetActive(true);
-        finish = LevelFinish[ UI.selectedLevel-1];
+        levels[UI.selectedLevel - 1].gameObject.SetActive(true);
+        finish = LevelFinish[UI.selectedLevel - 1];
         FinalDist = Vector3.Distance(new Vector3(0, 0, 0), finish.transform.position);
         pv = GetComponent<PhotonView>();
         SpawnPlayer();
@@ -464,26 +492,26 @@ public class Manager : MonoBehaviourPun
     }
     public GameObject off;
 
-   
 
 
-   
+
+
 
     void SpawnPlayer()
     {
         UIHandler temp1 = GameObject.Find("Launcher").GetComponent<UIHandler>();
         id = temp1.chosenCharacter;
 
-        GameObject temp = PhotonNetwork.Instantiate(playerPrefab[temp1.chosenCharacter].name, new Vector2(10,10),playerPrefab[temp1.chosenCharacter].transform.rotation);
-        temp.GetComponent<PlayerMovement>().winpos = startPoint[UI.EnteredCount-1].transform.position;
+        GameObject temp = PhotonNetwork.Instantiate(playerPrefab[temp1.chosenCharacter].name, new Vector2(10, 10), playerPrefab[temp1.chosenCharacter].transform.rotation);
+        temp.GetComponent<PlayerMovement>().winpos = startPoint[UI.EnteredCount - 1].transform.position;
         Camera.main.transform.GetComponent<CameraFollow>().target = temp.transform;
-       
+
     }
     public List<float> speed = new List<float>();
     [PunRPC]
     public void distFunc()
     {
-       // if(PhotonNetwork.IsMasterClient)
+        // if(PhotonNetwork.IsMasterClient)
         {
             //Distances.Clear();
             //for (int i = 0; i < totalPlayer.Count; i++)
@@ -492,9 +520,9 @@ public class Manager : MonoBehaviourPun
             //    Distances.Add(dist);
 
             //}
-           // t1.text = "yes";
+            // t1.text = "yes";
             //  t1.text = Distances[0].ToString();
-            
+
         }
         //if (Distances.Count >= 2)
         //{
@@ -526,13 +554,16 @@ public class Manager : MonoBehaviourPun
         //}
 
     }
-   
+
     // Update is called once per frame
     void Update()
     {
-         if(pv.IsMine)
+
+        Debug.Log(ShurikenTexts[1]);
+
+        if (pv.IsMine)
         {
-         //   pv.RPC("distFunc", RpcTarget.AllBuffered, null);
+            //   pv.RPC("distFunc", RpcTarget.AllBuffered, null);
 
         }
         // distFunc();

@@ -102,8 +102,9 @@ public class PowerUp : MonoBehaviour
                 if (collision.gameObject != SentBy)
                 {
                     Debug.LogError(collision.name);
-                    if(pv.IsMine)
-                        Manager.manage.StartCoroutine(Manager.manage.SHurikenTHrownINst());
+                    Manager.manage.ShurikenHitText(SentBy.name, collision.name);
+                    //if (pv.IsMine)
+                        //Manager.manage.StartCoroutine(Manager.manage.ShowShurikenHitText());
                     //   collision.gameObject.GetComponent<PlayerMovement>().pv.RPC("PlayerPunished", RpcTarget.AllBuffered, null);
                     if (!collectedCharacter.Contains(collision.gameObject))
                     {
