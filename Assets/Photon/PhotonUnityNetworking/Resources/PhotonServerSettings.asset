@@ -61,5 +61,6 @@ MonoBehaviour:
   - RunSync
   - shurikenSoundGlobal
   - RunGlobalSound
+  - ShurikenHitUserName
   DisableAutoOpenWizard: 1
   ShowSettings: 1
