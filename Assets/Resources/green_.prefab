@@ -2407,6 +2407,7 @@ MonoBehaviour:
   MaxStunned: 0
   MaxStunUsed: 0
   MaxJump: 0
+  temp: {fileID: 0}
   Order:
   - {fileID: 4918434259540948040}
   - {fileID: 2354359356691689598}

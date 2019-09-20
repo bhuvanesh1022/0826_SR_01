@@ -132,17 +132,25 @@ public class Manager : MonoBehaviourPun
                                             " has completely flummoxed "};
     }
 
+    [PunRPC]
     public void ShurikenHitText(string ninja, string victim)
     {
         ShurikenText.text = ninja + ShurikenTexts[Random.Range(0, ShurikenTexts.Count)] + victim;
 
+        pv.RPC("ShurikenLocal", RpcTarget.AllBuffered, null);
+    }
+
+    [PunRPC]
+    public void ShurikenLocal()
+    {
         StartCoroutine(ShowShurikenHitText());
     }
+
 
     public IEnumerator ShowShurikenHitText()
     {
         ShurikenText.enabled = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         ShurikenText.enabled = false;
     }
 
@@ -558,7 +566,7 @@ public class Manager : MonoBehaviourPun
     void Update()
     {
 
-        Debug.Log(ShurikenTexts[1]);
+      //  Debug.Log(ShurikenTexts[1]);
 
         if (pv.IsMine)
         {
