@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     //   runSpeed = 0;
         //  pv.RPC("WaitForPlayerFunc", RpcTarget.AllBuffered, null);
         WaitForPlayerFunc();
-       username= manage.userNameClass.userName;
+        username= manage.userNameClass.userName;
         manage.ReloadBtn.onClick.AddListener(() => TowardsLobby());
         if (pv.IsMine)
         {
@@ -144,7 +144,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             manage.BoostAudioSource.Play();
         }
         temp = PhotonNetwork.Instantiate(Manager.manage.ShurikenPrefab.name, ShurikenObj.transform.position, Quaternion.identity).GetComponent<PowerUp>();
-        //pv.RPC("NinjaName", RpcTarget.AllBuffered, null);
+        //pv.RPC("NinjaName", RpcTarget.AllBuffered, username);
+        //Debug.Log(username);
         temp.SentBy = gameObject;
         temp.SentByusername = username;
         manage.ShurikenBtn.gameObject.SetActive(false);
@@ -154,9 +155,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     }
 
     [PunRPC]
-    public void NinjaName()
-    {   
-        //Debug.Log(temp.SentByusername);
+    public void NinjaName(string ninja)
+    {
+        temp.SentByusername = ninja;
+        Debug.Log(ninja);
     }
 
     [PunRPC]
@@ -1418,11 +1420,11 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
            username = (string)stream.ReceiveNext();
            Finished = (bool)stream.ReceiveNext();
            secondTaken = (float)stream.ReceiveNext();
-            MaxSpeedBoost=(int)stream.ReceiveNext();
-            MaxStunned = (int)stream.ReceiveNext();
-            MaxStunUsed = (int)stream.ReceiveNext();
-            MaxJump = (int)stream.ReceiveNext();
-
+           MaxSpeedBoost=(int)stream.ReceiveNext();
+           MaxStunned = (int)stream.ReceiveNext();
+           MaxStunUsed = (int)stream.ReceiveNext();
+           MaxJump = (int)stream.ReceiveNext();
+           //temp.SentByusername = (string)stream.ReceiveNext();
 
 
         }

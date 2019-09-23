@@ -26,6 +26,13 @@ public class PowerUp : MonoBehaviour
 
     private string ninja;
 
+    /*
+    private void OnEnable()
+    {
+        SentByusername = Manager.manage.userNameClass.userName;
+    }
+    */
+
     private void Start()
     {
         //ninja = Manager.manage.userNameClass.userName;
@@ -50,6 +57,7 @@ public class PowerUp : MonoBehaviour
     [PunRPC]
     void ShurikenHitUserName(string user,string name)
     {
+        Manager.manage.ShurikenHitText(user, name);
         Debug.LogError(user);
         Debug.LogError(name);
 
@@ -98,7 +106,7 @@ public class PowerUp : MonoBehaviour
         if(pv.IsMine)
         {
             GameObject throwable = PhotonNetwork.Instantiate(shuriken.name, this.transform.position, Quaternion.identity);
-            throwable.GetComponent<ThrowWeapon>().mine = this.gameObject;
+            throwable.GetComponent<ThrowWeapon>().mine = gameObject;
             attackButton.GetComponent<Button>().enabled = false;
             attackButton.GetComponent<Image>().enabled = false;
         }
@@ -150,7 +158,7 @@ public class PowerUp : MonoBehaviour
 
                             }
 
-                            Debug.Log(collision.name);
+                            //Debug.Log(collision.name);
 
                             //Manager.manage.ShurikenHitText(ninja, collision.GetComponent<PlayerMovement>().username);
 
@@ -163,10 +171,10 @@ public class PowerUp : MonoBehaviour
                             if (!collectedCharacter.Contains(collision.gameObject))
                             {
                                 collision.gameObject.GetComponent<PlayerMovement>().PlayerPunished();
-                                Manager.manage.ShurikenHitText(SentByusername, collision.GetComponent<PlayerMovement>().username);
-                                Debug.Log(SentByusername);
+                                //Manager.manage.ShurikenHitText(SentByusername, collision.GetComponent<PlayerMovement>().username);
+                                //Debug.Log(SentByusername);
                                 collectedCharacter.Add(collision.gameObject);
-                                //   pv.RPC("ShurikenHitUserName", RpcTarget.AllBuffered, SentBy.GetComponent<PlayerMovement>().username, collectedCharacter[collectedCharacter.Count-1].GetComponent<PlayerMovement>().username);
+                                pv.RPC("ShurikenHitUserName", RpcTarget.AllBuffered, SentBy.GetComponent<PlayerMovement>().username, collectedCharacter[collectedCharacter.Count-1].GetComponent<PlayerMovement>().username);
                             }
                         }
 
@@ -244,10 +252,6 @@ public class PowerUp : MonoBehaviour
     [PunRPC]
     public void HitMsg(string ninja, string col)
     {   
-        if(PlayerMovement.playerMovement==null)
-        {
-            PlayerMovement.playerMovement = FindObjectOfType<PlayerMovement>();
-        }
         Manager.manage.ShurikenHitText(ninja, col);
         Debug.Log(ninja);
     }
@@ -265,9 +269,21 @@ public class PowerUp : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         GetComponent<Collider2D>().enabled = true;
         sprit.enabled = true;
-
-
-
     }
+
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(SentByusername);
+        }
+        else if (stream.IsReading)
+        {
+            SentByusername = (string)stream.ReceiveNext();
+        }
+    }
+
+
 
 }
