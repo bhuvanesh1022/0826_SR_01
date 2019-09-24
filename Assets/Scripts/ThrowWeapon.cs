@@ -23,6 +23,7 @@ public class ThrowWeapon : MonoBehaviour
     {
         if(enemy!=null)
         {
+            Debug.Log(enemy);
             enemy.GetComponent<PlayerMovement>().winpos = enemy.transform.position;
             enemy.GetComponent<PlayerMovement>().run = true;
             enemy.GetComponent<Animator>().SetTrigger("Dizzy");

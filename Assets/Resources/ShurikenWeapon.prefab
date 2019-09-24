@@ -45,6 +45,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
+        type: 3}
+      propertyPath: ObservedComponents.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5192551538910195446, guid: 140494d1f92034af99eb42f4b75b5a20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -114,16 +134,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: viewIdField
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -6256479556323416455, guid: 140494d1f92034af99eb42f4b75b5a20,
-        type: 3}
-      propertyPath: InstantiationId
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 784692861, guid: 140494d1f92034af99eb42f4b75b5a20, type: 3}
       propertyPath: m_GravityScale

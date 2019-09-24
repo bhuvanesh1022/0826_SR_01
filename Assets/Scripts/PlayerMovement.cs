@@ -34,12 +34,26 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     public int MaxStunUsed = 0;
     public int MaxJump = 0;
 
+    public PowerUp temp;
 
     public List<Anima2D.SpriteMeshInstance> Order = new List<Anima2D.SpriteMeshInstance>();
   
         private void Start()
     {
 
+        /*
+        if (playerMovement == null)
+        {
+            playerMovement = GetComponent<PlayerMovement>();
+            Debug.Log("Active");
+        }
+        else
+        {
+            playerMovement = this.GetComponent<PlayerMovement>();
+            Debug.Log("Check");
+        }
+        */
+        
         PhotonNetwork.SendRate = 20;
         PhotonNetwork.SerializationRate = 15;
         manage = GameObject.Find("Manager").GetComponent<Manager>();
@@ -61,7 +75,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     //   runSpeed = 0;
         //  pv.RPC("WaitForPlayerFunc", RpcTarget.AllBuffered, null);
         WaitForPlayerFunc();
-       username= manage.userNameClass.userName;
+        username= manage.userNameClass.userName;
         manage.ReloadBtn.onClick.AddListener(() => TowardsLobby());
         if (pv.IsMine)
         {
@@ -70,11 +84,12 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 Order[i].sortingOrder += 1;
             }
             manage.t2.text = manage.userNameClass.userName;
+            Debug.Log("changing");
 
             manage.startBtn.onClick.AddListener(() => startcountFunc());
             FrontCheckOffset = this.transform.position - frontCheck.transform.position;
             BackCheckOffset = this.transform.position - BackCheck.transform.position;
-           // GetComponent<SpriteRenderer>().sortingOrder = 2;
+           // GetComponent<SpriteRenderer>() .sortingOrder = 2;
             pv.RPC("PlayerAdd", RpcTarget.AllBuffered, null);
             //  pv.RPC("NameSet", RpcTarget.AllBuffered, null);
            
@@ -85,10 +100,11 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             CurrenPlayerDenote.gameObject.SetActive(true);
             MinForceSet();
             manage.LocalPlayer = this.gameObject;
+
             manage.attackBtn.onClick.RemoveAllListeners();
             manage.attackBtn.onClick.AddListener(() => speedUpFunc());
-            manage.ShurikenBtn.onClick.RemoveAllListeners();
 
+            manage.ShurikenBtn.onClick.RemoveAllListeners();
             manage.ShurikenBtn.onClick.AddListener(() => ShurikenaAttackFunc());
         }
         else
@@ -117,23 +133,35 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     public GameObject ShurikenObj;
 
-
-    
+    public static PlayerMovement playerMovement;
+        
     public void ShurikenaAttackFunc()
     {
+        //Debug.Log(this.username);
         MaxStunUsed++;
         StartCoroutine(zoomOut());
         if (pv.IsMine) {
             manage.BoostAudioSource.clip = manage.ShurikenHitSound;
             manage.BoostAudioSource.Play();
         }
-     PowerUp temp = PhotonNetwork.Instantiate(Manager.manage.ShurikenPrefab.name, ShurikenObj.transform.position, Quaternion.identity).GetComponent<PowerUp>();
-        temp.SentBy = this.gameObject;
+        temp = PhotonNetwork.Instantiate(Manager.manage.ShurikenPrefab.name, ShurikenObj.transform.position, Quaternion.identity).GetComponent<PowerUp>();
+        //pv.RPC("NinjaName", RpcTarget.AllBuffered, username);
+        //Debug.Log(username);
+        temp.SentBy = gameObject;
+        temp.SentByusername = username;
         manage.ShurikenBtn.gameObject.SetActive(false);
         manage.PowerUpUsedSave();
         Statistics.stats.Pref("StunHit");
 
     }
+
+    [PunRPC]
+    public void NinjaName(string ninja)
+    {
+        temp.SentByusername = ninja;
+        Debug.Log(ninja);
+    }
+
     [PunRPC]
     public void RunGlobalSound() {
         manage.BoostAudioSource.clip = manage.RunBoostSound;
@@ -156,13 +184,13 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     }
     IEnumerator ZoomIn()
     {
-        Camera.main.GetComponent<CameraFollow>().offset.y = 1;
+        Camera.main.GetComponent<CameraFollow>().offset.y = 2;
         while (Camera.main.orthographicSize>5)
         {
             Camera.main.orthographicSize -= 0.5f;
             yield return null;
         }
-        Camera.main.orthographicSize = 5f;
+        Camera.main.orthographicSize = 7f;
         yield return new WaitForSeconds(1f);
         while (Camera.main.orthographicSize < 10)
         {
@@ -225,8 +253,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 if (pfxBoost) pfxBoost.Play();
                 float temp1 = runSpeed;
                 controlData.TargetSpeed += 50;
-                controlData.MaxRunForce += 500;
-                MinRunForce += 500;
+                controlData.MaxRunForce += 150;
+                MinRunForce += 150;
                 //  runSpeed += Time.deltaTime * controlData.MaxRunForce * 100;
                 //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed*1.5f;
                 yield return new WaitForSeconds(1.5f);
@@ -236,8 +264,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed/1.5f ;
                 //   runSpeed += Time.deltaTime * controlData.MaxRunForce / 100;
                 controlData.TargetSpeed -= 50;
-                controlData.MaxRunForce -= 500;
-                MinRunForce -= 500;
+                controlData.MaxRunForce -= 150;
+                MinRunForce -= 150;
                 runSpeed = temp1;
                 runSpeed += 1;
                 if (pfxBoost) pfxBoost.Stop();
@@ -619,20 +647,25 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     int wallBoostBuildup = 0;
 
     public bool NoRun;
+
     [PunRPC]
-    public void shurikenSoundGlobal() {
+    public void shurikenSoundGlobal()
+    {
         manage.BoostAudioSource.clip = manage.ShurikenStunSound;
         manage.BoostAudioSource.Play();
+        
+        //Debug.Log(ninja);
     }
+
     public void PlayerPunished()
     {
-
+        
         MaxStunned++;
         if (pv.IsMine) {
             StartCoroutine(CameraShake(0.15f, 0.2f, 2));
 
             pv.RPC("shurikenSoundGlobal", RpcTarget.AllBuffered, null);
-
+            
            
         }
         Statistics.stats.Pref("Stunned");
@@ -644,8 +677,20 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     }
     IEnumerator PlayerPunishedRoutine()
     {
+       
         NoRun = true;
-
+        bool Shurikentemp=false; bool SpeedTemp=false;
+        if(manage.attackBtn.gameObject.activeInHierarchy)
+        {
+            SpeedTemp = true;
+            manage.attackBtn.gameObject.SetActive(false);
+        }
+       
+        if (manage.ShurikenBtn.gameObject.activeInHierarchy)
+        {
+            Shurikentemp = true;
+            manage.ShurikenBtn.gameObject.SetActive(false);
+        }
         animator.SetBool("stun", true);
         StartCoroutine(CharacterStop(transform.position));
 
@@ -694,6 +739,15 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             yield return null;
         }
         Camera.main.orthographicSize = 10f;
+
+        if(Shurikentemp)
+        {
+            manage.ShurikenBtn.gameObject.SetActive(true);
+        }
+        if(SpeedTemp)
+        {
+            manage.attackBtn.gameObject.SetActive(true);
+        }
 
     }
     IEnumerator CharacterStop(Vector3 pos)
@@ -1093,7 +1147,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     }
 
     public IEnumerator stop()
-    {
+    {   
         yield return new WaitForSeconds(1.1f);
         run = true;
         winpos = transform.position;
@@ -1140,6 +1194,25 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     public List<string> MaxStunUsedUsername = new List<string>();
     public List<string> MaxJumpUsername = new List<string>();
 
+    IEnumerator EndCameraLerp()
+    {
+        Camera.main.GetComponent<CameraFollow>().offset.y = 2;
+        while (Camera.main.orthographicSize > 5)
+        {
+            Camera.main.orthographicSize -= 0.1f;
+            yield return null;
+        }
+        Camera.main.orthographicSize = 5f;
+        yield return new WaitForSeconds(1f);
+        while (Camera.main.orthographicSize < 10)
+        {
+            Camera.main.orthographicSize += 0.05f;
+            yield return null;
+        }
+        Camera.main.orthographicSize = 10f;
+        Camera.main.GetComponent<CameraFollow>().offset.y = 6;
+
+    }
 
     [PunRPC]
     public void NewScoreCard() {
@@ -1204,7 +1277,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         if (pv.IsMine)
         {
 
-            if (collision.tag == "Finish") {
+            if (collision.tag == "Finish")
+            {
                 Debug.LogError("finish");
                 Statistics.stats.Pref("FinishTrack" + manage.UI.selectedLevel);
                 SecStart = false;
@@ -1226,9 +1300,9 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                     //   pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
 
                     //  ScoreShow();
-                    pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
-                  //  UserNameShow();
-
+                     pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
+                    //  UserNameShow();
+                 //   StartCoroutine(EndCameraLerp());
                     animator.SetBool("win", true);
 
                     return;
@@ -1266,13 +1340,16 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                 manage.GroundTimeSave();
                 //  pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
-                if (manage.playerReached[0].gameObject==this.gameObject) {
+                if (manage.playerReached[0].gameObject==this.gameObject)
+                {
                     won.gameObject.SetActive(true);
                     animator.SetBool("win", true);
                     Debug.LogError("Triggered");
 
-                } else {
-                    failed.gameObject.SetActive(true);
+                }
+                else
+                {
+                    failed.SetActive(true);
                     animator.SetBool("loss", true);
                 }
 
@@ -1287,8 +1364,9 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             }
         }
 
-       
-        pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
+
+          pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
+       // StartCoroutine(EndCameraLerp());
 
     }
 
@@ -1332,6 +1410,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             stream.SendNext(MaxStunned);
             stream.SendNext(MaxStunUsed);
             stream.SendNext(MaxJump);
+            //stream.SendNext(temp.SentByusername);
 
 
 
@@ -1342,10 +1421,11 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
            username = (string)stream.ReceiveNext();
            Finished = (bool)stream.ReceiveNext();
            secondTaken = (float)stream.ReceiveNext();
-            MaxSpeedBoost=(int)stream.ReceiveNext();
-            MaxStunned = (int)stream.ReceiveNext();
-            MaxStunUsed = (int)stream.ReceiveNext();
-            MaxJump = (int)stream.ReceiveNext();
+           MaxSpeedBoost=(int)stream.ReceiveNext();
+           MaxStunned = (int)stream.ReceiveNext();
+           MaxStunUsed = (int)stream.ReceiveNext();
+           MaxJump = (int)stream.ReceiveNext();
+           //temp.SentByusername = (string)stream.ReceiveNext();
 
 
         }

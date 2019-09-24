@@ -61,5 +61,10 @@ MonoBehaviour:
   - RunSync
   - shurikenSoundGlobal
   - RunGlobalSound
+  - ShurikenHitUserName
+  - HitMsg
+  - NinjaName
+  - ShurikenHitText
+  - ShurikenLocal
   DisableAutoOpenWizard: 1
   ShowSettings: 1
