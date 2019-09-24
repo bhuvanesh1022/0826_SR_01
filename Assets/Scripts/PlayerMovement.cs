@@ -84,6 +84,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 Order[i].sortingOrder += 1;
             }
             manage.t2.text = manage.userNameClass.userName;
+            Debug.Log("changing");
 
             manage.startBtn.onClick.AddListener(() => startcountFunc());
             FrontCheckOffset = this.transform.position - frontCheck.transform.position;
