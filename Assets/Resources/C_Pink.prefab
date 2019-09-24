@@ -816,6 +816,7 @@ MonoBehaviour:
   MaxStunUsed: 0
   MaxJump: 0
   temp: {fileID: 0}
+  currentDist: 0
   Order:
   - {fileID: 8743917093854275240}
   - {fileID: 8743917094537838331}

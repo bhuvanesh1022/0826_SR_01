@@ -22,6 +22,7 @@ public class Manager : MonoBehaviourPun
     public List<int> totalPlayerCharacterNo = new List<int>();
 
     public List<float> PlayerDist = new List<float>();
+    public List<GameObject> PlayerPos = new List<GameObject>();
     public List<Slider> PlayerDistUI = new List<Slider>();
     public List<Image> PlayerDistBG = new List<Image>();
     public List<Sprite> PlayerDistBGCharacter = new List<Sprite>();
@@ -41,6 +42,7 @@ public class Manager : MonoBehaviourPun
     //  public List<float> Distances = new List<float>();
     public Text t1;
     public Text t2;
+    public Text t3;
     public GameObject LocalPlayer;
     public int startCount;
     // public float IncreasedrunSpeed = 55f;

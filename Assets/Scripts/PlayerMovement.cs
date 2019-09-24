@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     public PowerUp temp;
 
+    public float currentDist;
+
     public List<Anima2D.SpriteMeshInstance> Order = new List<Anima2D.SpriteMeshInstance>();
   
         private void Start()
@@ -458,23 +460,14 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
             for (int i = 0; i < manage.totalPlayer.Count; i++)
         {
-            if (manage.totalPlayer[i].gameObject == this.gameObject)
+            if (manage.totalPlayer[i].gameObject != gameObject)
             {
-                float dist = Vector3.Distance(this.transform.position, manage.finish.transform.position);
-                manage.PlayerDist[i] = 1 - (dist / manage.FinalDist);
-                manage.PlayerDistUI[i].gameObject.SetActive(true);
-               manage.PlayerDistUI[i].value = 1 - (dist / manage.FinalDist);
-                manage.PlayerDistBG[i].color = new Color(255, 208,0,1);
-                // manage.t1.text = manage.PlayerDist[i].ToString();
-
-            }
-            else
-            {
-                if(manage.PlayerDist[i]!=0)
+                if (manage.PlayerDist[i] != 0)
                 {
                     manage.PlayerDistUI[i].gameObject.SetActive(true);
 
-                }else
+                }
+                else
                 {
                     manage.PlayerDistUI[i].gameObject.SetActive(false);
 
@@ -483,11 +476,64 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 manage.PlayerDistBG[i].color = new Color(255, 255, 255, 1);
 
                 manage.PlayerDistUI[i].value = manage.PlayerDist[i];
-
             }
+            else
+            {
+                currentDist = Vector3.Distance(transform.position, manage.finish.transform.position);
+                manage.PlayerDist[i] = 1 - (currentDist / manage.FinalDist);
+                manage.PlayerDistUI[i].gameObject.SetActive(true);
+                manage.PlayerDistUI[i].value = 1 - (currentDist / manage.FinalDist);
+                manage.PlayerDistBG[i].color = new Color(255, 208, 0, 1);
+                manage.t1.text = manage.PlayerDist[i].ToString();
+            }
+        }
+
+        for (int i = 0; i < manage.totalPlayer.Count; i++)
+        {
+            for (int j = i + 1; j < manage.totalPlayer.Count; j++)
+            {
+                if (manage.totalPlayer[i].GetComponent<PlayerMovement>().currentDist > manage.totalPlayer[j].GetComponent<PlayerMovement>().currentDist)
+                {
+                    GameObject winner = manage.totalPlayer[j];
+                    manage.totalPlayer[j] = manage.totalPlayer[i];
+                    manage.totalPlayer[i] = winner;
+                }
+            }
+
+        }
+
+        manage.PlayerPos = manage.totalPlayer;
+        manage.PlayerPos.Sort(delegate (GameObject a, GameObject b)
+        {
+            return (a.GetComponent<PlayerMovement>().currentDist).CompareTo(b.GetComponent<PlayerMovement>().currentDist);
+        });
+
+        int PlayerPosition = manage.PlayerPos.IndexOf(gameObject) + 1;
+        int totalPlayer = manage.totalPlayer.Count;
+        manage.t3.text = PlayerPosition.ToString() + "/" + totalPlayer.ToString();
+
+        if (totalPlayer > 1 )
+        {
+            if (PlayerPosition == totalPlayer)
+            {
+                manage.t3.color = Color.red;
+            }
+            else if (PlayerPosition == 1)
+            {
+                manage.t3.color = Color.green;
+            }
+            else
+            {
+                manage.t3.color = Color.yellow;
+            }
+        }
+        else
+        {
+            manage.t3.color = Color.white;
         }
     }
     public bool FirstTouchGameStart;
+
     [PunRPC]
     public void FirstTouchSync()
     {
@@ -1375,6 +1421,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     public void ScoreShow()
     {
         manage.ScoreCardMenu.gameObject.SetActive(true);
+
         for (int i = 0; i < manage.totalPlayer.Count; i++)
         {
             for (int j = i+1; j < manage.totalPlayer.Count; j++)
@@ -1386,11 +1433,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                     manage.totalPlayer[i] = temp;
 
                 }
-            }
-              
+            } 
         }
 
-            for (int i=0;i<manage.totalPlayer.Count;i++)
+        for (int i=0;i<manage.totalPlayer.Count;i++)
         {
           manage.ScoreCard[i].transform.GetChild(0).GetComponent<Text>().text = manage.totalPlayer[i].GetComponent<PlayerMovement>().username.ToString();
             float score = manage.totalPlayer[i].GetComponent<PlayerMovement>().secondTaken;
