@@ -2956,7 +2956,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 682861296}
   viewIdField: 0
-  InstantiationId: 1
+  InstantiationId: 7
   isRuntimeInstantiated: 0
 --- !u!114 &682861296
 MonoBehaviour:
@@ -4360,7 +4360,7 @@ MonoBehaviour:
   - {fileID: 9041193797256701525}
   - {fileID: 4164734705291232388}
   viewIdField: 0
-  InstantiationId: 2
+  InstantiationId: 8
   isRuntimeInstantiated: 0
 --- !u!114 &8867349598961856538
 MonoBehaviour:
@@ -4409,6 +4409,7 @@ MonoBehaviour:
   animator: {fileID: 1506808675}
   runSpeed: 0
   CurrenPlayerDenote: {fileID: 5444330305491328986}
+  characterState: 0
   pv: {fileID: 2688428234942579789}
   jump: 0
   crouch: 0
@@ -4416,8 +4417,10 @@ MonoBehaviour:
   won: {fileID: 8853496977496011264}
   failed: {fileID: 4996846502528928034}
   run: 0
-  PlayerSPrite: {fileID: 791358429082049817, guid: 056d078edc995884c803b9969f97b4d0,
-    type: 3}
+  PlayerSprites:
+  - {fileID: 21300000, guid: 067bfb9348ea042619720bea211e26ba, type: 3}
+  - {fileID: 21300000, guid: 6a71ff22632064768b6392ef0449f156, type: 3}
+  - {fileID: 21300000, guid: 83a2a2b6a2793423c996a3c08eeff761, type: 3}
   username: 
   pfxBoost: {fileID: 0}
   pfxWallBoost: {fileID: 0}

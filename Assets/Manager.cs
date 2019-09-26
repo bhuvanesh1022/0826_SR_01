@@ -119,10 +119,15 @@ public class Manager : MonoBehaviourPun
     // public GameObject Screen_Stun;
     public GameObject Screen_Power;
     public GameObject ThrownShurikenIMG;
-    public Text ShurikenText;
+    //public Text ShurikenText;
+    //public List<string> ShurikenTexts;
 
-    public List<string> ShurikenTexts;
+    public GameObject attackTextPanel;
+    public Text throwerNameText;
+    public Text victimNameText;
 
+
+    /*
     public void Awake()
     {
         ShurikenTexts = new List<string> { " landed a solid hit on ", 
@@ -133,11 +138,14 @@ public class Manager : MonoBehaviourPun
                                             " with the killshot on ", 
                                             " has completely flummoxed "};
     }
+    */
 
     [PunRPC]
     public void ShurikenHitText(string ninja, string victim)
     {
-        ShurikenText.text = ninja + ShurikenTexts[Random.Range(0, ShurikenTexts.Count)] + victim;
+        //ShurikenText.text = ninja + ShurikenTexts[Random.Range(0, ShurikenTexts.Count)] + victim;
+        throwerNameText.text = ninja;
+        victimNameText.text = victim;
 
         pv.RPC("ShurikenLocal", RpcTarget.AllBuffered, null);
     }
@@ -151,9 +159,11 @@ public class Manager : MonoBehaviourPun
 
     public IEnumerator ShowShurikenHitText()
     {
-        ShurikenText.enabled = true;
+        //ShurikenText.enabled = true;
+        attackTextPanel.SetActive(true);
         yield return new WaitForSeconds(3f);
-        ShurikenText.enabled = false;
+        attackTextPanel.SetActive(false);
+        //ShurikenText.enabled = false;
     }
 
     public IEnumerator SHurikenTHrownINst()
@@ -511,7 +521,7 @@ public class Manager : MonoBehaviourPun
         UIHandler temp1 = GameObject.Find("Launcher").GetComponent<UIHandler>();
         id = temp1.chosenCharacter;
 
-        GameObject temp = PhotonNetwork.Instantiate(playerPrefab[temp1.chosenCharacter].name, new Vector2(10, 10), playerPrefab[temp1.chosenCharacter].transform.rotation);
+        GameObject temp = PhotonNetwork.Instantiate(playerPrefab[id].name, new Vector2(10, 10), playerPrefab[id].transform.rotation);
         temp.GetComponent<PlayerMovement>().winpos = startPoint[UI.EnteredCount - 1].transform.position;
         Camera.main.transform.GetComponent<CameraFollow>().target = temp.transform;
 
