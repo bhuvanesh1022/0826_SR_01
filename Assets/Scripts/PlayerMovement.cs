@@ -4,26 +4,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using Anima2D;
 
 public class PlayerMovement : MonoBehaviourPun,IPunObservable
 {
     public CharacterController2D controller;
-    public  Animator animator;
+    public Animator animator;
     public float runSpeed = 40f;
     public GameObject CurrenPlayerDenote;
-
+    public enum CharacterState { run, speedRun, stunned};
+    public CharacterState characterState;
     public PhotonView pv;
-    float horizontalMove = 0f;
-   public bool jump = false;
-  public  bool crouch = false;
-  //  public Text t1;
-   // public Text t2;
+    public bool jump;
+    public bool crouch;
     public Manager manage;
     public GameObject won;
     public GameObject failed;
     public bool run;
-    public Sprite PlayerSPrite;
+    public Sprite[] PlayerSprites;
     public string username;
 
     [SerializeField] ParticleSystem pfxBoost, pfxWallBoost;
@@ -38,66 +36,48 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     public float currentDist;
 
-    public List<Anima2D.SpriteMeshInstance> Order = new List<Anima2D.SpriteMeshInstance>();
-  
-        private void Start()
-    {
+    public List<SpriteMeshInstance> Order = new List<SpriteMeshInstance>();
 
-        /*
-        if (playerMovement == null)
-        {
-            playerMovement = GetComponent<PlayerMovement>();
-            Debug.Log("Active");
-        }
-        else
-        {
-            playerMovement = this.GetComponent<PlayerMovement>();
-            Debug.Log("Check");
-        }
-        */
-        
+    private List<GameObject> totalPlayers = new List<GameObject>();
+    private float horizontalMove;
+
+    private void Start()
+    {
+        jump = false;
+        crouch = false;
+        horizontalMove = 0.0f;
+        characterState = CharacterState.run;
+
         PhotonNetwork.SendRate = 20;
         PhotonNetwork.SerializationRate = 15;
+
         manage = GameObject.Find("Manager").GetComponent<Manager>();
         controlData = GameObject.Find("ControlData").GetComponent<ControlData>();
 
-       rb2d.gravityScale = controlData.playerGravityScale;
+        rb2d.gravityScale = controlData.playerGravityScale;
 
-        //  username = controlData.userName;
-
-        //  manage.totalPlayerCharacterNo.Add(manage.UI.chosenCharacter);
-        //   t1 = GameObject.Find("t1").GetComponent<Text>();
-
-        //while(PhotonNetwork.CountOfPlayers!=2)
-        //{
-        //    yield return null;
-        //}
         run = true;
-         animator.SetBool("Idle", true);
-    //   runSpeed = 0;
-        //  pv.RPC("WaitForPlayerFunc", RpcTarget.AllBuffered, null);
+        animator.SetBool("Idle", true);
+
         WaitForPlayerFunc();
         username= manage.userNameClass.userName;
         manage.ReloadBtn.onClick.AddListener(() => TowardsLobby());
+
         if (pv.IsMine)
         {
             for (int i=0;i<Order.Count;i++)
             {
                 Order[i].sortingOrder += 1;
             }
+
             manage.t2.text = manage.userNameClass.userName;
             Debug.Log("changing");
 
             manage.startBtn.onClick.AddListener(() => startcountFunc());
             FrontCheckOffset = this.transform.position - frontCheck.transform.position;
             BackCheckOffset = this.transform.position - BackCheck.transform.position;
-           // GetComponent<SpriteRenderer>() .sortingOrder = 2;
-            pv.RPC("PlayerAdd", RpcTarget.AllBuffered, null);
-            //  pv.RPC("NameSet", RpcTarget.AllBuffered, null);
            
-            // manage.totalPlayerName.Add(username);
-
-            //  pv.RPC("PlayerCharacterSend", RpcTarget.AllBuffered, null);
+            pv.RPC("PlayerAdd", RpcTarget.AllBuffered, null);
 
             CurrenPlayerDenote.gameObject.SetActive(true);
             MinForceSet();
@@ -109,20 +89,18 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             manage.ShurikenBtn.onClick.RemoveAllListeners();
             manage.ShurikenBtn.onClick.AddListener(() => ShurikenaAttackFunc());
         }
+
         else
         {
-          //  pv.RPC("PlayerAdd", RpcTarget.AllBuffered, null);
-
             CurrenPlayerDenote.gameObject.SetActive(false);
-
         }
+
         for(int i=0;i<manage.totalPlayer.Count;i++)
         {
-            manage.PlayerDistBG[i].sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSPrite;
+            manage.PlayerDistBG[i].sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSprites[0];
         }
-        GetComponent<Rigidbody2D>().isKinematic = true;
 
-        //    GetComponent<CharacterController2D>().OnLandEvent.AddListener(OnCharacterLanded);
+        GetComponent<Rigidbody2D>().isKinematic = true;
     }
 
     const int MIN_WALL_BOOST = 2, MAX_WALL_BOOST = 5;
@@ -242,10 +220,15 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     }
     bool InitBoost;
-    public IEnumerator InitSpeedUp() {
+    public IEnumerator InitSpeedUp() 
+    {
         manage.InitialBoost = false;
-        if (pv.IsMine) {
-            if (InitBoost == false) {
+        if (pv.IsMine) 
+        {
+            if (InitBoost == false) 
+            {
+                characterState = CharacterState.speedRun;
+
                 InitBoost = true;
                 manage.t1.gameObject.SetActive(true);
                 int s = 0;
@@ -272,6 +255,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 runSpeed += 1;
                 if (pfxBoost) pfxBoost.Stop();
                 Manager.manage.attackBtn.interactable = true;
+
+                characterState = CharacterState.run;
             }
         }
     }
@@ -279,7 +264,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     public IEnumerator SpeedUp(GameObject temp, float speedUpTime)
     {
         animator.SetBool("boostrun", true);
-
+        characterState = CharacterState.speedRun;
 
         if (pv.IsMine)
         {
@@ -313,6 +298,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         }
 
         animator.SetBool("boostrun", false);
+        characterState = CharacterState.run;
         animator.SetTrigger("run");
 
     }
@@ -458,7 +444,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             manage.PlayerDistUI[i].gameObject.SetActive(false);
         }
 
-            for (int i = 0; i < manage.totalPlayer.Count; i++)
+        for (int i = 0; i < manage.totalPlayer.Count; i++)
         {
             if (manage.totalPlayer[i].gameObject != gameObject)
             {
@@ -473,7 +459,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                 }
 
-                manage.PlayerDistBG[i].color = new Color(255, 255, 255, 1);
+                //manage.PlayerDistBG[i].color = new Color(255, 255, 255, 1);
 
                 manage.PlayerDistUI[i].value = manage.PlayerDist[i];
             }
@@ -483,7 +469,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 manage.PlayerDist[i] = 1 - (currentDist / manage.FinalDist);
                 manage.PlayerDistUI[i].gameObject.SetActive(true);
                 manage.PlayerDistUI[i].value = 1 - (currentDist / manage.FinalDist);
-                manage.PlayerDistBG[i].color = new Color(255, 208, 0, 1);
+                //manage.PlayerDistBG[i].color = new Color(255, 208, 0, 1);
                 manage.t1.text = manage.PlayerDist[i].ToString();
             }
         }
@@ -531,6 +517,50 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         {
             manage.t3.color = Color.white;
         }
+
+
+        if (pv.IsMine)
+        {
+            switch (characterState)
+            {
+                case CharacterState.run:
+
+                    for (int i = 0; i < manage.totalPlayer.Count; i++)
+                    {
+                        manage.PlayerDistBG[i].sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSprites[0];
+                    }
+
+                    break;
+
+                case CharacterState.speedRun:
+
+                    for (int i = 0; i < manage.totalPlayer.Count; i++)
+                    {
+                        manage.PlayerDistBG[i].sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSprites[1];
+                    }
+
+                    break;
+
+                case CharacterState.stunned:
+
+                    for (int i = 0; i < manage.totalPlayer.Count; i++)
+                    {
+                        manage.PlayerDistBG[i].sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSprites[2];
+                    }
+
+                    break;
+
+                default:
+
+                    for (int i = 0; i < manage.totalPlayer.Count; i++)
+                    {
+                        manage.PlayerDistBG[i].sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSprites[0];
+                    }
+                    break;
+            }
+
+        }
+
     }
     public bool FirstTouchGameStart;
 
@@ -738,6 +768,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             manage.ShurikenBtn.gameObject.SetActive(false);
         }
         animator.SetBool("stun", true);
+        characterState = CharacterState.stunned;
         StartCoroutine(CharacterStop(transform.position));
 
         yield return new WaitForSeconds(0.25f);
@@ -766,6 +797,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         NoRun = false;
 
         animator.SetBool("stun", false);
+        characterState = CharacterState.run;
         animator.SetTrigger("run");
 
         // runSpeed = controlData.TargetSpeed;
