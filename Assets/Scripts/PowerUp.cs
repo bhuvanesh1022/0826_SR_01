@@ -21,7 +21,9 @@ public class PowerUp : MonoBehaviour
     public SpriteRenderer sprit;
 
     public enum Power { SpeedRun, Shuriken, ShurikenAttack };
+
     public Power power;
+
     public List<GameObject> collectedCharacter = new List<GameObject>();
 
     private string ninja;
@@ -58,14 +60,25 @@ public class PowerUp : MonoBehaviour
     void ShurikenHitUserName(string user,string name)
     {
         Manager.manage.ShurikenHitText(user, name);
-        Debug.LogError(user);
-        Debug.LogError(name);
 
+        for (int i = 0; i < collectedCharacter.Count; i++)
+        {
+            if (SentBy == Manager.manage.LocalPlayer)
+            {
+
+                collectedCharacter.RemoveAt(i);
+                break;
+            }
+        }
+
+        Destroy(gameObject, 0.125f);
     }
-
+        
     IEnumerator destro()
     {
         yield return new WaitForSeconds(5f);
+        Statistics.stats.Pref("StunMissed");
+
         for (int i = 0; i < collectedCharacter.Count; i++)
         {
             if (SentBy == Manager.manage.LocalPlayer)
@@ -79,12 +92,16 @@ public class PowerUp : MonoBehaviour
         {
             Statistics.stats.Pref("StunMissed");
         }
-        Destroy(this.gameObject);
+
+        Destroy(gameObject);
     }
 
     private void Update()
     {
-
+        for (int i = 0; i < collectedCharacter.Count; i++)
+        {
+           Debug.Log(collectedCharacter.Count);
+        }
         //  attackButton.GetComponent<Button>().enabled = canAttack;
         //  attackButton.GetComponent<Image>().enabled = canAttack;  
         if (power == Power.ShurikenAttack)
@@ -203,7 +220,6 @@ public class PowerUp : MonoBehaviour
                         {
                             if (Manager.manage.attackBtn.gameObject.activeInHierarchy || Manager.manage.ShurikenBtn.gameObject.activeInHierarchy)
                             {
-
                                 Manager.manage.PowerUpReplacedSave();
                             }
                             Manager.manage.attackBtn.gameObject.SetActive(true);
@@ -228,11 +244,7 @@ public class PowerUp : MonoBehaviour
                             pv.RPC("PowerUpDisableFunc", RpcTarget.AllBuffered, null);
                             Manager.manage.PowerUpCollectedSave();
                             Manager.manage.attackBtn.gameObject.SetActive(false);
-
                         }
-
-
-
                     }
 
                     //  StartCoroutine(collision.GetComponent<PlayerMovement>().SpeedUp(collision.gameObject));

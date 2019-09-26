@@ -111,7 +111,7 @@ public class UIHandler : MonoBehaviourPunCallbacks
           //  pv.RPC("char1", RpcTarget.AllBuffered, null);
 
         }
-        Debug.LogError(PhotonNetwork.PlayerList.Length);
+        //Debug.LogError(PhotonNetwork.PlayerList.Length);
         EnteredCount = PhotonNetwork.PlayerList.Length;
 
 

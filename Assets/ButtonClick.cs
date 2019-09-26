@@ -13,7 +13,7 @@ public class ButtonClick : MonoBehaviour, IPointerDownHandler,IPointerUpHandler
     public void OnPointerDown(PointerEventData pointerEventData)
     {
         //Output the name of the GameObject that is being clicked
-        Debug.Log(name + "Game Object Click in Progress");
+        //Debug.Log(name + "Game Object Click in Progress");
         ButtonClicked = true;
       //  StartCoroutine(off());
     }
@@ -27,7 +27,7 @@ public class ButtonClick : MonoBehaviour, IPointerDownHandler,IPointerUpHandler
     //Detect if clicks are no longer registering
     public void OnPointerUp(PointerEventData pointerEventData)
     {
-        Debug.Log(name + "No longer being clicked");
+        //Debug.Log(name + "No longer being clicked");
         ButtonClicked = false;
       //  this.gameObject.SetActive(false);
 

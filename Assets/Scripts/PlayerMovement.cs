@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             }
 
             manage.t2.text = manage.userNameClass.userName;
-            Debug.Log("changing");
+            //Debug.Log("changing");
 
             manage.startBtn.onClick.AddListener(() => startcountFunc());
             FrontCheckOffset = this.transform.position - frontCheck.transform.position;
@@ -244,8 +244,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed*1.5f;
                 yield return new WaitForSeconds(1.5f);
                 manage.BooseTimeSave();
-                Debug.Log("BoosterUSed");
-                Debug.Log(manage.InitialBoost);
+                //Debug.Log("BoosterUSed");
+                //Debug.Log(manage.InitialBoost);
                 //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed/1.5f ;
                 //   runSpeed += Time.deltaTime * controlData.MaxRunForce / 100;
                 controlData.TargetSpeed -= 50;
@@ -474,18 +474,21 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             }
         }
 
-        for (int i = 0; i < manage.totalPlayer.Count; i++)
+        if (manage.totalPlayer.Count > 0)
         {
-            for (int j = i + 1; j < manage.totalPlayer.Count; j++)
+            for (int i = 0; i < manage.totalPlayer.Count; i++)
             {
-                if (manage.totalPlayer[i].GetComponent<PlayerMovement>().currentDist > manage.totalPlayer[j].GetComponent<PlayerMovement>().currentDist)
+                for (int j = i + 1; j < manage.totalPlayer.Count; j++)
                 {
-                    GameObject winner = manage.totalPlayer[j];
-                    manage.totalPlayer[j] = manage.totalPlayer[i];
-                    manage.totalPlayer[i] = winner;
+                    if (manage.totalPlayer[i].GetComponent<PlayerMovement>().currentDist > manage.totalPlayer[j].GetComponent<PlayerMovement>().currentDist)
+                    {
+                        GameObject winner = manage.totalPlayer[j];
+                        manage.totalPlayer[j] = manage.totalPlayer[i];
+                        manage.totalPlayer[i] = winner;
+                    }
                 }
-            }
 
+            }
         }
 
         manage.PlayerPos = manage.totalPlayer;
@@ -735,27 +738,29 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     public void PlayerPunished()
     {
-        
         MaxStunned++;
-        if (pv.IsMine) {
+
+        if (pv.IsMine) 
+        {
             StartCoroutine(CameraShake(0.15f, 0.2f, 2));
 
             pv.RPC("shurikenSoundGlobal", RpcTarget.AllBuffered, null);
-            
-           
         }
+
         Statistics.stats.Pref("Stunned");
+
         if(pv.IsMine)
         {
             StartCoroutine(PlayerPunishedRoutine());
 
         }
     }
+
     IEnumerator PlayerPunishedRoutine()
     {
-       
         NoRun = true;
-        bool Shurikentemp=false; bool SpeedTemp=false;
+        bool Shurikentemp=false;
+        bool SpeedTemp=false;
         if(manage.attackBtn.gameObject.activeInHierarchy)
         {
             SpeedTemp = true;
@@ -767,8 +772,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             Shurikentemp = true;
             manage.ShurikenBtn.gameObject.SetActive(false);
         }
+
         animator.SetBool("stun", true);
         characterState = CharacterState.stunned;
+
         StartCoroutine(CharacterStop(transform.position));
 
         yield return new WaitForSeconds(0.25f);
@@ -828,6 +835,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         }
 
     }
+
     IEnumerator CharacterStop(Vector3 pos)
     {
         while(NoRun)
@@ -936,7 +944,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             {
                 if (straigtJump)
                 {
-                    Debug.LogError("straigh jump");
+                    //Debug.LogError("straigh jump");
                     StraightJumpX = transform.position.x;
               //      StartCoroutine(WallJumpRoutine());
                    // Debug.LogError("Jump");
@@ -1008,7 +1016,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                                 }
                                 manage.BoostAudioSource.clip = manage.JumpClip;
                                 manage.BoostAudioSource.Play();
-                    Debug.LogError("straigh jump");
+                             //Debug.LogError("straigh jump");
                              //   oppositeJump();
                                    controller.Move(0 * Time.deltaTime, crouch, true);
                                 DOTouchCount = false;
@@ -1357,7 +1365,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
             if (collision.tag == "Finish")
             {
-                Debug.LogError("finish");
+                //Debug.LogError("finish");
                 Statistics.stats.Pref("FinishTrack" + manage.UI.selectedLevel);
                 SecStart = false;
                 Finished = true;
