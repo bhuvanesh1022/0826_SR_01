@@ -41,6 +41,14 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     private List<GameObject> totalPlayers = new List<GameObject>();
     private float horizontalMove;
 
+    const int MIN_WALL_BOOST = 2, MAX_WALL_BOOST = 5;
+    const float BOOST_TIME_PER_WALL_BOOST = 0.2f;
+
+    public GameObject ShurikenObj;
+
+    public static PlayerMovement playerMovement;
+
+
     private void Start()
     {
         jump = false;
@@ -60,12 +68,12 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         animator.SetBool("Idle", true);
 
         WaitForPlayerFunc();
-        username= manage.userNameClass.userName;
+        username = manage.userNameClass.userName;
         manage.ReloadBtn.onClick.AddListener(() => TowardsLobby());
 
         if (pv.IsMine)
         {
-            for (int i=0;i<Order.Count;i++)
+            for (int i = 0; i < Order.Count; i++)
             {
                 Order[i].sortingOrder += 1;
             }
@@ -76,7 +84,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             manage.startBtn.onClick.AddListener(() => startcountFunc());
             FrontCheckOffset = this.transform.position - frontCheck.transform.position;
             BackCheckOffset = this.transform.position - BackCheck.transform.position;
-           
+
             pv.RPC("PlayerAdd", RpcTarget.AllBuffered, null);
 
             CurrenPlayerDenote.gameObject.SetActive(true);
@@ -95,7 +103,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             CurrenPlayerDenote.gameObject.SetActive(false);
         }
 
-        for(int i=0;i<manage.totalPlayer.Count;i++)
+        for (int i = 0; i < manage.totalPlayer.Count; i++)
         {
             manage.PlayerDistBG[i].sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSprites[0];
         }
@@ -103,18 +111,13 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         GetComponent<Rigidbody2D>().isKinematic = true;
     }
 
-    const int MIN_WALL_BOOST = 2, MAX_WALL_BOOST = 5;
-    const float BOOST_TIME_PER_WALL_BOOST = 0.2f;
-
-    void OnCharacterLanded() {
+    void OnCharacterLanded()
+    {
         if (wallBoostBuildup > MIN_WALL_BOOST) StartCoroutine(SpeedUp(gameObject, Mathf.Min(wallBoostBuildup - MIN_WALL_BOOST, MAX_WALL_BOOST) * BOOST_TIME_PER_WALL_BOOST));
         wallBoostBuildup = 0;
     }
 
-    public GameObject ShurikenObj;
 
-    public static PlayerMovement playerMovement;
-        
     public void ShurikenaAttackFunc()
     {
         //Debug.Log(this.username);
@@ -369,40 +372,34 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             yield return null;
         }
 
-      
-     
-
         Ac.GetComponent<AudioSource>().clip = Ac.BG_Game;
         Ac.GetComponent<AudioSource>().Play();
+
         manage.t1.gameObject.SetActive(false);
         manage.startBtn.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.5f);
+
         manage.PlayerReady.gameObject.SetActive(false);
 
-        manage.TrafficLight[0].gameObject.SetActive(true);
-        yield return new WaitForSeconds(1f);
-
-        manage.TrafficLight[1].gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(1f);
-
-        manage.TrafficLight[2].gameObject.SetActive(true);
-       
-        yield return new WaitForSeconds(1f);
         //while(manage.FirstTouch!=manage.UI.PlayerCount)
         //{
         //    yield return null;
         //}
-        pv.RPC("RunSync", RpcTarget.AllBuffered, null);
-
-        
-          runSpeed = 10;
-        animator.SetBool("Idle", false);
 
         for (int i = 0; i < manage.TrafficLight.Count; i++)
         {
+            manage.TrafficLight[i].gameObject.SetActive(true);
+            yield return new WaitForSeconds(1f);
             manage.TrafficLight[i].gameObject.SetActive(false);
         }
+
+        pv.RPC("RunSync", RpcTarget.AllBuffered, null);
+
+        
+        runSpeed = 10;
+        animator.SetBool("Idle", false);
+
+
         secondTaken = 0;
         SecStart = true;
         animator.SetTrigger("run");
@@ -499,28 +496,21 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
         int PlayerPosition = manage.PlayerPos.IndexOf(gameObject) + 1;
         int totalPlayer = manage.totalPlayer.Count;
-        manage.t3.text = PlayerPosition.ToString() + "/" + totalPlayer.ToString();
+        manage.t3.text = PlayerPosition.ToString();
 
-        if (totalPlayer > 1 )
+
+        if (PlayerPosition == totalPlayer && PlayerPosition != 1)
         {
-            if (PlayerPosition == totalPlayer)
-            {
-                manage.t3.color = Color.red;
-            }
-            else if (PlayerPosition == 1)
-            {
-                manage.t3.color = Color.green;
-            }
-            else
-            {
-                manage.t3.color = Color.yellow;
-            }
+            manage.t3.color = Color.red;
+        }
+        else if (PlayerPosition == 1)
+        {
+            manage.t3.color = Color.green;
         }
         else
         {
-            manage.t3.color = Color.white;
+            manage.t3.color = Color.yellow;
         }
-
 
         if (pv.IsMine)
         {
@@ -859,25 +849,33 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     public float PrevXPos;
     public float StraightJumpX;
+
     private void FixedUpdate()
     {
 
-        if (manage.attackBtn.gameObject.activeInHierarchy) {
+        if (manage.attackBtn.gameObject.activeInHierarchy) 
+        {
 
-            if (Input.GetKeyDown(KeyCode.Space)) {
+            if (Input.GetKeyDown(KeyCode.Space)) 
+            {
                 speedUpFunc();
             }
         }
-        if (manage.ShurikenBtn.gameObject.activeInHierarchy) {
+        if (manage.ShurikenBtn.gameObject.activeInHierarchy) 
+        {
 
-            if (Input.GetKeyDown(KeyCode.Space)) {
+            if (Input.GetKeyDown(KeyCode.Space)) 
+            {
                 ShurikenaAttackFunc();
             }
         }
+
         if (PrevXPos+0.1 >= transform.position.x)
         {
             PrevXPos = transform.position.x;
-        }else
+        }
+
+        else
         {
             if(run==false)
             {
@@ -890,23 +888,18 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 if(GetComponent<CharacterController2D>().m_Velocity.x > 130f)
                 {
                     manage.SpendOnWall += Time.deltaTime;
-
                 }
-
-
             }
-           
-
-
         }
+
         if (Input.touchCount == 1 || Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (manage.TrafficLight[2].activeInHierarchy)
             {
                 manage.InitialBoost = true;
             }
-
         }
+
         if (manage.InitialBoost)
         {
             if (!manage.TrafficLight[2].activeInHierarchy)
