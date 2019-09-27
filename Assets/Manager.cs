@@ -357,7 +357,7 @@ public class Manager : MonoBehaviourPun
         }
         //  Distances = new List<float>(2);
         //  PhotonNetwork.SetMasterClient(PhotonNetwork.PlayerList[1]);
-        t2.text = "prabu";
+        //t2.text = "prabu";
         if (PlayerPrefs.GetFloat("BaseSpeed") == 0.0f)
         {
             PlayerPrefs.SetFloat("BaseSpeed", 20f);
