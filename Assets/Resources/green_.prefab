@@ -2400,9 +2400,9 @@ MonoBehaviour:
   failed: {fileID: 8529763451203345879}
   run: 0
   PlayerSprites:
+  - {fileID: 21300000, guid: ac830dc74d8514d92b94a47f153016db, type: 3}
   - {fileID: 21300000, guid: 9d45600749aa54552aba471ff4a8c58e, type: 3}
   - {fileID: 21300000, guid: 2a879ba799aee41058e8af07ade70790, type: 3}
-  - {fileID: 21300000, guid: ac830dc74d8514d92b94a47f153016db, type: 3}
   username: 
   pfxBoost: {fileID: 0}
   pfxWallBoost: {fileID: 0}

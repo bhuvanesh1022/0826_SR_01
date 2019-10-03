@@ -6,7 +6,10 @@ using UnityEngine.UI;
 
 public class Manager : MonoBehaviourPun
 {
-
+    public GameObject scoreBoard;
+    public Image[] playerPosSprites;
+    public Sprite[] pos;
+    public Image inMilestone;
     public List<GameObject> playerPrefab;
     public static Manager manage;
     public int reach;
@@ -85,6 +88,7 @@ public class Manager : MonoBehaviourPun
 
     public List<GameObject> ScoreCard = new List<GameObject>();
     public List<GameObject> MaxUsed = new List<GameObject>();
+    //public List<GameObject> PlayerPosition = new List<GameObject>();
 
 
     public int TotalRace = 0;
