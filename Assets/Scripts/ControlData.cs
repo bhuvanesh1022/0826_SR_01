@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ControlData : MonoBehaviourPunCallbacks
 {
@@ -177,22 +178,33 @@ public class ControlData : MonoBehaviourPunCallbacks
     {
         
     }
-        public void Multiplayer()
+
+    public void CloseBtn()
+    {
+        Application.Quit();
+    }
+
+    public void ReloadBtn()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void Multiplayer()
     {
          UnityEngine.SceneManagement.SceneManager.LoadScene("mainMenu");
        // CompleteMenu.gameObject.SetActive(true);
 
-         BaseSpeedtxt1.text=BaseSpeed.ToString();
+     BaseSpeedtxt1.text=BaseSpeed.ToString();
      TargetSpeedTxt1.text=TargetSpeed.ToString();
      MaxRunForceTxt1.text=MaxRunForce.ToString();
-   m_JumpForceTxt1.text=m_JumpForce.ToString();
+     m_JumpForceTxt1.text=m_JumpForce.ToString();
      playerGravityScaleTxt1.text=playerGravityScale.ToString();
-    terminalVelocityTxt1.text=terminalVelocity.ToString();
+     terminalVelocityTxt1.text=terminalVelocity.ToString();
      walljumpAmplitudeLeftTxt1.text=walljumpAmplitudeLeft.ToString();
      walljumpForceLeftTxt1.text=walljumpForceLeft.ToString();
      WallSlideGravityTxt1.text=WallSlideGravity.ToString();
-
-}
+     
+     }
 
     public void BaseSpeedFunc(string num)
     {

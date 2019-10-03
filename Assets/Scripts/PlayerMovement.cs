@@ -497,20 +497,51 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         int PlayerPosition = manage.PlayerPos.IndexOf(gameObject) + 1;
         int totalPlayer = manage.totalPlayer.Count;
         manage.t3.text = PlayerPosition.ToString();
+        //Debug.Log(manage.PlayerPos.IndexOf(gameObject));
 
+        //for (int i = 0; i < totalPlayer; i++)
+        //{
+        //    if (i == manage.PlayerPos.IndexOf(gameObject))
+        //    {
+        //        manage.PlayerPosition[i].GetComponentInChildren<Text>().text = username;
+        //    }
 
+        //}
+
+        switch (PlayerPosition)
+        {
+            case 1:
+                manage.inMilestone.sprite = manage.pos[0];
+                break;
+            case 2:
+                manage.inMilestone.sprite = manage.pos[1];
+                break;
+            case 3:
+                manage.inMilestone.sprite = manage.pos[2];
+                break;
+            case 4:
+                manage.inMilestone.sprite = manage.pos[3];
+                break;
+
+            default:
+                break;
+        }
+
+        /*
         if (PlayerPosition == totalPlayer && PlayerPosition != 1)
         {
-            manage.t3.color = Color.red;
+            manage.t3.color = new Color(152, 13, 5, 255); ;
         }
         else if (PlayerPosition == 1)
         {
-            manage.t3.color = Color.green;
+            manage.t3.color = new Color(5, 152, 13, 255);
+            Debug.Log(manage.t3.text);
+
         }
         else
         {
-            manage.t3.color = Color.yellow;
-        }
+            manage.t3.color = new Color(200, 152, 13, 255);
+        } */
 
         if (pv.IsMine)
         {
@@ -521,6 +552,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                     for (int i = 0; i < manage.totalPlayer.Count; i++)
                     {
                         manage.PlayerDistBG[i].sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSprites[0];
+                        //manage.PlayerPosition[i].GetComponentInChildren<Image>().sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSprites[0];
+                        //Vector4 col = manage.PlayerPosition[i].GetComponentInChildren<Image>().color;
+                        //col.w = 255;
+                        //manage.PlayerPosition[i].GetComponentInChildren<Image>().color = col;
                     }
 
                     break;
@@ -530,6 +565,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                     for (int i = 0; i < manage.totalPlayer.Count; i++)
                     {
                         manage.PlayerDistBG[i].sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSprites[1];
+                        //manage.PlayerPosition[i].GetComponentInChildren<Image>().sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSprites[1];
+                        //Vector4 col = manage.PlayerPosition[i].GetComponentInChildren<Image>().color;
+                        //col.w = 255;
+                        //manage.PlayerPosition[i].GetComponentInChildren<Image>().color = col;
                     }
 
                     break;
@@ -539,6 +578,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                     for (int i = 0; i < manage.totalPlayer.Count; i++)
                     {
                         manage.PlayerDistBG[i].sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSprites[2];
+                        //manage.PlayerPosition[i].GetComponentInChildren<Image>().sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSprites[2];
+                        //Vector4 col = manage.PlayerPosition[i].GetComponentInChildren<Image>().color;
+                        //col.w = 255;
+                        //manage.PlayerPosition[i].GetComponentInChildren<Image>().color = col;
                     }
 
                     break;
@@ -548,6 +591,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                     for (int i = 0; i < manage.totalPlayer.Count; i++)
                     {
                         manage.PlayerDistBG[i].sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSprites[0];
+                        //manage.PlayerPosition[i].GetComponentInChildren<Image>().sprite = manage.totalPlayer[i].GetComponent<PlayerMovement>().PlayerSprites[0];
+                        //Vector4 col = manage.PlayerPosition[i].GetComponentInChildren<Image>().color;
+                        //col.w = 255;
+                        //manage.PlayerPosition[i].GetComponentInChildren<Image>().color = col;
                     }
                     break;
             }
@@ -1298,13 +1345,16 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
         if (manage.LocalPlayer.GetComponent<PlayerMovement>().Finished) {
 
-            manage.ScoreCardMenu.gameObject.SetActive(true);
-            manage.MaxUsedMenu.gameObject.SetActive(true);
+            manage.scoreBoard.SetActive(true);
+            manage.ScoreCardMenu.SetActive(true);
+            manage.MaxUsedMenu.SetActive(true);
 
             for (int i = 0; i < manage.scoreShow; i++) {
                 manage.ScoreCard[i].transform.GetChild(0).GetComponent<Text>().text = manage.playerReached[i].username.ToString();
                 float score = manage.playerReached[i].secondTaken;
                 manage.ScoreCard[i].transform.GetChild(1).GetComponent<Text>().text = score.ToString("#.00");
+                manage.playerPosSprites[i].sprite = manage.playerReached[i].GetComponent<PlayerMovement>().PlayerSprites[0];
+                manage.playerPosSprites[i].color = Color.white;
             }
             int MaxSpeedBoost1 = 0, MaxStunned1 = 0, MaxStunUsed1 = 0, MaxJump1 = 0;
             string MaxSpeedBoost_s="", MaxStunned_s="", MaxStunUsed_s="", MaxJump_s = "";
@@ -1363,7 +1413,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 SecStart = false;
                 Finished = true;
 
-                if (manage.reach < 10) {
+                if (manage.reach < 10) 
+                {
                     Statistics.stats.Pref("TotalWin");
 
 
@@ -1376,7 +1427,6 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                     pv.RPC("Reach", RpcTarget.AllBuffered, null);
                     Destroy(failed);
-                    //   pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
 
                     //  ScoreShow();
                      pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
@@ -1386,7 +1436,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                     return;
                 }
-                else {
+                else 
+                {
                     if (failed != null) {
                         Statistics.stats.Pref("TotalLose");
                         Camera.main.GetComponent<CameraFollow>().offset = new Vector3(0, 1.2f, -10f);
@@ -1404,15 +1455,18 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                 }
                 int count = 0;
-                for (int i = 0; i < manage.totalPlayer.Count; i++) {
+                for (int i = 0; i < manage.totalPlayer.Count; i++) 
+                {
 
-                    if (manage.totalPlayer[i].GetComponent<PlayerMovement>().Finished == true) {
+                    if (manage.totalPlayer[i].GetComponent<PlayerMovement>().Finished == true) 
+                    {
                         count += 1;
                     }
 
                 }
                 // pv.RPC("ScoreShow", RpcTarget.AllBuffered, null);
-                if (manage.UI.PlayerCount == count) {
+                if (manage.UI.PlayerCount == count) 
+                {
                     //   pv.RPC("ScoreShow", RpcTarget.AllBuffered, null);
 
                 }

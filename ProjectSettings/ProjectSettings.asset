@@ -161,7 +161,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.hbx.RunOkPlease
-    Standalone: com.HBX.srAlpha
+    Standalone: com.HBX.RunOkPlease
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 21
