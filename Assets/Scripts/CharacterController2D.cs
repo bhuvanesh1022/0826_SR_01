@@ -8,7 +8,7 @@ public class CharacterController2D : MonoBehaviour
     [Range(0, 1)] [SerializeField] public float m_CrouchSpeed = .36f;
     [Range(0, 1)] [SerializeField] public float m_JumpSpeed = .36f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
     [Range(0, .3f)] [SerializeField] public float m_MovementSmoothing = .05f;  // How much to smooth out the movement
-    [SerializeField] public bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
+    //[SerializeField] public bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
     [SerializeField] public LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] public Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
     [SerializeField] public Transform m_CeilingCheck;                          // A position marking where to check for ceilings
@@ -66,7 +66,7 @@ public class CharacterController2D : MonoBehaviour
         if (collision.gameObject.layer == 10)
         {
             print("hi" + collision.name);
-              m_wasCrouching = true;
+            m_wasCrouching = true;
             animator.SetTrigger("2To4");
             animator.ResetTrigger("4To2");
 
@@ -153,9 +153,9 @@ public class CharacterController2D : MonoBehaviour
         }
 
         //only control the player if grounded or airControl is turned on
-        if (m_Grounded || m_AirControl)
+        if (m_Grounded /*|| m_AirControl*/)
         {
-
+            //Debug.Log("Grounded");
             if (crouch)
             {
                 if (!m_wasCrouching)
@@ -196,6 +196,7 @@ public class CharacterController2D : MonoBehaviour
                     OnCrouchEvent.Invoke(false);
                 }
             }
+
             if (GetComponent<PlayerMovement>().res.Length == 0)
             {
                 // Move the character by finding the target velocity
@@ -204,15 +205,21 @@ public class CharacterController2D : MonoBehaviour
                 // And then smoothing it out and applying it to the character
                 m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
                 //   print(Time.deltaTime);
-
             }
             else
             {
-
                 // m_Rigidbody2D.AddForce(new Vector2(move * 10f, m_WallJumpForce) * Time.deltaTime, ForceMode2D.Impulse);
             }
+        }
+        else
+        {
 
-
+            if (GetComponent<PlayerMovement>().res.Length == 0 /* && m_Rigidbody2D.velocity.y > 0 */)
+            {
+                Debug.Log("not Grounded");
+                Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+                m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+            }
         }
         // If the player should jump...
 
@@ -223,7 +230,6 @@ public class CharacterController2D : MonoBehaviour
 
             if (m_Grounded)
             {
-
                 m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
 
               //  m_Rigidbody2D.velocity = new Vector2(2, 0);
@@ -231,10 +237,10 @@ public class CharacterController2D : MonoBehaviour
                 animator.SetTrigger("Jump");
                 GetComponent<PlayerMovement>().MaxJump++;
             //    animator.SetBool("Jump",true);
-                move *= 0.8f;
-
+                move *= 1f;
                 //m_Grounded = false;
             }
+
         }
         else
         {

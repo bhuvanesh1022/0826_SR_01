@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     public GameObject failed;
     public bool run;
     public Sprite[] PlayerSprites;
+    public Sprite PlayerScoreBoardSprite;
     public string username;
 
     [SerializeField] ParticleSystem pfxBoost, pfxWallBoost;
@@ -284,7 +285,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
             yield return new WaitForSeconds(speedUpTime-0.5f);
             manage.BooseTimeSave();
-            Debug.Log("BoosterUSed");
+            //Debug.Log("BoosterUSed");
             //temp.GetComponent<PlayerMovement>().controlData.TargetSpeed = temp.GetComponent<PlayerMovement>().controlData.TargetSpeed/1.5f ;
             //   runSpeed += Time.deltaTime * controlData.MaxRunForce / 100;
             controlData.TargetSpeed -= 50;
@@ -372,8 +373,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             yield return null;
         }
 
-        Ac.GetComponent<AudioSource>().clip = Ac.BG_Game;
-        Ac.GetComponent<AudioSource>().Play();
+        int AC = Random.Range(0, Ac.BG_Game.Length);
 
         manage.t1.gameObject.SetActive(false);
         manage.startBtn.gameObject.SetActive(false);
@@ -395,10 +395,11 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
         pv.RPC("RunSync", RpcTarget.AllBuffered, null);
 
-        
+        Ac.GetComponent<AudioSource>().clip = Ac.BG_Game[AC];
+        Ac.GetComponent<AudioSource>().Play();
+
         runSpeed = 10;
         animator.SetBool("Idle", false);
-
 
         secondTaken = 0;
         SecStart = true;
@@ -408,7 +409,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     }
     [PunRPC]
-    public void RunSync() {
+    public void RunSync() 
+    {
         run = false;
         GetComponent<Rigidbody2D>().isKinematic = false;
     }
@@ -973,7 +975,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             }
             else
             {
-                if (NoRun==false)
+                if (NoRun == false)
                 {
                     controller.Move(horizontalMove * Time.deltaTime, crouch, false);
                 }
@@ -985,9 +987,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 if (straigtJump)
                 {
                     //Debug.LogError("straigh jump");
-                    StraightJumpX = transform.position.x;
-              //      StartCoroutine(WallJumpRoutine());
-                   // Debug.LogError("Jump");
+                    //StraightJumpX = transform.position.x;
+                    straigtJump = false;
+                    //      StartCoroutine(WallJumpRoutine());
+                    // Debug.LogError("Jump");
                     manage.JumpUsedSave();
                     straigtJump = false;
                 }
@@ -997,10 +1000,11 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             {
                 if(run==false)
                     manage.GroundTime += Time.deltaTime;
-                if (straigtJump == false)
-                {
-                    straigtJump = true;
-                }
+
+                //if (straigtJump == false)
+                //{
+                //    straigtJump = true;
+                //}
                 
                 if (res.Length == 0)
                 {
@@ -1017,7 +1021,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                                 //     Debug.LogError("Jump");
                               //  if(run==failed)
-                                     manage.JumpUsedSave();
+                                manage.JumpUsedSave();
                                 manage.BoostAudioSource.clip = manage.JumpClip;
                                 manage.BoostAudioSource.Play();
                                 controller.Move(0 * Time.deltaTime, crouch, true);
@@ -1058,7 +1062,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                                 manage.BoostAudioSource.Play();
                              //Debug.LogError("straigh jump");
                              //   oppositeJump();
-                                   controller.Move(0 * Time.deltaTime, crouch, true);
+                                controller.Move(0 * Time.deltaTime, crouch, true);
                                 DOTouchCount = false;
                             }
                         }
@@ -1345,19 +1349,24 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
         if (manage.LocalPlayer.GetComponent<PlayerMovement>().Finished) {
 
-            manage.scoreBoard.SetActive(true);
-            manage.ScoreCardMenu.SetActive(true);
-            manage.MaxUsedMenu.SetActive(true);
+            //manage.scoreBoard.SetActive(true);
+            //manage.ScoreCardMenu.SetActive(true);
+            //manage.MaxUsedMenu.SetActive(true);
 
-            for (int i = 0; i < manage.scoreShow; i++) {
-                manage.ScoreCard[i].transform.GetChild(0).GetComponent<Text>().text = manage.playerReached[i].username.ToString();
-                float score = manage.playerReached[i].secondTaken;
-                manage.ScoreCard[i].transform.GetChild(1).GetComponent<Text>().text = score.ToString("#.00");
-                manage.playerPosSprites[i].sprite = manage.playerReached[i].GetComponent<PlayerMovement>().PlayerSprites[0];
-                manage.playerPosSprites[i].color = Color.white;
-            }
+            //for (int i = 0; i < manage.scoreShow; i++) 
+            //{
+            //    manage.ScoreCard[i].transform.GetChild(0).GetComponent<Text>().text = manage.playerReached[i].username.ToString();
+            //    float score = manage.playerReached[i].secondTaken;
+            //    manage.ScoreCard[i].transform.GetChild(1).GetComponent<Text>().text = score.ToString("#.00");
+            //    manage.playerPosSprites[i].sprite = manage.playerReached[i].GetComponent<PlayerMovement>().PlayerScoreBoardSprite;
+            //    manage.playerPosSprites[i].color = Color.white;
+            //}
+
+            StartCoroutine(ScoreBoard());
+
             int MaxSpeedBoost1 = 0, MaxStunned1 = 0, MaxStunUsed1 = 0, MaxJump1 = 0;
             string MaxSpeedBoost_s="", MaxStunned_s="", MaxStunUsed_s="", MaxJump_s = "";
+
             for (int i=0;i<manage.totalPlayer.Count;i++)
             {
                 if(MaxSpeedBoost1 < manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxSpeedBoost)
@@ -1383,19 +1392,40 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             }
            // UserNameShow();
 
-              manage.MaxUsed[0].GetComponent<Text>().text = MaxSpeedBoost_s;
+             manage.MaxUsed[0].GetComponent<Text>().text = MaxSpeedBoost_s;
              manage.MaxUsed[1].GetComponent<Text>().text = MaxStunned_s;
              manage.MaxUsed[2].GetComponent<Text>().text = MaxStunUsed_s;
-              manage.MaxUsed[3].GetComponent<Text>().text = MaxJump_s;
-
-
+             manage.MaxUsed[3].GetComponent<Text>().text = MaxJump_s;
         }
 
     }
+
+    public IEnumerator ScoreBoard()
+    {
+        yield return new WaitForSeconds(2.0f);
+        manage.scoreBoard.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+
+        //manage.ScoreCardMenu.SetActive(true);
+        //manage.MaxUsedMenu.SetActive(true);
+
+        for (int i = 0; i < manage.scoreShow; i++)
+        {
+            manage.ScoreCard[i].transform.GetChild(0).GetComponent<Text>().text = manage.playerReached[i].username;
+            float score = manage.playerReached[i].secondTaken;
+            manage.ScoreCard[i].transform.GetChild(1).GetComponent<Text>().text = score.ToString("00.00");
+            manage.playerPosSprites[i].sprite = manage.playerReached[i].GetComponent<PlayerMovement>().PlayerScoreBoardSprite;
+            manage.playerPosSprites[i].color = Color.white;
+            manage.playerPosSprites[i].transform.parent.gameObject.SetActive(true);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Finish") {
-            if (!manage.playerReached.Contains(this)) {
+        if (collision.tag == "Finish") 
+        {
+            if (!manage.playerReached.Contains(this)) 
+            {
                 manage.scoreShow += 1;
                 manage.playerReached.Add(this);
                 manage.playerReachedSec.Add(this.secondTaken);
@@ -1405,7 +1435,6 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         }
         if (pv.IsMine)
         {
-
             if (collision.tag == "Finish")
             {
                 //Debug.LogError("finish");
@@ -1418,7 +1447,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                     Statistics.stats.Pref("TotalWin");
 
 
-                    won.gameObject.SetActive(true);
+                    //won.gameObject.SetActive(true);
                     Camera.main.GetComponent<CameraFollow>().offset = new Vector3(0, 1.2f, -10f);
                     animator.SetBool("Idle", true);
                     //   GetComponent<SpriteRenderer>().sortingOrder = 2;
@@ -1433,7 +1462,6 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                     //  UserNameShow();
                  //   StartCoroutine(EndCameraLerp());
                     animator.SetBool("win", true);
-
                     return;
                 }
                 else 
@@ -1445,16 +1473,15 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                         run = true;
                         winpos = transform.position;
+
                         //  pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
-
                         //  ScoreShow();
-
                     }
                     //  pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
-
-
                 }
+
                 int count = 0;
+
                 for (int i = 0; i < manage.totalPlayer.Count; i++) 
                 {
 
@@ -1475,14 +1502,14 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 //  pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
                 if (manage.playerReached[0].gameObject==this.gameObject)
                 {
-                    won.gameObject.SetActive(true);
+                    //won.gameObject.SetActive(true);
                     animator.SetBool("win", true);
                     Debug.LogError("Triggered");
 
                 }
                 else
                 {
-                    failed.SetActive(true);
+                    //failed.SetActive(true);
                     animator.SetBool("loss", true);
                 }
 

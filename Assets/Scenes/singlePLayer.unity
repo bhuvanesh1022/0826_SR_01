@@ -813,7 +813,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BG_Menu: {fileID: 8300000, guid: 2708375b54fd041b1a14602a440c8c57, type: 3}
-  BG_Game: {fileID: 8300000, guid: 9080de64e6f6347f59d9e3e41c04af95, type: 3}
+  BG_Game:
+  - {fileID: 8300000, guid: 9080de64e6f6347f59d9e3e41c04af95, type: 3}
+  - {fileID: 8300000, guid: 37cda37aacacb4b3d9856e096a827618, type: 3}
+  - {fileID: 8300000, guid: 7b0b4033ed57d443e9b7ef6ea0ca51be, type: 3}
 --- !u!82 &211082500
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4092,7 +4095,7 @@ RectTransform:
   m_GameObject: {fileID: 965389219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 3.6000001, y: 3.6000001, z: 1.2}
   m_Children:
   - {fileID: 1881004561}
   - {fileID: 718184958}
@@ -4268,7 +4271,7 @@ RectTransform:
   m_GameObject: {fileID: 993472421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 1406349092}
   - {fileID: 1095293955}

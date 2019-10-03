@@ -693,7 +693,6 @@ MonoBehaviour:
   m_CrouchSpeed: 0.8
   m_JumpSpeed: 0.36
   m_MovementSmoothing: 0.05
-  m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 4096
@@ -811,6 +810,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 97336a3502c5e4a039879fd2c49aabaa, type: 3}
   - {fileID: 21300000, guid: 142e094399df64408b5e7cda3e4ba41e, type: 3}
   - {fileID: 21300000, guid: 005e1481b364f4785905a7da5b60abd9, type: 3}
+  PlayerScoreBoardSprite: {fileID: 21300000, guid: fec1f0464c20842a1aa08e52a69733d5,
+    type: 3}
   username: 
   pfxBoost: {fileID: 0}
   pfxWallBoost: {fileID: 0}
