@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3125901207819086107}
   - component: {fileID: 5631637630097536425}
-  - component: {fileID: 1537296610886082612}
+  - component: {fileID: 6810990031003863559}
   m_Layer: 12
   m_Name: Sketch-track-1
   m_TagString: Untagged
@@ -74,13 +74,13 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 12.258587, y: 1.7464803}
+  m_Size: {x: 12.258587, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1537296610886082612
+--- !u!61 &6810990031003863559
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,16 +93,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.1}
   m_SpriteTilingProperty:
-    border: {x: 1.4, y: 0, z: 1.4499999, w: 0}
+    border: {x: 1.4, y: 0.72999996, z: 1.4499999, w: 1.31}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 10.18, y: 2.12}
-    newSize: {x: 12.258587, y: 1.7464803}
+    newSize: {x: 12.258587, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 9.92, y: 0.8}
+  m_Size: {x: 9.75, y: 0.7}
   m_EdgeRadius: 0
