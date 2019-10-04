@@ -490,15 +490,20 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             }
         }
 
+
         manage.PlayerPos = manage.totalPlayer;
+
         manage.PlayerPos.Sort(delegate (GameObject a, GameObject b)
         {
             return (a.GetComponent<PlayerMovement>().currentDist).CompareTo(b.GetComponent<PlayerMovement>().currentDist);
         });
 
-        int PlayerPosition = manage.PlayerPos.IndexOf(gameObject) + 1;
         int totalPlayer = manage.totalPlayer.Count;
-        manage.t3.text = PlayerPosition.ToString();
+        int PlayerPosition = manage.PlayerPos.IndexOf(gameObject) /* + manage.playerReached.Count */;
+
+        manage.inMilestone.sprite = manage.pos[PlayerPosition];
+
+        //manage.t3.text = PlayerPosition.ToString();
         //Debug.Log(manage.PlayerPos.IndexOf(gameObject));
 
         //for (int i = 0; i < totalPlayer; i++)
@@ -510,23 +515,28 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
         //}
 
-        switch (PlayerPosition)
-        {
-            case 1:
-                manage.inMilestone.sprite = manage.pos[0];
-                break;
-            case 2:
-                manage.inMilestone.sprite = manage.pos[1];
-                break;
-            case 3:
-                manage.inMilestone.sprite = manage.pos[2];
-                break;
-            case 4:
-                manage.inMilestone.sprite = manage.pos[3];
-                break;
 
-            default:
-                break;
+
+        if (!Finished)
+        {
+            //switch (PlayerPosition)
+            //{
+            //    case 0:
+            //        manage.inMilestone.sprite = manage.pos[0];
+            //        break;
+            //    case 1:
+            //        manage.inMilestone.sprite = manage.pos[1];
+            //        break;
+            //    case 2:
+            //        manage.inMilestone.sprite = manage.pos[2];
+            //        break;
+            //    case 3:
+            //        manage.inMilestone.sprite = manage.pos[3];
+            //        break;
+
+            //    default:
+            //        break;
+            //}
         }
 
         /*
@@ -1402,7 +1412,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     public IEnumerator ScoreBoard()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(0.5f);
         manage.scoreBoard.SetActive(true);
         yield return new WaitForSeconds(2.0f);
 
@@ -1428,7 +1438,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
             {
                 manage.scoreShow += 1;
                 manage.playerReached.Add(this);
-                manage.playerReachedSec.Add(this.secondTaken);
+                manage.playerReachedSec.Add(secondTaken);
             }
           //  pv.RPC("Reach", RpcTarget.AllBuffered, null);
 
