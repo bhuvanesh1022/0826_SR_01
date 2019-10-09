@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using UnityEngine.UI;
 using Anima2D;
+using UnityEngine.Video;
 
 public class PlayerMovement : MonoBehaviourPun,IPunObservable
 {
@@ -23,6 +24,10 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     public bool run;
     public Sprite[] PlayerSprites;
     public Sprite PlayerScoreBoardSprite;
+    public VideoClip winClip;
+    public VideoClip loseClip;
+    public bool lose;
+    public bool winner;
     public string username;
 
     [SerializeField] ParticleSystem pfxBoost, pfxWallBoost;
@@ -52,6 +57,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
     private void Start()
     {
+        lose = false;
+        winner = false;
         jump = false;
         crouch = false;
         horizontalMove = 0.0f;
@@ -1357,21 +1364,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
     [PunRPC]
     public void NewScoreCard() {
 
-        if (manage.LocalPlayer.GetComponent<PlayerMovement>().Finished) {
-
-            //manage.scoreBoard.SetActive(true);
-            //manage.ScoreCardMenu.SetActive(true);
-            //manage.MaxUsedMenu.SetActive(true);
-
-            //for (int i = 0; i < manage.scoreShow; i++) 
-            //{
-            //    manage.ScoreCard[i].transform.GetChild(0).GetComponent<Text>().text = manage.playerReached[i].username.ToString();
-            //    float score = manage.playerReached[i].secondTaken;
-            //    manage.ScoreCard[i].transform.GetChild(1).GetComponent<Text>().text = score.ToString("#.00");
-            //    manage.playerPosSprites[i].sprite = manage.playerReached[i].GetComponent<PlayerMovement>().PlayerScoreBoardSprite;
-            //    manage.playerPosSprites[i].color = Color.white;
-            //}
-
+        if (manage.LocalPlayer.GetComponent<PlayerMovement>().Finished) 
+        {
             StartCoroutine(ScoreBoard());
 
             int MaxSpeedBoost1 = 0, MaxStunned1 = 0, MaxStunUsed1 = 0, MaxJump1 = 0;
@@ -1379,7 +1373,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
             for (int i=0;i<manage.totalPlayer.Count;i++)
             {
-                if(MaxSpeedBoost1 < manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxSpeedBoost)
+                if (MaxSpeedBoost1 < manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxSpeedBoost)
                 {
                     MaxSpeedBoost1 = manage.totalPlayer[i].GetComponent<PlayerMovement>().MaxSpeedBoost;
                     MaxSpeedBoost_s= manage.totalPlayer[i].GetComponent<PlayerMovement>().username;
@@ -1400,8 +1394,6 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                     MaxJump_s = manage.totalPlayer[i].GetComponent<PlayerMovement>().username;
                 }
             }
-           // UserNameShow();
-
              manage.MaxUsed[0].GetComponent<Text>().text = MaxSpeedBoost_s;
              manage.MaxUsed[1].GetComponent<Text>().text = MaxStunned_s;
              manage.MaxUsed[2].GetComponent<Text>().text = MaxStunUsed_s;
@@ -1416,17 +1408,26 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
         manage.scoreBoard.SetActive(true);
         yield return new WaitForSeconds(2.0f);
 
-        //manage.ScoreCardMenu.SetActive(true);
-        //manage.MaxUsedMenu.SetActive(true);
-
         for (int i = 0; i < manage.scoreShow; i++)
         {
             manage.ScoreCard[i].transform.GetChild(0).GetComponent<Text>().text = manage.playerReached[i].username;
             float score = manage.playerReached[i].secondTaken;
             manage.ScoreCard[i].transform.GetChild(1).GetComponent<Text>().text = score.ToString("00.00");
-            manage.playerPosSprites[i].sprite = manage.playerReached[i].GetComponent<PlayerMovement>().PlayerScoreBoardSprite;
+            //manage.playerPosSprites[i].sprite = manage.playerReached[i].GetComponent<PlayerMovement>().PlayerScoreBoardSprite;
+
             manage.playerPosSprites[i].color = Color.white;
             manage.playerPosSprites[i].transform.parent.gameObject.SetActive(true);
+
+            if (manage.playerReached[i].GetComponent<PlayerMovement>().winner)
+            {
+                manage.playerPosSprites[i].GetComponent<VideoPlayer>().clip = manage.playerReached[i].GetComponent<PlayerMovement>().winClip;
+            }
+            if (manage.playerReached[i].GetComponent<PlayerMovement>().lose)
+            {
+                manage.playerPosSprites[i].GetComponent<VideoPlayer>().clip = manage.playerReached[i].GetComponent<PlayerMovement>().loseClip;
+            }
+
+
         }
     }
 
@@ -1439,6 +1440,22 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 manage.scoreShow += 1;
                 manage.playerReached.Add(this);
                 manage.playerReachedSec.Add(secondTaken);
+
+                for (int i = 0; i < manage.playerReached.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        manage.playerReached[0].GetComponent<PlayerMovement>().winner = true;
+                        manage.playerReached[0].GetComponent<PlayerMovement>().lose = false;
+                    }
+                    else
+                    {
+                        Debug.Log("loser");
+                        manage.playerReached[i].GetComponent<PlayerMovement>().lose = true;
+                        manage.playerReached[i].GetComponent<PlayerMovement>().winner = false;
+                    }
+                }
+
             }
           //  pv.RPC("Reach", RpcTarget.AllBuffered, null);
 
@@ -1456,8 +1473,13 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 {
                     Statistics.stats.Pref("TotalWin");
 
+                    //for (int i = 0; i < manage.scoreShow; i++)
+                    //{
+                        //manage.playerPosSprites[0].GetComponent<VideoPlayer>().clip = manage.playerReached[0].GetComponent<PlayerMovement>().winClip;
+                    //}
 
                     //won.gameObject.SetActive(true);
+                    winner = true;
                     Camera.main.GetComponent<CameraFollow>().offset = new Vector3(0, 1.2f, -10f);
                     animator.SetBool("Idle", true);
                     //   GetComponent<SpriteRenderer>().sortingOrder = 2;
@@ -1476,7 +1498,8 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
                 }
                 else 
                 {
-                    if (failed != null) {
+                    if (failed != null) 
+                    {
                         Statistics.stats.Pref("TotalLose");
                         Camera.main.GetComponent<CameraFollow>().offset = new Vector3(0, 1.2f, -10f);
                         animator.SetBool("Idle", true);
@@ -1510,17 +1533,27 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
                 manage.GroundTimeSave();
                 //  pv.RPC("NewScoreCard", RpcTarget.AllBuffered, null);
-                if (manage.playerReached[0].gameObject==this.gameObject)
+                if (manage.playerReached[0].gameObject==gameObject)
                 {
+                    //for (int i = 0; i < manage.scoreShow; i++)
+                    //{
+                        //manage.playerPosSprites[0].GetComponent<VideoPlayer>().clip = winClip;
+                    //}
                     //won.gameObject.SetActive(true);
+                    winner = true;
                     animator.SetBool("win", true);
                     Debug.LogError("Triggered");
 
                 }
                 else
                 {
+                    //for (int i = 0; i < manage.scoreShow; i++)
+                    //{
+                    //    manage.playerPosSprites[i].GetComponent<VideoPlayer>().clip = manage.playerReached[i].GetComponent<PlayerMovement>().loseClip;
+                    //}
                     //failed.SetActive(true);
                     animator.SetBool("loss", true);
+                    lose = true;
                 }
 
             }
@@ -1562,7 +1595,7 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
 
         for (int i=0;i<manage.totalPlayer.Count;i++)
         {
-          manage.ScoreCard[i].transform.GetChild(0).GetComponent<Text>().text = manage.totalPlayer[i].GetComponent<PlayerMovement>().username.ToString();
+            manage.ScoreCard[i].transform.GetChild(0).GetComponent<Text>().text = manage.totalPlayer[i].GetComponent<PlayerMovement>().username;
             float score = manage.totalPlayer[i].GetComponent<PlayerMovement>().secondTaken;
             manage.ScoreCard[i].transform.GetChild(1).GetComponent<Text>().text = score.ToString("#.00");
         }
@@ -1596,8 +1629,6 @@ public class PlayerMovement : MonoBehaviourPun,IPunObservable
            MaxStunUsed = (int)stream.ReceiveNext();
            MaxJump = (int)stream.ReceiveNext();
            //temp.SentByusername = (string)stream.ReceiveNext();
-
-
         }
     }
 

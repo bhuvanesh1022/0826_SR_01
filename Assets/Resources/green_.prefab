@@ -2404,6 +2404,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2a879ba799aee41058e8af07ade70790, type: 3}
   PlayerScoreBoardSprite: {fileID: 21300000, guid: 4ff1eb7f5d10845bda9b5ec93491ce72,
     type: 3}
+  winClip: {fileID: 32900000, guid: 00d79c70ee8244e8c8e03362f881d571, type: 3}
+  loseClip: {fileID: 32900000, guid: 835053c22a98043a6ac431b68e794f33, type: 3}
+  lose: 0
+  winner: 0
   username: 
   pfxBoost: {fileID: 0}
   pfxWallBoost: {fileID: 0}
