@@ -18,7 +18,7 @@ MonoBehaviour:
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
-    FixedRegion: 
+    FixedRegion: in
     Server: 
     Port: 0
     Protocol: 0
@@ -55,5 +55,16 @@ MonoBehaviour:
   - StartSecfunc
   - WaitForPlayerFunc
   - Waitfunc
+  - SelectCharacter
+  - LoadLevelToLevel
+  - NewScoreCard
+  - RunSync
+  - shurikenSoundGlobal
+  - RunGlobalSound
+  - ShurikenHitUserName
+  - HitMsg
+  - NinjaName
+  - ShurikenHitText
+  - ShurikenLocal
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
+  ShowSettings: 1

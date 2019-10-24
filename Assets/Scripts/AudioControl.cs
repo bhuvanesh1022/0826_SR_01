@@ -6,7 +6,7 @@ public class AudioControl : MonoBehaviour
 {
 
     public AudioClip BG_Menu;
-    public AudioClip BG_Game;
+    public AudioClip[] BG_Game;
 
     // Start is called before the first frame update
     void Start()

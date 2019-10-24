@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System;
 using UnityEngine.UI;
 
 
@@ -47,7 +46,9 @@ public class PM : MonoBehaviour
 
         Ac.GetComponent<AudioSource>().Stop();
 
-        Ac.GetComponent<AudioSource>().clip = Ac.BG_Game;
+        int AC = Random.Range(0, Ac.BG_Game.Length);
+
+        Ac.GetComponent<AudioSource>().clip = Ac.BG_Game[AC];
         Ac.GetComponent<AudioSource>().Play();
         MainPanel.gameObject.SetActive(false);
         startbtn.gameObject.SetActive(true);

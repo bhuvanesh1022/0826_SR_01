@@ -11,12 +11,9 @@ public class UIHandler : MonoBehaviourPunCallbacks
     public InputField JoinRoom;
   //  public Text instruction;
     public PhotonView pv;
-    public Button character1;
-    public Button character2;
-    public Button character3;
-    public Button character4;
     public int chosenCharacter;
-    public GameObject wait_player;
+    public GameObject characterSelectUI, wait_player, gameStartButton;
+    //public List<Button> characterSelectButtons;
     public int PlayerCount;
     // Start is called before the first frame update
 
@@ -30,6 +27,9 @@ public class UIHandler : MonoBehaviourPunCallbacks
     public float TerminalSpeed;
     public GameObject ControllerMenu;
     public bool EnteredFirst;
+    public Text NoOfPlayer;
+    public GameObject NoOfPlayerParent;
+    public int EnteredCount;
 
     public void Onclick_CreateRoom()
         {
@@ -57,11 +57,12 @@ public class UIHandler : MonoBehaviourPunCallbacks
     [PunRPC]
     public void Controller()
     {
-
-       
+        
         PlayerCount += 1;
-     //   StartCoroutine(ControllerRoutine());
        
+
+        //   StartCoroutine(ControllerRoutine());
+
     }
     IEnumerator ControllerRoutine()
     {
@@ -89,29 +90,16 @@ public class UIHandler : MonoBehaviourPunCallbacks
 
         //  
         pv.RPC("Controller", RpcTarget.AllBuffered, null);
-
+        //if (pv.IsMine)
+        
         createRoom.gameObject.SetActive(false);
          JoinRoom.gameObject.SetActive(false);
-       //  character1.gameObject.SetActive(true);
-       if(EnteredFirst)
-        {
+        //  character1.gameObject.SetActive(true);
+        if (EnteredFirst) {
             LevelSelectUI.gameObject.SetActive(true);
-        }else
-        {
-          
-            character1.gameObject.SetActive(true);
-              character2.gameObject.SetActive(true);
-            character3.gameObject.SetActive(true);
-            character4.gameObject.SetActive(true);
-            character1.onClick.RemoveAllListeners();
-            character2.onClick.RemoveAllListeners();
-            character3.onClick.RemoveAllListeners();
-            character4.onClick.RemoveAllListeners();
-            character1.onClick.AddListener(() => char1());
-            character2.onClick.AddListener(() => char2());
-            character3.onClick.AddListener(() => char3());
-            character4.onClick.AddListener(() => char4());
-
+        }
+        else {
+            ActivateCharacterSelectUI(true);
         }
 
 
@@ -123,7 +111,8 @@ public class UIHandler : MonoBehaviourPunCallbacks
           //  pv.RPC("char1", RpcTarget.AllBuffered, null);
 
         }
-
+        //Debug.LogError(PhotonNetwork.PlayerList.Length);
+        EnteredCount = PhotonNetwork.PlayerList.Length;
 
 
     }
@@ -138,6 +127,7 @@ public class UIHandler : MonoBehaviourPunCallbacks
 
         if (pv.IsMine)
         {
+            
             //  selectedLevel = temp;
 
 
@@ -157,6 +147,19 @@ public class UIHandler : MonoBehaviourPunCallbacks
 
     }
 
+    void ActivateCharacterSelectUI(bool setActive) {
+        characterSelectUI.SetActive(setActive);
+
+        //if (setActive) {
+        //    for (int c = 0; c < characterSelectButtons.Count; c++) {
+        //        characterSelectButtons[c].onClick.RemoveAllListeners();
+        //        int setIndex = c;
+        //        characterSelectButtons[c].onClick.AddListener(() => SelectCharacter(setIndex));
+        //    }
+        //}
+    }
+
+
     [PunRPC]
     public void levelSelectSync(int temp)
     {
@@ -171,45 +174,28 @@ public class UIHandler : MonoBehaviourPunCallbacks
         //        selectedLevel = i;
         //    }
         //}
-        LevelSelectUI.gameObject.SetActive(false);
-        if(EnteredFirst)
-        {
-            character1.gameObject.SetActive(true);
-            character2.gameObject.SetActive(true);
-            character3.gameObject.SetActive(true);
-            character4.gameObject.SetActive(true);
-            character1.onClick.RemoveAllListeners();
-            character2.onClick.RemoveAllListeners();
-            character3.onClick.RemoveAllListeners();
-            character4.onClick.RemoveAllListeners();
 
-            character1.onClick.AddListener(() => char1());
-            character2.onClick.AddListener(() => char2());
-            character3.onClick.AddListener(() => char3());
-            character4.onClick.AddListener(() => char4());
+        LevelSelectUI.gameObject.SetActive(false);
+        if (EnteredFirst) {
+            ActivateCharacterSelectUI(true);
+            NoOfPlayerParent.gameObject.SetActive(true);
+
+           
         }
 
-    }
+        }
+
     [PunRPC]
-    public void char1()
-    {
-        character1.gameObject.SetActive(false);
+    public void SelectCharacter(int charIndex) {
+        ActivateCharacterSelectUI(false);
 
-        character2.gameObject.SetActive(false);
-        character3.gameObject.SetActive(false);
-        character4.gameObject.SetActive(false);
-        chosenCharacter = 0;
-        // instruction.text = chosenCharacter.ToString() ;
-  
-            pv.RPC("Incr", RpcTarget.AllBuffered, null);
+        chosenCharacter = charIndex;
+        pv.RPC("Incr", RpcTarget.AllBuffered, null);
 
-        
-        wait_player.gameObject.SetActive(true);
-      //  LevelSelectUI.gameObject.SetActive(true);
-        //  PhotonNetwork.LoadLevel("0716Level01");
-
-
+        wait_player.SetActive(true);
+      //  gameStartButton.SetActive(EnteredFirst);
     }
+
     public void TowardsLobby()
     {
           PhotonNetwork.LeaveRoom();
@@ -223,47 +209,12 @@ public class UIHandler : MonoBehaviourPunCallbacks
         Application.Quit();
     }
     [PunRPC]
-    public void char2()
-    {
-        character1.gameObject.SetActive(false);
-        character2.gameObject.SetActive(false);
-        character3.gameObject.SetActive(false);
-        character4.gameObject.SetActive(false);
+    public void LoadLevelToLevel() {
 
-        chosenCharacter = 1;
+        PhotonNetwork.LoadLevel("0716Level01");
 
-        //  instruction.text = chosenCharacter.ToString() ;
-        pv.RPC("Incr", RpcTarget.AllBuffered, null);
-        wait_player.gameObject.SetActive(true);
     }
-    [PunRPC]
-    public void char3()
-    {
-        character1.gameObject.SetActive(false);
-        character2.gameObject.SetActive(false);
-        character3.gameObject.SetActive(false);
-        character4.gameObject.SetActive(false);
-
-        chosenCharacter = 2;
-
-        //  instruction.text = chosenCharacter.ToString() ;
-        pv.RPC("Incr", RpcTarget.AllBuffered, null);
-        wait_player.gameObject.SetActive(true);
-    }
-    [PunRPC]
-    public void char4()
-    {
-        character1.gameObject.SetActive(false);
-        character2.gameObject.SetActive(false);
-        character3.gameObject.SetActive(false);
-        character4.gameObject.SetActive(false);
-
-        chosenCharacter = 3;
-        //  instruction.text = chosenCharacter.ToString() ;
-        pv.RPC("Incr", RpcTarget.AllBuffered, null);
-        wait_player.gameObject.SetActive(true);
-    }
-
+  
 
     [PunRPC]
     public void Incr()
@@ -304,6 +255,7 @@ public class UIHandler : MonoBehaviourPunCallbacks
     public Vector3 inputPos;
     private void Update()
     {
+        NoOfPlayer.text = PlayerCount.ToString() + " / 4";
         inputPos = Input.mousePosition;
     }
 
